@@ -1,28 +1,48 @@
-<html lang="en" class="scroll-smooth"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExBridg | Professional Technical &amp; Soft Skills Training</title>
-    <meta name="description" content="Expert-led training programs in Programming, Data Analytics, and Soft Skills to bridge the gap between potential and professional excellence.">
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex-Bridge | Professional Technical &amp; Soft Skills Training</title>
+    <meta name="description"
+        content="Expert-led training programs in Programming, Data Analytics, and Soft Skills to bridge the gap between potential and professional excellence." />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
         /* Custom scrollbar for webkit */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #d4d4d8; }
-        
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e4e4e7;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4d4d8;
+        }
+
         /* Custom Range Slider Styling */
-        input[type=range] {
+        input[type="range"] {
             -webkit-appearance: none;
             width: 100%;
             background: transparent;
         }
-        input[type=range]::-webkit-slider-thumb {
+
+        input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 16px;
             width: 16px;
@@ -32,25 +52,50 @@
             margin-top: -6px;
             box-shadow: 0 0 0 2px #ffffff;
         }
-        input[type=range]::-webkit-slider-runnable-track {
+
+        input[type="range"]::-webkit-slider-runnable-track {
             width: 100%;
             height: 4px;
             cursor: pointer;
             background: #e4e4e7;
             border-radius: 2px;
         }
+
+        /* Infinite Scroll Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-250px * 6 - 2rem * 6));
+            }
+
+            /* card width + gap * number of unique cards */
+        }
+
+        .slider-track {
+            animation: scroll 40s linear infinite;
+            width: max-content;
+        }
+
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
-<body class="bg-white text-zinc-600 antialiased selection:bg-blue-100 selection:text-blue-700">
 
+<body class="bg-white text-zinc-600 antialiased selection:bg-blue-100 selection:text-blue-700">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="w-8 h-8 bg-zinc-900 rounded text-white flex items-center justify-center font-semibold tracking-tighter">WEB</div>
-                <span class="text-lg font-semibold tracking-tight text-zinc-900 group-hover:text-blue-600 transition-colors">WorldWide Excellence Bridge</span>
+            <a href="index.html" class="flex items-center gap-2 group">
+                <img src="asset/logo.png" alt="Worldwide Excellence Bridge logo" class="w-10 h-10 object-contain" />
+                <span
+                    class="text-lg font-semibold tracking-tight text-zinc-900 group-hover:text-blue-600 transition-colors ml-2">Worldwide
+                    Excellence Bridge</span>
             </a>
-            
+
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
                 <a href="#about" class="text-zinc-500 hover:text-zinc-900 transition-colors">About</a>
                 <a href="#technical" class="text-zinc-500 hover:text-zinc-900 transition-colors">Technical</a>
@@ -60,8 +105,10 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="/index.html#technical" class="hidden md:inline-flex text-sm font-medium text-zinc-500 hover:text-zinc-900">Courses</a>
-                <a href="/ContactUs.html" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-zinc-900 rounded-full hover:bg-zinc-800 transition-all shadow-sm hover:shadow-md">
+                <a href="/index.html#technical"
+                    class="hidden md:inline-flex text-sm font-medium text-zinc-500 hover:text-zinc-900">Courses</a>
+                <a href="/ContactUs.html"
+                    class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-zinc-900 rounded-full hover:bg-zinc-800 transition-all shadow-sm hover:shadow-md">
                     Get Started
                 </a>
             </div>
@@ -72,46 +119,50 @@
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <!-- Background Decor -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0">
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white"></div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white">
+            </div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-medium mb-8">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                New Cohorts Starting Next Week
-            </div>
             
+
             <h1 class="text-5xl lg:text-7xl font-semibold text-zinc-900 tracking-tight leading-[1.1] mb-6">
-                Bridge the gap between <br class="hidden lg:block"> potential and excellence.
+                Bridge the gap between <br class="hidden lg:block" />
+                potential and excellence.
             </h1>
-            
+
             <p class="text-lg lg:text-xl text-zinc-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Premium training programs designed for the modern workforce. Master technical expertise in coding and data, or refine your leadership and communication skills.
+                Premium training programs designed for the modern workforce. Master
+                technical expertise in coding and data, or refine your leadership and
+                communication skills.
             </p>
-            
+
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/index.html#technical" class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-all shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
+                <a href="/index.html#technical"
+                    class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-all shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2">
                     Explore Courses
                     <i data-lucide="arrow-right" class="w-4 h-4 stroke-[1.5]"></i>
                 </a>
-                <a href="/ContactUs.html" class="w-full sm:w-auto px-8 py-3.5 bg-white border border-zinc-200 hover:border-zinc-300 text-zinc-700 font-medium rounded-full transition-all flex items-center justify-center gap-2">
+                <a href="/ContactUs.html"
+                    class="w-full sm:w-auto px-8 py-3.5 bg-white border border-zinc-200 hover:border-zinc-300 text-zinc-700 font-medium rounded-full transition-all flex items-center justify-center gap-2">
                     Contact Us
                 </a>
             </div>
 
             <!-- Trusted By -->
             <div class="mt-20 pt-10 border-t border-zinc-100">
-                <p class="text-xs font-medium text-zinc-400 uppercase tracking-widest mb-8">Trusted by industry leaders</p>
-                <div class="flex flex-wrap justify-center gap-8 lg:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <p class="text-xs font-medium text-zinc-400 uppercase tracking-widest mb-8">
+                    Trusted by industry leaders & Universities
+                </p>
+                <div
+                    class="flex flex-wrap justify-center gap-8 lg:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                     <!-- Text based logos for simplicity as requested -->
-                    <span class="text-xl font-bold tracking-tighter text-zinc-800">ACME CORP</span>
-                    <span class="text-xl font-bold tracking-tighter text-zinc-800">NEXUS</span>
-                    <span class="text-xl font-bold tracking-tighter text-zinc-800 italic">GlobalTech</span>
-                    <span class="text-xl font-bold tracking-tighter text-zinc-800">STRATUS</span>
-                    <span class="text-xl font-bold tracking-tighter text-zinc-800">WAVEFORM</span>
+                    <span class="text-xl font-bold tracking-tighter text-zinc-800">TRANSNEURON</span>
+                    <span class="text-xl font-bold tracking-tighter text-zinc-800">YENEPOYA UNIVERSITY</span>
+                    <span class="text-xl font-bold tracking-tighter text-zinc-800 italic">ABBS COLLEGE</span>
+                    <span class="text-xl font-bold tracking-tighter text-zinc-800">SMARTCOMPANY</span>
+                    <span class="text-xl font-bold tracking-tighter text-zinc-800">ACCENTURE</span>
                 </div>
             </div>
         </div>
@@ -121,13 +172,20 @@
     <section id="about" class="py-24 bg-zinc-50 border-y border-zinc-200">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-                <h2 class="text-3xl font-semibold text-zinc-900 tracking-tight mb-6">Built on a foundation of real-world expertise.</h2>
+                <h2 class="text-3xl font-semibold text-zinc-900 tracking-tight mb-6">
+                    Built on a foundation of real-world expertise.
+                </h2>
                 <div class="space-y-6 text-zinc-500">
                     <p>
-                        At WorldWide Excellence Bridge, our mission is to empower individuals and organizations with the skills needed to thrive in a rapidly evolving digital landscape.
+                        At WorldWide Excellence Bridge, our mission is to empower
+                        individuals and organizations with the skills needed to thrive in
+                        a rapidly evolving digital landscape.
                     </p>
                     <p>
-                        Unlike traditional academic institutions, our methodology focuses on "Learning by Doing." Our curriculum is updated quarterly to match industry standards, ensuring you learn what employers actually need.
+                        Unlike traditional academic institutions, our methodology focuses
+                        on "Learning by Doing." Our curriculum is updated quarterly to
+                        match industry standards, ensuring you learn what employers
+                        actually need.
                     </p>
                     <ul class="space-y-3 mt-4">
                         <li class="flex items-start gap-3">
@@ -145,22 +203,32 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="grid grid-cols-2 gap-4">
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100">
-                    <div class="text-4xl font-semibold text-zinc-900 tracking-tight mb-1">15k+</div>
+                    <div class="text-4xl font-semibold text-zinc-900 tracking-tight mb-1">
+                        15k+
+                    </div>
                     <div class="text-sm text-zinc-500">Students Trained</div>
                 </div>
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100">
-                    <div class="text-4xl font-semibold text-zinc-900 tracking-tight mb-1">94%</div>
-                    <div class="text-sm text-zinc-500">Placement Rate</div>
+                    <div class="text-4xl font-semibold text-zinc-900 tracking-tight mb-1">
+                        94%
+                    </div>
+                    <div class="text-sm text-zinc-500">
+                        Industry Certification Pass Rate
+                    </div>
                 </div>
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100">
-                    <div class="text-4xl font-semibold text-zinc-900 tracking-tight mb-1">120+</div>
-                    <div class="text-sm text-zinc-500">Corporate Partners</div>
+                    <div class="text-4xl font-semibold text-zinc-900 tracking-tight mb-1">
+                        120+
+                    </div>
+                    <div class="text-sm text-zinc-500">Job Interview Opportunities</div>
                 </div>
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100">
-                    <div class="text-4xl font-semibold text-zinc-900 tracking-tight mb-1">4.9</div>
+                    <div class="text-4xl font-semibold text-zinc-900 tracking-tight mb-1">
+                        4.9
+                    </div>
                     <div class="text-sm text-zinc-500">Average Rating</div>
                 </div>
             </div>
@@ -173,8 +241,12 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
                     <span class="text-sm font-medium text-blue-400 mb-2 block">Technical Mastery</span>
-                    <h2 class="text-3xl font-semibold text-white tracking-tight">Technical Skills &amp; Development</h2>
-                    <p class="text-zinc-400 mt-2 max-w-xl">Deep dive into programming, data science, and infrastructure.</p>
+                    <h2 class="text-3xl font-semibold text-white tracking-tight">
+                        Technical Skills &amp; Development
+                    </h2>
+                    <p class="text-zinc-400 mt-2 max-w-xl">
+                        Deep dive into programming, data science, and infrastructure.
+                    </p>
                 </div>
                 <!-- <a href="#" class="text-sm font-medium text-zinc-300 flex items-center gap-1 hover:text-blue-400 transition-colors">
                     View Full Catalog <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -183,62 +255,92 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Course Card 1 (dark card) -->
-                <div class="group bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
-                    <div class="w-12 h-12 bg-blue-900/20 rounded-lg flex items-center justify-center text-blue-400 mb-6">
+                <div
+                    class="group bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-blue-900/20 rounded-lg flex items-center justify-center text-blue-400 mb-6">
                         <i data-lucide="code-2" class="w-6 h-6"></i>
                     </div>
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="px-2 py-1 bg-zinc-700 text-zinc-300 text-[10px] uppercase tracking-wider font-semibold rounded">Beginner</span>
+                        <span
+                            class="px-2 py-1 bg-zinc-700 text-zinc-300 text-[10px] uppercase tracking-wider font-semibold rounded">Beginner</span>
                         <span class="text-xs text-zinc-400">12 Weeks</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Full Stack Web Development</h3>
-                    <p class="text-sm text-zinc-400 mb-6 line-clamp-2">Master the MERN stack (MongoDB, Express, React, Node) and build scalable web applications.</p>
+                    <h3 class="text-lg font-semibold text-white mb-2">
+                        Full Stack Web Development
+                    </h3>
+                    <p class="text-sm text-zinc-400 mb-6 line-clamp-2">
+                        Master the MERN stack (MongoDB, Express, React, Node) and build
+                        scalable web applications.
+                    </p>
                     <div class="flex items-center justify-between pt-6 border-t border-zinc-700">
                         <div class="flex -space-x-2">
                             <div class="w-8 h-8 rounded-full bg-zinc-700 border-2 border-zinc-800"></div>
                             <div class="w-8 h-8 rounded-full bg-zinc-600 border-2 border-zinc-800"></div>
                         </div>
-                        <button class="text-sm font-medium text-zinc-300 group-hover:text-blue-400 transition-colors">Enroll Now</button>
+                        <button class="text-sm font-medium text-zinc-300 group-hover:text-blue-400 transition-colors">
+                            Enroll Now
+                        </button>
                     </div>
                 </div>
 
                 <!-- Course Card 2 (dark card) -->
-                <div class="group bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
-                    <div class="w-12 h-12 bg-purple-900/20 rounded-lg flex items-center justify-center text-purple-400 mb-6">
+                <div
+                    class="group bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-purple-900/20 rounded-lg flex items-center justify-center text-purple-400 mb-6">
                         <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
                     </div>
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="px-2 py-1 bg-zinc-700 text-zinc-300 text-[10px] uppercase tracking-wider font-semibold rounded">Intermediate</span>
+                        <span
+                            class="px-2 py-1 bg-zinc-700 text-zinc-300 text-[10px] uppercase tracking-wider font-semibold rounded">Intermediate</span>
                         <span class="text-xs text-zinc-400">8 Weeks</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Data Analytics &amp; BI</h3>
-                    <p class="text-sm text-zinc-400 mb-6 line-clamp-2">Transform raw data into actionable insights using Python, SQL, Power BI, and Tableau.</p>
+                    <h3 class="text-lg font-semibold text-white mb-2">
+                        Data Analytics &amp; BI
+                    </h3>
+                    <p class="text-sm text-zinc-400 mb-6 line-clamp-2">
+                        Transform raw data into actionable insights using Python, SQL,
+                        Power BI, and Tableau.
+                    </p>
                     <div class="flex items-center justify-between pt-6 border-t border-zinc-700">
                         <div class="flex -space-x-2">
                             <div class="w-8 h-8 rounded-full bg-zinc-700 border-2 border-zinc-800"></div>
                         </div>
-                        <button class="text-sm font-medium text-zinc-300 group-hover:text-purple-400 transition-colors">Enroll Now</button>
+                        <button class="text-sm font-medium text-zinc-300 group-hover:text-purple-400 transition-colors">
+                            Enroll Now
+                        </button>
                     </div>
                 </div>
 
                 <!-- Course Card 3 (dark card) -->
-                <div class="group bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
-                    <div class="w-12 h-12 bg-orange-900/20 rounded-lg flex items-center justify-center text-orange-400 mb-6">
+                <div
+                    class="group bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
+                    <div
+                        class="w-12 h-12 bg-orange-900/20 rounded-lg flex items-center justify-center text-orange-400 mb-6">
                         <i data-lucide="shield-check" class="w-6 h-6"></i>
                     </div>
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="px-2 py-1 bg-zinc-700 text-zinc-300 text-[10px] uppercase tracking-wider font-semibold rounded">Advanced</span>
+                        <span
+                            class="px-2 py-1 bg-zinc-700 text-zinc-300 text-[10px] uppercase tracking-wider font-semibold rounded">Advanced</span>
                         <span class="text-xs text-zinc-400">16 Weeks</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Cybersecurity Ops</h3>
-                    <p class="text-sm text-zinc-400 mb-6 line-clamp-2">Learn network defense, ethical hacking, and security protocols to protect enterprise infrastructure.</p>
+                    <h3 class="text-lg font-semibold text-white mb-2">
+                        Cybersecurity Ops
+                    </h3>
+                    <p class="text-sm text-zinc-400 mb-6 line-clamp-2">
+                        Learn network defense, ethical hacking, and security protocols to
+                        protect enterprise infrastructure.
+                    </p>
                     <div class="flex items-center justify-between pt-6 border-t border-zinc-700">
                         <div class="flex -space-x-2">
                             <div class="w-8 h-8 rounded-full bg-zinc-700 border-2 border-zinc-800"></div>
                             <div class="w-8 h-8 rounded-full bg-zinc-600 border-2 border-zinc-800"></div>
                             <div class="w-8 h-8 rounded-full bg-zinc-500 border-2 border-zinc-800"></div>
                         </div>
-                        <button class="text-sm font-medium text-zinc-300 group-hover:text-orange-400 transition-colors">Enroll Now</button>
+                        <button class="text-sm font-medium text-zinc-300 group-hover:text-orange-400 transition-colors">
+                            Enroll Now
+                        </button>
                     </div>
                 </div>
             </div>
@@ -250,8 +352,12 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-12">
                 <span class="text-sm font-medium text-blue-400 mb-2 block">Professional Growth</span>
-                <h2 class="text-3xl font-semibold tracking-tight">Soft Skills &amp; Leadership</h2>
-                <p class="text-zinc-400 mt-2 max-w-xl">Skills that define leaders and drive team success.</p>
+                <h2 class="text-3xl font-semibold tracking-tight">
+                    Soft Skills &amp; Leadership
+                </h2>
+                <p class="text-zinc-400 mt-2 max-w-xl">
+                    Skills that define leaders and drive team success.
+                </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -259,51 +365,154 @@
                 <div class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
                     <i data-lucide="mic-2" class="w-8 h-8 text-blue-400 mb-4"></i>
                     <h3 class="text-lg font-medium mb-2">Public Speaking</h3>
-                    <p class="text-sm text-zinc-400">Overcome stage fright and articulate ideas with confidence.</p>
+                    <p class="text-sm text-zinc-400">
+                        Overcome stage fright and articulate ideas with confidence.
+                    </p>
                 </div>
                 <!-- Soft Skill 2 -->
                 <div class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
                     <i data-lucide="users-2" class="w-8 h-8 text-emerald-400 mb-4"></i>
                     <h3 class="text-lg font-medium mb-2">Team Leadership</h3>
-                    <p class="text-sm text-zinc-400">Strategies to motivate teams and manage conflict effectively.</p>
+                    <p class="text-sm text-zinc-400">
+                        Strategies to motivate teams and manage conflict effectively.
+                    </p>
                 </div>
                 <!-- Soft Skill 3 -->
                 <div class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
                     <i data-lucide="brain-circuit" class="w-8 h-8 text-pink-400 mb-4"></i>
                     <h3 class="text-lg font-medium mb-2">Critical Thinking</h3>
-                    <p class="text-sm text-zinc-400">Analyze problems deeply and develop innovative solutions.</p>
+                    <p class="text-sm text-zinc-400">
+                        Analyze problems deeply and develop innovative solutions.
+                    </p>
                 </div>
                 <!-- Soft Skill 4 -->
                 <div class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-xl hover:bg-zinc-800 transition-colors">
                     <i data-lucide="briefcase" class="w-8 h-8 text-amber-400 mb-4"></i>
                     <h3 class="text-lg font-medium mb-2">Corporate Etiquette</h3>
-                    <p class="text-sm text-zinc-400">Mastering professional behavior for the global workplace.</p>
+                    <p class="text-sm text-zinc-400">
+                        Mastering professional behavior for the global workplace.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Trainers Section -->
-    <section id="trainers" class="py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-semibold text-zinc-900 tracking-tight text-center mb-16">Learn from Industry Veterans</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section id="trainers" class="py-24 overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-6 mb-16">
+            <h2 class="text-3xl font-semibold text-zinc-900 tracking-tight text-center">
+                Learn from Industry Experts
+            </h2>
+        </div>
+
+        <div class="relative w-full">
+            <!-- Gradient Masks for smooth fade effect -->
+            <div
+                class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none">
+            </div>
+
+            <div class="slider-track flex gap-8 px-6">
                 <!-- Trainer 1 -->
-                <div class="flex flex-col items-center text-center">
+                <div class="flex flex-col items-center text-center w-[250px] shrink-0">
                     <div class="w-24 h-24 rounded-full bg-zinc-200 mb-4 overflow-hidden">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&amp;backgroundColor=b6e3f4" alt="Trainer" class="w-full h-full object-cover">
+                        <img src="asset/rabikant.png" alt="Trainer" class="w-full h-full object-cover" />
                     </div>
-                    <h3 class="text-lg font-semibold text-zinc-900">Dr. Sarah Jenkins</h3>
-                    <p class="text-sm text-blue-600 mb-3">Data Science Lead</p>
-                    <p class="text-sm text-zinc-500 max-w-xs">Ex-Google analyst with 10+ years in predictive modeling and big data.</p>
+                    <h3 class="text-lg font-semibold text-zinc-900">
+                        Mr.Rabikant Chaudhary
+                    </h3>
+                    <p class="text-sm text-blue-600 mb-3">Data Analytics & AI/ML</p>
+                    <p class="text-sm text-zinc-500">
+                        Successfully taught over 10k students through freelancing
+                        endeavors.
+                    </p>
                 </div>
-                
+
                 <!-- Trainer 2 -->
-                <div class="flex flex-col items-center text-center">
+                <div class="flex flex-col items-center text-center w-[250px] shrink-0">
                     <div class="w-24 h-24 rounded-full bg-zinc-200 mb-4 overflow-hidden">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus&amp;backgroundColor=ffdfbf" alt="Trainer" class="w-full h-full object-cover">
+                        <img src="asset/sewana.png" alt="Trainer" class="w-full h-full object-cover" />
                     </div>
-                    <h3 class="text-lg font-semibold text-zinc-900">Marcus Thorne</h3>
-                    <p class="text-sm text-blue-600 mb-3">Senior DevOps Engineer</p>
-                    <p class="text-sm text-zinc-500 max-w-xs">Cloud architect certified in AWS and Azure. Specialized in CI/CD
+                    <h3 class="text-lg font-semibold text-zinc-900">Ms.Sewana M</h3>
+                    <p class="text-sm text-blue-600 mb-3">Data Analytics</p>
+                    <p class="text-sm text-zinc-500">
+                        Experienced data analyst with a passion for teaching data
+                        visualization.
+                    </p>
+                </div>
+
+                <!-- Trainer 3 -->
+                <div class="flex flex-col items-center text-center w-[250px] shrink-0">
+                    <div class="w-24 h-24 rounded-full bg-zinc-200 mb-4 overflow-hidden">
+                        <img src="asset/prajwal.png" alt="Trainer" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-zinc-900">
+                        Mr. Prajwal Reddy
+                    </h3>
+                    <p class="text-sm text-blue-600 mb-3">Cloud Architecture</p>
+                    <p class="text-sm text-zinc-500">
+                        Cloud architect certified in AWS and Azure. Specialized in CI/CD
+                        pipelines.
+                    </p>
+                </div>
+
+                <!-- Trainer 4 -->
+                <div class="flex flex-col items-center text-center w-[250px] shrink-0">
+                    <div class="w-24 h-24 rounded-full bg-zinc-200 mb-4 overflow-hidden">
+                        <img src="asset/aaryan.png" alt="Trainer" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-zinc-900">
+                        Mr.Aaryan Chaudhary
+                    </h3>
+                    <p class="text-sm text-blue-600 mb-3">Python & Web Development</p>
+                    <p class="text-sm text-zinc-500">
+                        Dedicated to building strong foundations in programming and web
+                        technologies through hands-on, industry-focused training.
+                    </p>
+                </div>
+
+                <!-- Trainer 5 -->
+                <div class="flex flex-col items-center text-center w-[250px] shrink-0">
+                    <div class="w-24 h-24 rounded-full bg-zinc-200 mb-4 overflow-hidden">
+                        <img src="asset/pujitha.png" alt="Trainer" class="w-full h-full object-cover" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-zinc-900">
+                        Ms.Pujitha Mani Varada
+                    </h3>
+                    <p class="text-sm text-blue-600 mb-3">Gen AI, python &sql</p>
+                    <p class="text-sm text-zinc-500">
+                        Empowering learners with practical skills in emerging technologies
+                        through structured training and hands-on mentorship.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const track = document.querySelector(".slider-track");
+            const cards = Array.from(track.children);
+
+            // Calculate total width of original cards (including gap)
+            // Assuming gap is 2rem (32px) as per 'gap-8' class
+            const gap = 32;
+            const cardWidth = 250; // w-[250px]
+            const totalWidth = (cardWidth + gap) * cards.length;
+
+            // Set the scroll width variable for CSS animation
+            track.style.setProperty("--scroll-width", `-${totalWidth}px`);
+
+            // Clone cards to create the infinite loop buffer
+            cards.forEach((card) => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute("aria-hidden", "true"); // Accessibility
+                track.appendChild(clone);
+            });
+        });
+    </script>
+</body>
+
+</html>
