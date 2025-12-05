@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .container { border: 2px solid #ccc; padding: 20px; margin: 20px 0; }
+        button { padding: 10px 20px; margin: 5px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Lottie Player Test</h1>
+    <div class="container">
+        <h2>Test 1: Simple Rotating Circle</h2>
+        <div style="border: 1px solid #ddd; padding: 20px; background: #f9f9f9;">
+            <lottie-player 
+                id="player1"
+                src="asset/hero-education.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+                style="width: 300px; height: 300px; border: 1px solid red;">
+            </lottie-player>
+        </div>
+        <button onclick="document.getElementById('player1').pause()">Pause</button>
+        <button onclick="document.getElementById('player1').play()">Play</button>
+        <button onclick="checkElement()">Check Element</button>
+    </div>
+    
+    <script>
+        console.log('=== PAGE LOADED ===');
+        
+        function checkElement() {
+            const el = document.getElementById('player1');
+            console.log('Element:', el);
+            console.log('Src:', el.src);
+            console.log('Has shadowRoot:', !!el.shadowRoot);
+            console.log('Display style:', window.getComputedStyle(el).display);
+            console.log('Width:', window.getComputedStyle(el).width);
+            console.log('Height:', window.getComputedStyle(el).height);
+            alert('Check console (F12) for details');
+        }
+        
+        // Wait for Lottie library to load
+        setTimeout(() => {
+            console.log('After 1s - Lottie library loaded:', !!window.lottie);
+            const el = document.getElementById('player1');
+            console.log('Player element:', el);
+            if (el) {
+                el.addEventListener('error', (e) => console.error('Lottie error:', e));
+                el.addEventListener('ready', () => console.log('Lottie ready!'));
+                el.addEventListener('load', () => console.log('Lottie loaded!'));
+            }
+        }, 1000);
+        
+        // Debug every 2 seconds
+        setInterval(() => {
+            const el = document.getElementById('player1');
+            if (el) {
+                console.log('Tick - Element visible:', el.offsetHeight > 0, 'Children:', el.children.length);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

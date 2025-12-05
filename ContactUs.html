@@ -8,56 +8,97 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <style>
-body { font-family: 'Inter', sans-serif; }
+body { 
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0f1419 100%);
+}
 /* Custom scrollbar for webkit */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #d4d4d8; }
+::-webkit-scrollbar-thumb { background: #52525b; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #71717a; }
 /* Custom Range Slider Styling */
 input[type=range] {
--webkit-appearance: none;
-width: 100%;
-background: transparent;
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
 }
 input[type=range]::-webkit-slider-thumb {
--webkit-appearance: none;
-height: 16px;
-width: 16px;
-border-radius: 50%;
-background: #2563eb;
-cursor: pointer;
-margin-top: -6px;
-box-shadow: 0 0 0 2px #ffffff;
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  margin-top: -6px;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
 }
 input[type=range]::-webkit-slider-runnable-track {
-width: 100%;
-height: 4px;
-cursor: pointer;
-background: #e4e4e7;
-border-radius: 2px;
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #3f3f46;
+  border-radius: 2px;
 }
+/* Smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Subtle floating animation for decorative orbs */
+@keyframes float {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-12px) translateX(6px); }
+    100% { transform: translateY(0) translateX(0); }
+}
+.orb { animation: float 9s ease-in-out infinite; transform-origin: center; }
+.orb-blue { animation-duration: 9s; }
+.orb-cyan { animation-duration: 10s; }
+.orb-purple { animation-duration: 12s; }
+
+/* Social button microinteraction */
+.social-badge { transition: transform .24s cubic-bezier(.2,.9,.2,1), box-shadow .24s; will-change: transform; }
+.social-badge:hover { transform: translateY(-6px) scale(1.06); box-shadow: 0 18px 40px rgba(2,6,23,0.6); }
+.social-badge:active { transform: translateY(-2px) scale(1.03); }
+
+/* Toast */
+.toast {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    background: linear-gradient(90deg,#059669,#10b981);
+    color: white;
+    padding: .6rem .9rem;
+    border-radius: .6rem;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    transform: translateY(12px) scale(.98);
+    opacity: 0;
+    transition: transform .32s cubic-bezier(.2,.9,.3,1), opacity .28s ease;
+    z-index: 60;
+}
+.toast.show { transform: translateY(0) scale(1); opacity: 1; }
+.toast .check { margin-right: .5rem; display:inline-block; }
 </style></head>
-<body class="bg-white text-zinc-600 antialiased selection:bg-blue-100 selection:text-blue-700 flex flex-col min-h-screen">
+<body class="bg-zinc-950 text-zinc-300 antialiased selection:bg-blue-500/30 selection:text-blue-100 flex flex-col min-h-screen">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100">
+    <nav class="fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-2 group">
                 <img src="asset/logo.png" alt="Worldwide Excellence Bridge logo" class="w-10 h-10 object-contain" />
-                <span class="text-lg font-semibold tracking-tight text-zinc-900 group-hover:text-blue-600 transition-colors ml-2">Worldwide Excellence Bridge</span>
+                <span class="text-lg font-semibold tracking-tight text-white group-hover:text-blue-400 transition-colors ml-2">Worldwide Excellence Bridge</span>
             </a>
             
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="index.html" class="text-zinc-500 hover:text-zinc-900 transition-colors">Home</a>
-                <a href="index.html#technical" class="text-zinc-500 hover:text-zinc-900 transition-colors">Technical</a>
-                <a href="index.html#soft-skills" class="text-zinc-500 hover:text-zinc-900 transition-colors">Soft Skills</a>
-                <a href="/ContactUs.html" class="text-zinc-900 transition-colors">Contact</a>
+                <a href="index.html" class="text-zinc-400 hover:text-white transition-colors">Home</a>
+                <a href="index.html#technical" class="text-zinc-400 hover:text-white transition-colors">Technical</a>
+                <a href="index.html#soft-skills" class="text-zinc-400 hover:text-white transition-colors">Soft Skills</a>
+                <a href="/ContactUs.html" class="text-blue-400 transition-colors">Contact</a>
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="/index.html#technical" class="hidden md:inline-flex text-sm font-medium text-zinc-500 hover:text-zinc-900">Courses</a>
-                <a href="/index.html" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-zinc-900 rounded-full hover:bg-zinc-800 transition-all shadow-sm hover:shadow-md">
+                <a href="/index.html#technical" class="hidden md:inline-flex text-sm font-medium text-zinc-400 hover:text-white">Courses</a>
+                <a href="/index.html" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 rounded-full">
                     Home
                 </a>
             </div>
@@ -65,210 +106,256 @@ border-radius: 2px;
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-32 pb-20">
-        
-        <!-- Header -->
-        <div class="max-w-7xl mx-auto px-6 mb-16 text-center lg:text-left">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-medium mb-6">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                24/7 Support Available
-            </div>
-            <h1 class="text-4xl lg:text-6xl font-semibold text-zinc-900 tracking-tight mb-6">Get in touch</h1>
-            <p class="text-lg text-zinc-500 max-w-2xl">
-                Have questions about our curriculum, enterprise pricing, or partnership opportunities? We're here to help you forge your future.
-            </p>
+    <main class="flex-grow pt-32 pb-20 relative">
+        <!-- Background gradient orbs (added subtle float animation) -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="orb orb-blue absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="orb orb-cyan absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"></div>
+            <div class="orb orb-purple absolute top-1/2 left-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl -translate-x-1/2"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
-            
-            <!-- Contact Info Sidebar -->
-            <div class="space-y-8">
-                <div>
-                    <h3 class="font-semibold text-zinc-900 mb-4">Contact Information</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
-                            <div class="p-2 bg-white rounded-lg shadow-sm border border-zinc-100 text-blue-600">
-                                <i data-lucide="mail" class="w-5 h-5"></i>
+        <div class="relative z-10">
+            <!-- Header -->
+            <div class="max-w-7xl mx-auto px-6 mb-16 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-medium mb-6">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-pulse absolute inline-flex h-full w-full rounded-full bg-blue-400"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    24/7 Premium Support Available
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6 bg-gradient-to-r from-blue-200 via-blue-100 to-cyan-200 bg-clip-text text-transparent">Get in touch</h1>
+                <p class="text-lg text-zinc-300 max-w-3xl">
+                    Connect with our expert team to discuss advanced training solutions, enterprise partnerships, and career advancement opportunities.
+                </p>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">
+                
+                <!-- Contact Info Sidebar -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="font-semibold text-white mb-4 text-lg">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4 p-6 rounded-2xl bg-gradient-to-br from-blue-900/40 to-blue-900/20 border border-blue-500/30 hover:border-blue-400/60 hover:bg-blue-900/50 transition-all hover:shadow-lg hover:shadow-blue-600/20">
+                                <div class="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg text-white flex-shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-white">Email Us</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">Our team responds within 2 hours.</p>
+                                    <a href="mailto:excellencebridge07@gmail.com" class="text-sm font-medium text-blue-300 hover:text-blue-200 mt-2 block transition-colors">excellencebridge07@gmail.com</a>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-sm font-medium text-zinc-900">Email Us</h4>
-                                <p class="text-sm text-zinc-500 mt-1">Our friendly team is here to help.</p>
-                                <a href="mailto:excellencebridge07@gmail.com" class="text-sm font-medium text-blue-600 hover:text-blue-700 mt-2 block">excellencebridge07@gmail.com</a>
+
+                            <div class="flex items-start gap-4 p-6 rounded-2xl bg-gradient-to-br from-cyan-900/40 to-cyan-900/20 border border-cyan-500/30 hover:border-cyan-400/60 hover:bg-cyan-900/50 transition-all hover:shadow-lg hover:shadow-cyan-600/20">
+                                <div class="p-3 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg shadow-lg text-white flex-shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-white">Headquarters</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">Visit us in person</p>
+                                    <p class="text-sm font-medium text-zinc-200 mt-2">Kirloskar Layout<br>Bangalore, KA 560090</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-6 rounded-2xl bg-gradient-to-br from-purple-900/40 to-purple-900/20 border border-purple-500/30 hover:border-purple-400/60 hover:bg-purple-900/50 transition-all hover:shadow-lg hover:shadow-purple-600/20">
+                                <div class="p-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-lg text-white flex-shrink-0">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-white">Phone</h4>
+                                    <p class="text-sm text-zinc-400 mt-1">Available Mon-Sat, 9 AM - 6 PM IST</p>
+                                    <a href="tel:+919031303022" class="text-sm font-medium text-purple-300 hover:text-purple-200 mt-2 block transition-colors">+91 9031303022</a>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="flex items-start gap-4 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
-                            <div class="p-2 bg-white rounded-lg shadow-sm border border-zinc-100 text-blue-600">
-                                <i data-lucide="map-pin" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-medium text-zinc-900">Headquarters</h4>
-                                <p class="text-sm text-zinc-500 mt-1">Come say hello at our office.</p>
-                                <p class="text-sm font-medium text-zinc-900 mt-2">Kirloskar Layout<br>Bangalore, KA 560090</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
-                            <div class="p-2 bg-white rounded-lg shadow-sm border border-zinc-100 text-blue-600">
-                                <i data-lucide="phone" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-medium text-zinc-900">Phone</h4>
-                                <p class="text-sm text-zinc-500 mt-1">Call us any time</p>
-                                <a href="tel:+919031303022" class="text-sm font-medium text-blue-600 hover:text-blue-700 mt-2 block">+91 9031303022</a>
-                            </div>
+                    <!-- Socials -->
+                    <div>
+                        <h3 class="font-semibold text-white mb-4 text-lg">Follow Us</h3>
+                        <div class="flex gap-6">
+                            <a href="https://www.linkedin.com/company/ex-brid/" title="LinkedIn" aria-label="LinkedIn" class="group social-badge relative w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 hover:bg-blue-600/40 hover:text-blue-300 hover:border-blue-300 transition-all hover:shadow-lg hover:shadow-blue-600/30 text-xl font-bold">
+                                in
+                                <span class="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-blue-600 text-white text-xs font-medium rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                    LinkedIn
+                                </span>
+                            </a>
+                            <a href="https://www.facebook.com/people/Worldwide-Excellence-Bridge/61565420783027/" title="Facebook" aria-label="Facebook" class="group social-badge relative w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 hover:bg-blue-600/40 hover:text-blue-300 hover:border-blue-300 transition-all hover:shadow-lg hover:shadow-blue-600/30 text-xl font-bold">
+                                f
+                                <span class="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-blue-600 text-white text-xs font-medium rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                    Facebook
+                                </span>
+                            </a>
+                            <a href="https://www.instagram.com/excellence_bridge/" title="Instagram" aria-label="Instagram" class="group social-badge relative w-12 h-12 rounded-full bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-400 hover:bg-purple-600/40 hover:text-purple-300 hover:border-purple-300 transition-all hover:shadow-lg hover:shadow-purple-600/30 text-lg">
+                                📷
+                                <span class="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-purple-600 text-white text-xs font-medium rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                    Instagram
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Socials -->
-                <div>
-                    <h3 class="font-semibold text-zinc-900 mb-4">Follow us</h3>
-                    <div class="flex gap-4">
-                        <a href="https://www.linkedin.com/company/ex-brid/" class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-500 hover:bg-blue-600 hover:text-white transition-all">
-                            <i data-lucide="linkedin" class="w-4 h-4"></i>
-                        </a>
-                        <a href="https://www.facebook.com/people/Worldwide-Excellence-Bridge/61565420783027/" class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-500 hover:bg-blue-600 hover:text-white transition-all">
-                            <i data-lucide="facebook" class="w-4 h-4"></i>
-                        </a>
-                        <a href="https://www.instagram.com/excellence_bridge/" class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-500 hover:bg-blue-600 hover:text-white transition-all">
-                            <i data-lucide="instagram" class="w-4 h-4"></i>
-                        </a>
+                <!-- Contact Form -->
+                <div class="lg:col-span-2">
+                    <form id="contact-form" data-formcarry-id="https://formcarry.com/s/bruN56K7g-B" class="bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-zinc-700/50 rounded-3xl p-8 lg:p-10 shadow-2xl hover:border-zinc-600/80 transition-all backdrop-blur-sm">
+                        <h2 class="text-2xl font-bold text-white mb-8">Send us a message</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-zinc-200">First name</label>
+                                <input id="firstName" name="firstName" type="text" placeholder="Jane" class="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all placeholder:text-zinc-500 hover:border-zinc-600/80">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-semibold text-zinc-200">Last name</label>
+                                <input id="lastName" name="lastName" type="text" placeholder="Doe" class="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all placeholder:text-zinc-500 hover:border-zinc-600/80">
+                            </div>
+                        </div>
+
+                        <div class="mb-6 space-y-2">
+                            <label class="text-sm font-semibold text-zinc-200">Phone No</label>
+                            <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" class="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all placeholder:text-zinc-500 hover:border-zinc-600/80">
+                        </div>
+                        
+                        <div class="mb-6 space-y-2">
+                            <label class="text-sm font-semibold text-zinc-200">Email address</label>
+                            <input id="email" name="email" type="email" placeholder="jane@company.com" class="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all placeholder:text-zinc-500 hover:border-zinc-600/80">
+                        </div>
+
+                        <div class="mb-6 space-y-2">
+                            <label class="text-sm font-semibold text-zinc-200">Topic</label>
+                            <div class="relative">
+                                <select id="topic" name="topic" class="w-full appearance-none bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all hover:border-zinc-600/80">
+                                    <option class="bg-zinc-900 text-white">General Inquiry</option>
+                                    <option class="bg-zinc-900 text-white">Technical Course Enrollment</option>
+                                    <option class="bg-zinc-900 text-white">Corporate Training</option>
+                                    <option class="bg-zinc-900 text-white">Soft Skills Workshops</option>
+                                    <option class="bg-zinc-900 text-white">Enterprise Partnership</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-4 top-3.5 w-4 h-4 text-zinc-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <div class="mb-8 space-y-2">
+                            <label class="text-sm font-semibold text-zinc-200">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help..." class="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 transition-all resize-none placeholder:text-zinc-500 hover:border-zinc-600/80"></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <button type="submit" id="sendBtn" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-blue-600/40 hover:shadow-blue-600/60 flex items-center justify-center gap-2 transform hover:scale-105">
+                                Send Message
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                            <p class="text-xs text-zinc-400">We usually respond within 2 hours during business days.</p>
+                            <div id="form-status" class="text-sm text-zinc-300"></div>
+                        </div>
+                    </form>
+                    <!-- Toast placeholder for success confirmation -->
+                    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+                        <span class="check">✅</span>
+                        <span id="toast-text">Message sent — thank you!</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Contact Form -->
-            <div class="lg:col-span-2">
-                <!-- Add `id` and `data-formspree-id` (optional). If you use Formspree, put your form id in the data attribute -->
-                <form id="contact-form" data-formcarry-id="https://formcarry.com/s/bruN56K7g-B" class="bg-white rounded-2xl border border-zinc-200 p-8 lg:p-10 shadow-sm">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-zinc-700">First name</label>
-                            <input id="firstName" name="firstName" type="text" placeholder="Jane" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-zinc-400">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-zinc-700">Last name</label>
-                            <input id="lastName" name="lastName" type="text" placeholder="Doe" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-zinc-400">
-                        </div>
-                    </div>
+            <!-- FAQ Section -->
+            <div class="max-w-3xl mx-auto px-6 mt-32">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+                    <p class="text-zinc-300">Find answers to common questions about our services and support</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <details class="group bg-gradient-to-br from-zinc-900/60 to-zinc-900/30 border border-zinc-700/50 rounded-xl p-6 hover:border-zinc-600/80 cursor-pointer transition-all">
+                        <summary class="flex items-center justify-between font-semibold text-white list-none hover:text-blue-300 transition-colors">
+                            <span>What is the response time for support tickets?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-zinc-300 leading-relaxed">
+                            For enterprise clients, we guarantee a response within 2 hours during business days (9 AM - 6 PM IST). General inquiries are typically answered within 24 hours. We prioritize urgent technical issues.
+                        </p>
+                    </details>
+                    
+                    <details class="group bg-gradient-to-br from-zinc-900/60 to-zinc-900/30 border border-zinc-700/50 rounded-xl p-6 hover:border-zinc-600/80 cursor-pointer transition-all">
+                        <summary class="flex items-center justify-between font-semibold text-white list-none hover:text-blue-300 transition-colors">
+                            <span>Do you offer on-site corporate training?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-zinc-300 leading-relaxed">
+                            Yes, we offer comprehensive on-site training programs tailored to your organization's needs. For intensive bootcamps, we require a minimum cohort of 10 employees. Contact our enterprise team to discuss customized solutions.
+                        </p>
+                    </details>
 
-                    <div class="mb-6 space-y-2">
-                        <label class="text-sm font-medium text-zinc-700">Phone No</label>
-                        <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-zinc-400">
-                    </div>
-                    <div class="mb-6 space-y-2">
-                        <label class="text-sm font-medium text-zinc-700">Email address</label>
-                        <input id="email" name="email" type="email" placeholder="jane@company.com" class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-zinc-400">
-                    </div>
+                    <details class="group bg-gradient-to-br from-zinc-900/60 to-zinc-900/30 border border-zinc-700/50 rounded-xl p-6 hover:border-zinc-600/80 cursor-pointer transition-all">
+                        <summary class="flex items-center justify-between font-semibold text-white list-none hover:text-blue-300 transition-colors">
+                            <span>What certifications do you provide?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-zinc-300 leading-relaxed">
+                            Our programs provide industry-recognized certifications in web development, data science, cloud computing, and soft skills. All certificates include digital credentials and are verifiable on leading professional platforms.
+                        </p>
+                    </details>
 
-                    <div class="mb-6 space-y-2">
-                        <label class="text-sm font-medium text-zinc-700">Topic</label>
-                        <div class="relative">
-                            <select id="topic" name="topic" class="w-full appearance-none bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-zinc-600">
-                                <option>General Inquiry</option>
-                                <option>Technical Course Enrollment</option>
-                                <option>Corporate Training</option>
-                                <option>Soft Skills Workshops</option>
-                                <option>Partnership</option>
-                            </select>
-                            <i data-lucide="chevron-down" class="absolute right-4 top-3.5 w-4 h-4 text-zinc-400 pointer-events-none"></i>
-                        </div>
-                    </div>
-
-                    <div class="mb-8 space-y-2">
-                        <label class="text-sm font-medium text-zinc-700">Message</label>
-                        <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help..." class="w-full bg-zinc-50 border border-zinc-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none placeholder:text-zinc-400"></textarea>
-                    </div>
-
-                    <div class="flex items-center gap-4">
-                        <button type="submit" id="sendBtn" class="px-8 py-3 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
-                            Send Message
-                            <i data-lucide="send" class="w-4 h-4"></i>
-                        </button>
-                        <p class="text-xs text-zinc-400">We usually respond within 24 hours.</p>
-                        <div id="form-status" class="ml-4 text-sm text-zinc-600"></div>
-                    </div>
-                </form>
+                    <details class="group bg-gradient-to-br from-zinc-900/60 to-zinc-900/30 border border-zinc-700/50 rounded-xl p-6 hover:border-zinc-600/80 cursor-pointer transition-all">
+                        <summary class="flex items-center justify-between font-semibold text-white list-none hover:text-blue-300 transition-colors">
+                            <span>Do you offer refunds or flexible payment options?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-sm text-zinc-300 leading-relaxed">
+                            We offer a 7-day money-back guarantee and flexible payment plans including monthly installments. Contact our billing team for personalized options based on your needs.
+                        </p>
+                    </details>
+                </div>
             </div>
         </div>
-
-        <!-- Global Locations -->
-
-        <!-- FAQ Section (Condensed) -->
-        <div class="max-w-3xl mx-auto px-6 mt-24">
-            <h2 class="text-2xl font-semibold text-zinc-900 mb-8 text-center">Common Questions</h2>
-            <div class="space-y-4">
-                <details class="group bg-white border border-zinc-200 rounded-lg p-4">
-                    <summary class="flex items-center justify-between cursor-pointer font-medium text-zinc-900 list-none">
-                        What is the response time for support tickets?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform"></i>
-                    </summary>
-                    <p class="mt-4 text-sm text-zinc-500 leading-relaxed">
-                        For enrolled students, we guarantee a response within 4 hours during business days. General inquiries are typically answered within 24 hours.
-                    </p>
-                </details>
-                <details class="group bg-white border border-zinc-200 rounded-lg p-4">
-                    <summary class="flex items-center justify-between cursor-pointer font-medium text-zinc-900 list-none">
-                        Do you offer on-site corporate training?
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-zinc-400 group-open:rotate-180 transition-transform"></i>
-                    </summary>
-                    <p class="mt-4 text-sm text-zinc-500 leading-relaxed">
-                        Yes, we can deploy trainers to your company headquarters for intensive bootcamps, provided you have a minimum cohort size of 10 employees.
-                    </p>
-                </details>
-            </div>
-        </div>
-
     </main>
 
     <!-- Footer -->
-    <footer class="bg-zinc-50 border-t border-zinc-200 pt-16 pb-8">
+    <footer class="bg-gradient-to-b from-zinc-900/50 to-black border-t border-zinc-800 pt-16 pb-8 relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
                 <div class="col-span-2 md:col-span-1">
-                    <img src="assets/logo.png" alt="Worldwide Excellence Bridge" class="w-8 h-8 object-contain mb-4" />
-                    <p class="text-sm text-zinc-500 mb-4">Empowering careers through world-class technical and professional training.</p>
+                    <img src="asset/logo.png" alt="Worldwide Excellence Bridge" class="w-8 h-8 object-contain mb-4" />
+                    <p class="text-sm text-zinc-400 mb-4">Empowering careers through world-class technical and professional training.</p>
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold text-zinc-900 mb-4">Programs</h4>
-                    <ul class="space-y-2 text-sm text-zinc-500">
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Web Development</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Data Science</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Cloud Computing</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Soft Skills</a></li>
+                    <h4 class="font-semibold text-white mb-4">Programs</h4>
+                    <ul class="space-y-2 text-sm text-zinc-400">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Web Development</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Data Science</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Cloud Computing</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Soft Skills</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-semibold text-zinc-900 mb-4">Company</h4>
-                    <ul class="space-y-2 text-sm text-zinc-500">
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Blog</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-colors">Privacy Policy</a></li>
+                    <h4 class="font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-zinc-400">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-semibold text-zinc-900 mb-4">Connect</h4>
-                    <div class="flex gap-4">
-                        <a href="https://www.linkedin.com/company/ex-brid/" class="text-zinc-400 hover:text-blue-600 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                        <a href="https://www.facebook.com/people/Worldwide-Excellence-Bridge/61565420783027/" class="text-zinc-400 hover:text-blue-600 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                        <a href="https://www.instagram.com/excellence_bridge/" class="text-zinc-400 hover:text-blue-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <h4 class="font-semibold text-white mb-4">Connect</h4>
+                        <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/company/ex-brid/" aria-label="LinkedIn" class="text-zinc-400 hover:text-blue-400 transition-colors">in</a>
+                        <a href="https://www.facebook.com/people/Worldwide-Excellence-Bridge/61565420783027/" aria-label="Facebook" class="text-zinc-400 hover:text-blue-400 transition-colors">f</a>
+                        <a href="https://www.instagram.com/excellence_bridge/" aria-label="Instagram" class="text-zinc-400 hover:text-blue-400 transition-colors">📷</a>
                     </div>
                 </div>
             </div>
             
-            <div class="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-xs text-zinc-400">© 2025 Worldwide Excellence Bridge. All rights reserved.</p>
-                <div class="flex gap-6 text-xs text-zinc-400">
-                    <a href="#" class="hover:text-zinc-600">Terms</a>
-                    <a href="#" class="hover:text-zinc-600">Privacy</a>
+            <div class="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-zinc-500">© 2025 Worldwide Excellence Bridge. All rights reserved.</p>
+                <div class="flex gap-6 text-xs text-zinc-500">
+                    <a href="#" class="hover:text-zinc-300">Terms</a>
+                    <a href="#" class="hover:text-zinc-300">Privacy</a>
                 </div>
             </div>
         </div>
@@ -355,10 +442,28 @@ border-radius: 2px;
             function showStatus(text, type){
                 if (!status) return;
                 status.textContent = text;
-                status.className = 'ml-4 text-sm';
-                if (type === 'success') status.classList.add('text-green-600');
-                else if (type === 'error') status.classList.add('text-red-600');
-                else status.classList.add('text-zinc-600');
+                status.className = 'text-sm';
+                if (type === 'success') status.classList.add('text-green-400');
+                else if (type === 'error') status.classList.add('text-red-400');
+                else status.classList.add('text-zinc-400');
+                // show toast for success
+                if (type === 'success') {
+                    try { showToast(text); } catch(e){ /* ignore */ }
+                }
+            }
+
+            // Toast helper
+            function showToast(text, ms = 4200) {
+                const toast = document.getElementById('toast');
+                const toastText = document.getElementById('toast-text');
+                if (!toast) return;
+                if (toastText) toastText.textContent = text;
+                toast.classList.add('show');
+                toast.style.pointerEvents = 'auto';
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.style.pointerEvents = 'none';
+                }, ms);
             }
         })();
     </script>
