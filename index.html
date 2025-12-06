@@ -8,8 +8,6 @@
         content="Expert-led training programs in Programming, Data Analytics, and Soft Skills to bridge the gap between potential and professional excellence." />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Lottie library for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap"
@@ -146,19 +144,12 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        /* Reduced-motion: provide a static fallback and disable heavy motion */
-        .lottie-fallback { display: none; }
+        /* Reduced-motion: disable heavy motion */
         @media (prefers-reduced-motion: reduce) {
-            .lottie-anim { display: none !important; }
-            .lottie-fallback { display: block !important; }
             .orb { animation: none !important; }
             .reveal { transition: none !important; transform: none !important; opacity: 1 !important; }
         }
-        /* Make hero Lottie slightly subdued (less opacity) and give a soft lift + shadow */
-        .lottie-anim { opacity: 0.88 !important; transform: translateY(-6px) scale(1.03); filter: drop-shadow(0 14px 32px rgba(2,6,23,0.10)) saturate(1.03) contrast(1.02); }
-        /* Fallback SVG: slightly less opaque so text remains readable */
-        #lottie-fallback svg { opacity: 0.5; }
-        
+
         /* Interactive floating icons animation */
         @keyframes floatIcon {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -738,53 +729,10 @@
             </svg>
             
             <!-- Luxury gradient orbs with enhanced glow -->
-            <div class="absolute top-0 left-1/4 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl" style="animation: float3D 8s ease-in-out infinite;"></div>
+            <div class="absolute top-16 left-1/4 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl" style="animation: float3D 8s ease-in-out infinite;"></div>
             <div class="absolute top-1/2 right-1/4 w-80 h-80 bg-purple-100/15 rounded-full blur-3xl" style="animation: float3D 10s ease-in-out infinite;"></div>
             <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-cyan-100/10 rounded-full blur-3xl" style="animation: float3D 12s ease-in-out infinite;"></div>
 
-            <!-- Lottie animation: placed behind hero content, hidden on small screens for performance -->
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0 hidden md:flex">
-                <div id="hero-lottie" class="lottie-anim w-[760px] max-w-full" style="height: 600px;" aria-label="Education-themed animated illustration"></div>
-            </div>
-            <!-- Reduced-motion fallback: education-themed static SVG (open book + mortarboard) -->
-            <div id="lottie-fallback" class="lottie-fallback absolute inset-0 flex items-center justify-center pointer-events-none z-0 md:block" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-[460px] max-w-full" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet">
-                    <defs>
-                        <linearGradient id="eduGrad" x1="0" x2="1">
-                            <stop offset="0" stop-color="#e0f2fe" />
-                            <stop offset="1" stop-color="#dbeafe" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="600" height="400" fill="url(#eduGrad)" />
-
-                    <!-- Open book -->
-                    <g transform="translate(60,120) scale(0.9)">
-                        <path d="M0 60 C60 20 120 20 180 60 L180 220 C120 180 60 180 0 220 Z" fill="#ffffff" opacity="0.12"/>
-                        <path d="M420 60 C360 20 300 20 240 60 L240 220 C300 180 360 180 420 220 Z" fill="#ffffff" opacity="0.12" transform="translate(-60,0)"/>
-                        <path d="M20 75 C80 45 140 45 200 75" stroke="#0ea5e9" stroke-width="3" fill="none" opacity="0.95"/>
-                        <path d="M220 75 C280 45 340 45 400 75" stroke="#0284c7" stroke-width="3" fill="none" opacity="0.95"/>
-                    </g>
-
-                    <!-- Mortarboard (graduation cap) -->
-                    <g transform="translate(220,18) scale(0.9)">
-                        <polygon points="120,70 300,120 120,170 -60,120" fill="#0369a1" opacity="0.95"/>
-                        <rect x="110" y="150" width="220" height="16" fill="#0ea5e9" opacity="0.95" />
-                        <path d="M240 166 v32 a6 6 0 0 0 6 6 h6 v-38" fill="#0b74a6" opacity="0.95"/>
-                        <circle cx="240" cy="200" r="4" fill="#fde68a" />
-                    </g>
-
-                    <!-- Soft ground shapes -->
-                    <g fill="#ffffff" opacity="0.06">
-                        <ellipse cx="480" cy="320" rx="120" ry="40" />
-                        <ellipse cx="80" cy="320" rx="110" ry="36" />
-                    </g>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Visible controls for the hero animation (hidden when reduced-motion is preferred) -->
-        <div id="lottie-controls" class="absolute top-6 right-6 z-30 hidden md:flex items-center" aria-hidden="false">
-            <button id="lottie-toggle" class="px-3 py-2 bg-white/95 text-zinc-900 rounded-full shadow-sm hover:shadow-md flex items-center gap-2 text-sm" aria-pressed="false" title="Pause animation">⏸ Pause</button>
         </div>
 
         <!-- Animated Particles Background -->
@@ -1735,67 +1683,6 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Initialize Lottie animation with automatic slideshow
-            let lottieAnimation = null;
-            const lottieContainer = document.getElementById('hero-lottie');
-            const lottieToggleBtn = document.getElementById('lottie-toggle');
-
-            // Check reduced motion preference
-            const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const fallback = document.getElementById('lottie-fallback');
-
-            if (prefersReduced) {
-                // Hide animation container and show fallback
-                if (lottieContainer) lottieContainer.parentElement.style.display = 'none';
-                if (fallback) fallback.style.display = 'block';
-                if (lottieToggleBtn) lottieToggleBtn.style.display = 'none';
-            } else {
-                // Load and play the Lottie animation
-                if (lottieContainer && window.lottie) {
-                    try {
-                        lottieAnimation = window.lottie.loadAnimation({
-                            container: lottieContainer,
-                            renderer: 'svg',
-                            loop: true,
-                            autoplay: true,
-                            path: 'asset/hero-education.json'
-                        });
-                        console.log('✓ Lottie slideshow initialized');
-                    } catch (e) {
-                        console.error('Failed to load Lottie:', e);
-                    }
-                }
-                if (fallback) fallback.style.display = 'none';
-                if (lottieToggleBtn) lottieToggleBtn.style.display = '';
-            }
-
-            // Pause/Play toggle
-            if (lottieToggleBtn && lottieAnimation) {
-                let isPlaying = true;
-                function updateToggle() {
-                    lottieToggleBtn.setAttribute('aria-pressed', (!isPlaying).toString());
-                    lottieToggleBtn.innerText = isPlaying ? '⏸ Pause' : '▶ Play';
-                }
-
-                lottieToggleBtn.addEventListener('click', () => {
-                    try {
-                        if (isPlaying) {
-                            lottieAnimation.pause();
-                            isPlaying = false;
-                        } else {
-                            lottieAnimation.play();
-                            isPlaying = true;
-                        }
-                    } catch (err) {
-                        console.log('Playback error:', err);
-                    }
-                    updateToggle();
-                });
-
-                updateToggle();
-                console.log('✓ Lottie toggle initialized');
-            }
-
             showSlide(slideIndex);
             autoSlide();
             // Use IntersectionObserver to start/re-start counters when #about is visible
@@ -2043,43 +1930,6 @@
         </div>
     </div>
 
-    <!-- Course Recommender Widget -->
-    <div id="courseRecommender" class="fixed top-32 right-0 translate-x-full transition-transform duration-500 z-30 bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-xl rounded-3xl shadow-2xl shadow-blue-600/20 border border-blue-500/30 p-6 w-96 max-h-96 overflow-y-auto">
-        <div class="flex items-center justify-between mb-4">
-            <h3 class="text-white font-bold text-lg flex items-center gap-2">
-                <i data-lucide="brain" class="w-5 h-5 text-cyan-400"></i>
-                AI Course Recommender
-            </h3>
-            <button class="toggle-recommender text-zinc-400 hover:text-white">
-                <i data-lucide="chevron-right" class="w-5 h-5"></i>
-            </button>
-        </div>
-        <div class="space-y-3">
-            <p class="text-sm text-zinc-300 mb-4">Based on trending skills and your interests:</p>
-            <div class="bg-slate-700/50 p-3 rounded-lg border border-cyan-500/30 hover:border-cyan-400 transition-colors cursor-pointer group">
-                <h4 class="text-white font-medium text-sm flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
-                    AI & Machine Learning
-                </h4>
-                <p class="text-xs text-zinc-400 mt-1">⭐ Trending now • 8 modules</p>
-            </div>
-            <div class="bg-slate-700/50 p-3 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-colors cursor-pointer group">
-                <h4 class="text-white font-medium text-sm flex items-center gap-2">
-                    <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
-                    Advanced Full Stack Development
-                </h4>
-                <p class="text-xs text-zinc-400 mt-1">🔥 High demand • 10 modules</p>
-            </div>
-            <div class="bg-slate-700/50 p-3 rounded-lg border border-cyan-500/30 hover:border-cyan-400 transition-colors cursor-pointer group">
-                <h4 class="text-white font-medium text-sm flex items-center gap-2">
-                    <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
-                    Cloud Architecture & DevOps
-                </h4>
-                <p class="text-xs text-zinc-400 mt-1">💡 Future-proof • 6 modules</p>
-            </div>
-        </div>
-    </div>
-
     <!-- Smart Search Bar -->
     <div id="smartSearch" class="fixed top-0 left-0 right-0 bg-gradient-to-b from-slate-900/80 to-transparent backdrop-blur-xl p-4 z-35 border-b border-cyan-500/20 hidden">
         <div class="max-w-3xl mx-auto relative">
@@ -2089,7 +1939,7 @@
         </div>
     </div>
 
-    <!-- Engagement Metrics Floating Widget - Compact -->
+    <!-- Engagement Metrics Floating Widget - Compact (commented out per request)
     <div id="engagementWidget" class="fixed bottom-6 left-6 hidden md:flex flex-col gap-2 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl rounded-xl p-3 border border-blue-500/40 shadow-lg shadow-blue-600/30 w-56 z-30">
         <div class="flex items-center justify-between mb-1">
             <h4 class="text-white font-bold text-xs flex items-center gap-1.5">
@@ -2118,6 +1968,7 @@
             </div>
         </div>
     </div>
+    -->
 
     <script>
         // AI Chat Widget Functionality
@@ -2328,20 +2179,19 @@
             }
         });
 
-        // Course Recommender Toggle
-        document.querySelectorAll('.toggle-recommender').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const recommender = document.getElementById('courseRecommender');
-                recommender.classList.toggle('translate-x-full');
-            });
-        });
-
-        // Update engagement metrics (simulated)
-        setInterval(() => {
-            const engagementScore = Math.floor(Math.random() * (92 - 82) + 82);
-            document.querySelector('#engagementWidget .text-cyan-400').textContent = engagementScore + '%';
-            document.querySelector('#engagementWidget [style*="width"]').style.width = engagementScore + '%';
-        }, 5000);
+        // Update engagement metrics (simulated) — guard when widget is removed/commented
+        const engagementWidget = document.getElementById('engagementWidget');
+        if (engagementWidget) {
+            setInterval(() => {
+                const engagementScore = Math.floor(Math.random() * (92 - 82) + 82);
+                const percentEl = engagementWidget.querySelector('.text-cyan-400');
+                const barEl = engagementWidget.querySelector('[style*="width"]');
+                if (percentEl && barEl) {
+                    percentEl.textContent = engagementScore + '%';
+                    barEl.style.width = engagementScore + '%';
+                }
+            }, 5000);
+        }
 
         // Advanced: Parallax Effect on Scroll
         document.addEventListener('scroll', () => {
