@@ -158,46 +158,494 @@
         .lottie-anim { opacity: 0.88 !important; transform: translateY(-6px) scale(1.03); filter: drop-shadow(0 14px 32px rgba(2,6,23,0.10)) saturate(1.03) contrast(1.02); }
         /* Fallback SVG: slightly less opaque so text remains readable */
         #lottie-fallback svg { opacity: 0.5; }
+        
+        /* Interactive floating icons animation */
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(5deg); }
+            50% { transform: translateY(-8px) rotate(-3deg); }
+            75% { transform: translateY(-12px) rotate(3deg); }
+        }
+        
+        .float-icon {
+            animation: floatIcon 4s ease-in-out infinite;
+        }
+        
+        /* Pulse glow animation */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        /* Particle animation */
+        @keyframes particle-float {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(20px) scale(0.5); opacity: 0; }
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-float linear infinite;
+        }
+        
+        /* Shimmer effect */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        /* Glow button effect */
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.3); }
+        }
+        
+        .glow-button {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        /* AI Widget Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        #aiChatModal {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        #courseRecommender {
+            animation: fadeInScale 0.3s ease-out;
+        }
+
+        /* AI Pulse effect for typing indicator */
+        @keyframes typingPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #06b6d4;
+            animation: typingPulse 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        /* Minimize Button Styling */
+        #aiMinimizeBtn {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            position: relative !important;
+            z-index: 50 !important;
+            min-width: 36px !important;
+            min-height: 36px !important;
+            padding: 8px !important;
+            border-radius: 6px !important;
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border: none !important;
+            transition: all 300ms ease-in-out !important;
+        }
+
+        #aiMinimizeBtn:hover {
+            background-color: rgba(6, 182, 212, 0.4) !important;
+            transform: scale(1.25) !important;
+        }
+
+        #aiMinimizeIcon {
+            display: block !important;
+            transition: transform 300ms ease-in-out !important;
+        }
+
+
+        /* Search result hover effect */
+        #searchResults > div {
+            animation: fadeInScale 0.2s ease-out backwards;
+        }
+
+        #searchResults > div:nth-child(1) { animation-delay: 0s; }
+        #searchResults > div:nth-child(2) { animation-delay: 0.05s; }
+        #searchResults > div:nth-child(3) { animation-delay: 0.1s; }
+        #searchResults > div:nth-child(4) { animation-delay: 0.15s; }
+
+        /* Recommendation card hover effect */
+        .bg-slate-700\/50 {
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+
+        .bg-slate-700\/50:hover {
+            transform: translateX(4px);
+            border-color: currentColor;
+            background-color: rgba(51, 65, 85, 0.8);
+        }
+
+        /* Progress bar animation */
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: 87%; }
+        }
+
+        #engagementWidget [style*="width"] {
+            animation: progressFill 1s ease-out forwards;
+        }
+        
+        /* Bounce effect */
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
+        
+        /* Wave animation for footer */
+        @keyframes wave {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-25%) translateY(5px); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+        
+        .wave {
+            animation: wave 20s linear infinite;
+        }
+        
+        /* Typing cursor effect */
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        
+        /* Navigation scroll animations */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .nav-scrolled {
+            animation: slideDown 0.3s ease-out;
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        /* Mobile menu animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mobile-menu {
+            animation: fadeInDown 0.3s ease-out;
+        }
+        
+        /* Navbar link hover line animation */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Logo animation on hover */
+        @keyframes logoSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .logo-icon:hover {
+            animation: logoSpin 0.6s ease-in-out;
+        }
+
+        /* Premium gradient mesh animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .gradient-mesh {
+            background: linear-gradient(-45deg, #0ea5e9, #6366f1, #8b5cf6, #ec4899, #3b82f6);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* AI Neural network pulse */
+        @keyframes neuralPulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 3D card transform */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card-3d:hover {
+            transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) translateY(-8px);
+        }
+
+        /* Luxury shimmer effect */
+        @keyframes luxuryShimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .luxury-shimmer {
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            background-size: 200% 100%;
+            animation: luxuryShimmer 3s infinite;
+        }
+
+        /* Premium border gradient */
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .border-gradient {
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b) 1;
+            animation: borderRotate 4s linear infinite;
+        }
+
+        /* Floating elements */
+        @keyframes float3D {
+            0%, 100% { transform: translateY(0) translateZ(0) rotateX(0); }
+            50% { transform: translateY(-20px) translateZ(10px) rotateX(5deg); }
+        }
+
+        /* Glow pulse effect */
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5)); }
+            50% { filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.9)); }
+        }
+
+        /* Magnetic hover effect */
+        .magnetic {
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* Typing animation */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #3b82f6; }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            display: inline-block;
+        }
+
+        /* Scroll progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            transform-origin: 0%;
+            z-index: 100;
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Interactive particle cursor trail */
+        @keyframes particleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        .cursor-particle {
+            position: fixed;
+            pointer-events: none;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            animation: particleFade 0.6s ease-out forwards;
+            z-index: 9999;
+        }
+
+        /* Navbar glass morphism enhanced */
+        #mainNav {
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+        }
+
+        #mainNav.scrolled {
+            background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Premium tooltip */
+        .tooltip {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #1e293b;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .nav-link:hover .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 
 <body class="bg-white text-zinc-600 antialiased selection:bg-blue-100 selection:text-blue-700">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress" style="width: 0%;"></div>
+    
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-white/95 to-blue-50/95 backdrop-blur-lg border-b border-gradient-to-r from-zinc-200 via-blue-200 to-zinc-200 shadow-lg shadow-blue-100/20">
+    <nav id="mainNav" class="fixed top-0 w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 group relative">
-                <div class="p-2 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg shadow-md group-hover:shadow-lg group-hover:from-blue-700 group-hover:to-blue-800 transition-all duration-300">
-                    <img src="asset/logo.png" alt="Worldwide Excellence Bridge logo" class="w-6 h-6 object-contain" />
+            <a href="index.html" class="flex items-center gap-2 group relative z-50">
+                <div class="p-2 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg shadow-md group-hover:shadow-xl group-hover:shadow-blue-600/50 group-hover:from-blue-700 group-hover:to-blue-800 transition-all duration-300 group-hover:scale-110">
+                    <img src="asset/logo.png" alt="Worldwide Excellence Bridge logo" class="w-6 h-6 object-contain logo-icon" />
                 </div>
                 <span
-                    class="text-lg font-bold tracking-tight bg-gradient-to-r from-zinc-900 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300 ml-2">Worldwide
+                    class="text-lg font-bold tracking-tight bg-gradient-to-r from-zinc-900 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300 ml-2 hidden sm:inline-block">Worldwide
                     Excellence Bridge</span>
+                <span class="text-lg font-bold tracking-tight bg-gradient-to-r from-zinc-900 to-blue-600 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300 ml-2 sm:hidden">WEB</span>
             </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg hover:bg-blue-100 transition-all z-50" aria-label="Toggle menu">
+                <svg class="w-6 h-6 text-zinc-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
 
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#about" class="text-zinc-600 hover:text-blue-600 relative group transition-colors duration-300">
-                    About
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+                <a href="#about" class="nav-link text-zinc-600 hover:text-blue-600 relative transition-all duration-300 hover:scale-110 flex items-center gap-1 magnetic">
+                    <span>About</span>
+                    <span class="tooltip">Learn our story</span>
+                    <svg class="w-0 h-3 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
                 </a>
-                <a href="#technical" class="text-zinc-600 hover:text-blue-600 relative group transition-colors duration-300">
-                    Technical
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+                <a href="#technical" class="nav-link text-zinc-600 hover:text-blue-600 relative transition-all duration-300 hover:scale-110 flex items-center gap-1 magnetic">
+                    <span>Technical</span>
+                    <span class="tooltip">Coding & Data</span>
+                    <svg class="w-0 h-3 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
                 </a>
-                <a href="#soft-skills" class="text-zinc-600 hover:text-blue-600 relative group transition-colors duration-300">
-                    Soft Skills
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+                <a href="#soft-skills" class="nav-link text-zinc-600 hover:text-blue-600 relative transition-all duration-300 hover:scale-110 flex items-center gap-1 magnetic">
+                    <span>Soft Skills</span>
+                    <span class="tooltip">Leadership & More</span>
+                    <svg class="w-0 h-3 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
                 </a>
-                <a href="#trainers" class="text-zinc-600 hover:text-blue-600 relative group transition-colors duration-300">
-                    Trainers
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+                <a href="#trainers" class="nav-link text-zinc-600 hover:text-blue-600 relative transition-all duration-300 hover:scale-110 flex items-center gap-1 magnetic">
+                    <span>Trainers</span>
+                    <span class="tooltip">Expert mentors</span>
+                    <svg class="w-0 h-3 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
                 </a>
-                <a href="#gallery" class="text-zinc-600 hover:text-blue-600 relative group transition-colors duration-300">
-                    Gallery
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+                <a href="#gallery" class="nav-link text-zinc-600 hover:text-blue-600 relative transition-all duration-300 hover:scale-110 flex items-center gap-1 magnetic">
+                    <span>Gallery</span>
+                    <span class="tooltip">Our achievements</span>
+                    <svg class="w-0 h-3 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
                 </a>
-                <a href="/ContactUs.html" class="text-zinc-600 hover:text-blue-600 relative group transition-colors duration-300">
-                    Contact
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-300"></span>
+                <a href="/ContactUs.html" class="nav-link text-zinc-600 hover:text-blue-600 relative transition-all duration-300 hover:scale-110 flex items-center gap-1 magnetic">
+                    <span>Contact</span>
+                    <span class="tooltip">Get in touch</span>
+                    <svg class="w-0 h-3 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
                 </a>
             </div>
 
@@ -210,21 +658,89 @@
                     </span>
                 </a>
                 <a href="/ContactUs.html"
-                    class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md shadow-blue-600/30 hover:shadow-lg hover:shadow-blue-600/40 hover:scale-105 active:scale-95">
-                    Get Started
+                    class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md shadow-blue-600/30 hover:shadow-lg hover:shadow-blue-600/40 hover:scale-105 active:scale-95 magnetic relative overflow-hidden group">
+                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                    <span class="relative">Get Started</span>
+                    <i data-lucide="sparkles" class="w-4 h-4 ml-2 relative"></i>
                 </a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white/98 backdrop-blur-lg border-b border-zinc-200 shadow-2xl mobile-menu">
+            <div class="max-w-7xl mx-auto px-6 py-6 space-y-4">
+                <a href="#about" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
+                    <span class="text-zinc-700 font-medium group-hover:text-blue-600">About</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
+                </a>
+                <a href="#technical" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
+                    <span class="text-zinc-700 font-medium group-hover:text-blue-600">Technical Skills</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
+                </a>
+                <a href="#soft-skills" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
+                    <span class="text-zinc-700 font-medium group-hover:text-blue-600">Soft Skills</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
+                </a>
+                <a href="#trainers" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
+                    <span class="text-zinc-700 font-medium group-hover:text-blue-600">Trainers</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
+                </a>
+                <a href="#gallery" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
+                    <span class="text-zinc-700 font-medium group-hover:text-blue-600">Gallery</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
+                </a>
+                <a href="/ContactUs.html" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
+                    <span class="text-zinc-700 font-medium group-hover:text-blue-600">Contact</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-zinc-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
+                </a>
+                <div class="pt-4 border-t border-zinc-200">
+                    <a href="/ContactUs.html" class="flex items-center justify-center w-full px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95">
+                        Get Started
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Enhanced Background Decor + Lottie hero animation (replace asset/hero-animation.json with your animation) -->
+    <section class="relative pt-40 pb-24 lg:pt-56 lg:pb-40 overflow-hidden">
+        <!-- Premium AI Neural Network Background -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-blue-50/80 via-blue-25/40 to-white"></div>
-            <!-- Decorative orbs (keep for depth) -->
-            <div class="absolute top-0 left-1/4 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 right-1/4 w-80 h-80 bg-blue-100/15 rounded-full blur-3xl"></div>
+            
+            <!-- AI Neural Network Nodes -->
+            <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+                    </linearGradient>
+                </defs>
+                <!-- Neural network connections -->
+                <line x1="100" y1="150" x2="300" y2="200" stroke="url(#nodeGrad)" stroke-width="1" opacity="0.3" style="animation: neuralPulse 3s infinite ease-in-out;"/>
+                <line x1="300" y1="200" x2="500" y2="180" stroke="url(#nodeGrad)" stroke-width="1" opacity="0.3" style="animation: neuralPulse 3.5s infinite ease-in-out;"/>
+                <line x1="500" y1="180" x2="700" y2="220" stroke="url(#nodeGrad)" stroke-width="1" opacity="0.3" style="animation: neuralPulse 4s infinite ease-in-out;"/>
+                <line x1="700" y1="220" x2="900" y2="190" stroke="url(#nodeGrad)" stroke-width="1" opacity="0.3" style="animation: neuralPulse 3.2s infinite ease-in-out;"/>
+                <line x1="200" y1="400" x2="400" y2="450" stroke="url(#nodeGrad)" stroke-width="1" opacity="0.3" style="animation: neuralPulse 3.8s infinite ease-in-out;"/>
+                <line x1="400" y1="450" x2="600" y2="420" stroke="url(#nodeGrad)" stroke-width="1" opacity="0.3" style="animation: neuralPulse 4.2s infinite ease-in-out;"/>
+                <line x1="600" y1="420" x2="800" y2="460" stroke="url(#nodeGrad)" stroke-width="1" opacity="0.3" style="animation: neuralPulse 3.6s infinite ease-in-out;"/>
+                <!-- Neural nodes -->
+                <circle cx="100" cy="150" r="8" fill="url(#nodeGrad)" style="animation: neuralPulse 3s infinite ease-in-out;"/>
+                <circle cx="300" cy="200" r="10" fill="url(#nodeGrad)" style="animation: neuralPulse 3.5s infinite ease-in-out;"/>
+                <circle cx="500" cy="180" r="12" fill="url(#nodeGrad)" style="animation: neuralPulse 4s infinite ease-in-out;"/>
+                <circle cx="700" cy="220" r="10" fill="url(#nodeGrad)" style="animation: neuralPulse 3.2s infinite ease-in-out;"/>
+                <circle cx="900" cy="190" r="8" fill="url(#nodeGrad)" style="animation: neuralPulse 3.8s infinite ease-in-out;"/>
+                <circle cx="200" cy="400" r="9" fill="url(#nodeGrad)" style="animation: neuralPulse 4.2s infinite ease-in-out;"/>
+                <circle cx="400" cy="450" r="11" fill="url(#nodeGrad)" style="animation: neuralPulse 3.6s infinite ease-in-out;"/>
+                <circle cx="600" cy="420" r="10" fill="url(#nodeGrad)" style="animation: neuralPulse 3.3s infinite ease-in-out;"/>
+                <circle cx="800" cy="460" r="9" fill="url(#nodeGrad)" style="animation: neuralPulse 4.1s infinite ease-in-out;"/>
+            </svg>
+            
+            <!-- Luxury gradient orbs with enhanced glow -->
+            <div class="absolute top-0 left-1/4 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl" style="animation: float3D 8s ease-in-out infinite;"></div>
+            <div class="absolute top-1/2 right-1/4 w-80 h-80 bg-purple-100/15 rounded-full blur-3xl" style="animation: float3D 10s ease-in-out infinite;"></div>
+            <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-cyan-100/10 rounded-full blur-3xl" style="animation: float3D 12s ease-in-out infinite;"></div>
 
             <!-- Lottie animation: placed behind hero content, hidden on small screens for performance -->
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0 hidden md:flex">
@@ -271,54 +787,121 @@
             <button id="lottie-toggle" class="px-3 py-2 bg-white/95 text-zinc-900 rounded-full shadow-sm hover:shadow-md flex items-center gap-2 text-sm" aria-pressed="false" title="Pause animation">⏸ Pause</button>
         </div>
 
+        <!-- Animated Particles Background -->
+        <div class="absolute inset-0 z-5 pointer-events-none overflow-hidden">
+            <div class="absolute w-1 h-1 bg-blue-300 rounded-full opacity-60" style="top: 15%; left: 10%; animation: particle-float 18s infinite ease-in-out; animation-delay: 0s;"></div>
+            <div class="absolute w-2 h-2 bg-blue-400 rounded-full opacity-50" style="top: 25%; left: 80%; animation: particle-float 20s infinite ease-in-out; animation-delay: 1s;"></div>
+            <div class="absolute w-1.5 h-1.5 bg-purple-400 rounded-full opacity-55" style="top: 60%; left: 5%; animation: particle-float 22s infinite ease-in-out; animation-delay: 2s;"></div>
+            <div class="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-45" style="top: 40%; left: 90%; animation: particle-float 19s infinite ease-in-out; animation-delay: 1.5s;"></div>
+            <div class="absolute w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-40" style="top: 75%; left: 50%; animation: particle-float 21s infinite ease-in-out; animation-delay: 2.5s;"></div>
+            <div class="absolute w-1 h-1 bg-blue-500 rounded-full opacity-50" style="top: 30%; left: 25%; animation: particle-float 17s infinite ease-in-out; animation-delay: 0.5s;"></div>
+            <div class="absolute w-1.5 h-1.5 bg-violet-400 rounded-full opacity-55" style="top: 65%; left: 75%; animation: particle-float 20s infinite ease-in-out; animation-delay: 3s;"></div>
+            <div class="absolute w-1 h-1 bg-blue-300 rounded-full opacity-60" style="top: 50%; left: 20%; animation: particle-float 23s infinite ease-in-out; animation-delay: 1.8s;"></div>
+            <div class="absolute w-2 h-2 bg-purple-500 rounded-full opacity-45" style="top: 20%; left: 60%; animation: particle-float 19s infinite ease-in-out; animation-delay: 2.2s;"></div>
+            <div class="absolute w-1.5 h-1.5 bg-blue-600 rounded-full opacity-50" style="top: 70%; left: 40%; animation: particle-float 21s infinite ease-in-out; animation-delay: 3.5s;"></div>
+        </div>
+
+        <!-- Premium Badge with Animation -->
+        <div class="absolute top-32 right-6 lg:right-12 z-20 hidden lg:flex items-center gap-2 px-4 py-3 bg-white/90 backdrop-blur rounded-full border border-blue-200/60 shadow-lg shadow-blue-200/50 animate-bounce-slow">
+            <div class="w-3 h-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-pulse"></div>
+            <span class="text-sm font-semibold text-zinc-900">Premium Training</span>
+        </div>
+
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center reveal">
-            <div class="mb-8 inline-block">
-                <span class="px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-50 border border-blue-200 rounded-full text-sm font-semibold text-blue-700">Transform Your Career</span>
+            <div class="mb-10 inline-block relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 rounded-full opacity-20 blur-xl animate-pulse"></div>
+                <span class="relative px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-50 border border-blue-200 rounded-full text-sm font-semibold text-blue-700 inline-flex items-center gap-2">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                    </span>
+                    Transform Your Career
+                </span>
             </div>
 
-            <h1 class="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-zinc-900 via-blue-600 to-blue-700 bg-clip-text text-transparent tracking-tight leading-[1.1] mb-6">
-                Bridge the gap between <br class="hidden lg:block" />
-                potential and excellence.
+            <h1 class="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-8">
+                <span class="bg-gradient-to-r from-zinc-900 via-blue-600 to-blue-700 bg-clip-text text-transparent">Bridge the gap between</span> <br class="hidden lg:block" />
+                <span class="typewriter bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent" id="typingText">potential and excellence</span><span class="animate-blink text-blue-600">.</span>
             </h1>
 
-            <p class="text-lg lg:text-xl text-zinc-600 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+            <p class="text-lg lg:text-xl text-zinc-600 max-w-2xl mx-auto mb-14 leading-relaxed font-medium">
                 Premium training programs designed for the modern workforce. Master
                 technical expertise in coding and data, or refine your leadership and
                 communication skills.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <!-- Feature Highlights with enhanced interactivity -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14 max-w-3xl mx-auto">
+                <div class="p-3 bg-blue-50/60 border border-blue-200/50 rounded-lg hover:scale-105 transition-transform duration-300 card-3d relative overflow-hidden group cursor-pointer">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-blue-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <div class="inline-block mb-2 relative z-10">
+                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a.75.75 0 00-1.788 0l-7 40a.75.75 0 001.497.084l1.41-4.649a.75.75 0 011.410 0l1.41 4.649a.75.75 0 001.497-.084l-7-40zM12.122 5.303a.75.75 0 011.06-1.06L15 7.879l2.879-2.879a.75.75 0 111.06 1.06L16.06 8.94l2.879 2.879a.75.75 0 11-1.06 1.06L15 10.06l-2.879 2.879a.75.75 0 11-1.06-1.06L13.94 10.06l-2.879-2.879z"/></path></svg>
+                    </div>
+                    <p class="text-xs font-semibold text-zinc-900 relative z-10">Industry Experts</p>
+                </div>
+                <div class="p-3 bg-cyan-50/60 border border-cyan-200/50 rounded-lg hover:scale-105 transition-transform duration-300 card-3d relative overflow-hidden group cursor-pointer">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-cyan-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <div class="inline-block mb-2 relative z-10">
+                        <svg class="w-5 h-5 text-cyan-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-11-4v4m7-4v4m-7 2h10"/></path></svg>
+                    </div>
+                    <p class="text-xs font-semibold text-zinc-900 relative z-10">Live Sessions</p>
+                </div>
+                <div class="p-3 bg-blue-50/60 border border-blue-200/50 rounded-lg hover:scale-105 transition-transform duration-300 card-3d relative overflow-hidden group cursor-pointer">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-blue-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                    <div class="inline-block mb-2 relative z-10">
+                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M12 2a1 1 0 011 1v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V3a1 1 0 011-1h2z"/></path></svg>
+                    </div>
+                    <p class="text-xs font-semibold text-zinc-900 relative z-10">Certificates</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
                 <a href="/index.html#technical"
-                    class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-full transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center justify-center gap-2 group hover:scale-105 active:scale-95">
-                    Explore Courses
-                    <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2] group-hover:translate-x-1 transition-transform"></i>
+                    class="magnetic w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold rounded-full transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center justify-center gap-2 group hover:scale-105 active:scale-95 relative overflow-hidden">
+                    <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                    <span class="absolute inset-0 shimmer"></span>
+                    <span class="relative">Explore Courses</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2] group-hover:translate-x-1 transition-transform relative"></i>
                 </a>
                 <a href="/ContactUs.html"
-                    class="w-full sm:w-auto px-8 py-3.5 bg-white border-2 border-blue-200 hover:border-blue-300 text-blue-600 font-bold rounded-full transition-all hover:bg-blue-50 hover:shadow-lg flex items-center justify-center gap-2 group hover:scale-105 active:scale-95">
-                    Contact Us
-                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    class="magnetic w-full sm:w-auto px-8 py-3.5 bg-white border-2 border-blue-200 hover:border-cyan-300 text-blue-600 font-bold rounded-full transition-all hover:bg-cyan-50 hover:shadow-lg flex items-center justify-center gap-2 group hover:scale-105 active:scale-95 relative overflow-hidden">
+                    <span class="absolute inset-0 bg-gradient-to-r from-cyan-50/0 via-cyan-50/100 to-cyan-50/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                    <span class="relative">Contact Us</span>
+                    <i data-lucide="phone" class="w-4 h-4 relative"></i>
                 </a>
             </div>
 
-            <!-- Trusted By -->
-            <div class="mt-20 pt-10 border-t border-blue-200/50">
-                <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-8">
+            <!-- Student Trust Section -->
+            <div class="mt-20 pt-16 border-t border-blue-200/50">
+                <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-6">
                     ✓ Trusted by industry leaders & Universities
                 </p>
-                <!-- <div class="flex flex-wrap justify-center gap-8 lg:gap-16 opacity-60 hover:opacity-100 transition-all duration-500">
-                    <span class="text-sm font-bold text-zinc-700">TRANSNEURON</span>
-                    <span class="text-sm font-bold text-zinc-700">YENEPOYA UNIV</span>
-                    <span class="text-sm font-bold text-zinc-700">ABBS COLLEGE</span>
-                    <span class="text-sm font-bold text-zinc-700">SMARTCOMPANY</span>
-                    <span class="text-sm font-bold text-zinc-700">ACCENTURE</span>
-                </div> -->
+                <div class="flex items-center justify-center gap-6">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">A</div>
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">B</div>
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">C</div>
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">D</div>
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">+10k</div>
+                    </div>
+                    <div>
+                        <div class="flex gap-1 justify-center">
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400 animate-pulse"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400 animate-pulse"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400 animate-pulse"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400 animate-pulse"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400 animate-pulse"></i>
+                        </div>
+                        <p class="text-xs font-semibold text-zinc-700 mt-1">5.0 Rating • 10k+ Students</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About / Stats Section -->
-    <section id="about" class="py-24 bg-gradient-to-b from-white via-blue-50/30 to-white border-y border-blue-200/50 reveal">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" class="py-28 bg-gradient-to-b from-white via-blue-50/30 to-white border-y border-blue-200/50 reveal">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
                 <span class="text-sm font-bold text-blue-600 block mb-4">WHY CHOOSE US</span>
                 <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-zinc-900 to-blue-600 bg-clip-text text-transparent tracking-tight mb-6">
@@ -359,128 +942,204 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-4">
-                <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl shadow-lg shadow-blue-600/20 border border-blue-500/50 hover:shadow-xl hover:shadow-blue-600/30 transition-all group cursor-pointer hover:scale-105">
-                    <div class="text-5xl font-bold text-white tracking-tight mb-2">
-                            <span class="counter" data-target="15000" data-suffix="k+">0k+</span>
-                    </div>
-                    <div class="text-sm font-semibold text-blue-100">Students Trained</div>
+            <div class="relative">
+                <!-- Decorative floating icons -->
+                <div class="absolute -top-12 -right-8 opacity-20 animate-floatIcon" style="animation-duration: 5s;">
+                    <svg class="w-24 h-24 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
                 </div>
-                <div class="bg-gradient-to-br from-emerald-500 to-emerald-600 p-8 rounded-2xl shadow-lg shadow-emerald-500/20 border border-emerald-400/50 hover:shadow-xl hover:shadow-emerald-500/30 transition-all group cursor-pointer hover:scale-105">
-                    <div class="text-5xl font-bold text-white tracking-tight mb-2">
-                            <span class="counter" data-target="94" data-suffix="%">0%</span>
-                    </div>
-                    <div class="text-sm font-semibold text-emerald-100">
-                        Pass Rate
-                    </div>
+                <div class="absolute -left-6 top-1/2 opacity-20 animate-floatIcon" style="animation-duration: 6s; animation-delay: 1s;">
+                    <svg class="w-32 h-32 text-purple-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-2-13h4v6h-4z"/></svg>
                 </div>
-                <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-8 rounded-2xl shadow-lg shadow-purple-500/20 border border-purple-400/50 hover:shadow-xl hover:shadow-purple-500/30 transition-all group cursor-pointer hover:scale-105">
-                    <div class="text-5xl font-bold text-white tracking-tight mb-2">
-                            <span class="counter" data-target="120" data-suffix="+">0+</span>
+
+                <div class="grid grid-cols-2 gap-5 relative z-10">
+                    <div class="glass bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl shadow-lg shadow-blue-600/20 border border-blue-500/50 hover:shadow-xl hover:shadow-blue-600/30 transition-all group cursor-pointer card-3d relative overflow-hidden">
+                        <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
+                        <div class="flex items-center justify-between mb-4">
+                            <i data-lucide="users" class="w-8 h-8 text-blue-200 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+                                <span class="counter" data-target="15000" data-suffix="k+">0k+</span>
+                        </div>
+                        <div class="text-sm font-semibold text-blue-100">Students Trained</div>
                     </div>
-                    <div class="text-sm font-semibold text-purple-100">Job Opportunities</div>
-                </div>
-                <div class="bg-gradient-to-br from-rose-500 to-rose-600 p-8 rounded-2xl shadow-lg shadow-rose-500/20 border border-rose-400/50 hover:shadow-xl hover:shadow-rose-500/30 transition-all group cursor-pointer hover:scale-105">
-                    <div class="text-5xl font-bold text-white tracking-tight mb-2">
-                            <span class="counter" data-target="500" data-suffix="+">0+</span>
+                    <div class="glass bg-gradient-to-br from-cyan-500 to-cyan-600 p-8 rounded-2xl shadow-lg shadow-cyan-500/20 border border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-500/30 transition-all group cursor-pointer card-3d relative overflow-hidden">
+                        <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
+                        <div class="flex items-center justify-between mb-4">
+                            <i data-lucide="target" class="w-8 h-8 text-cyan-200 group-hover:scale-110 transition-transform relative z-10"></i>
+                        </div>
+                        <div class="text-5xl font-bold text-white tracking-tight mb-2 relative z-10">
+                                <span class="counter" data-target="94" data-suffix="%">0%</span>
+                        </div>
+                        <div class="text-sm font-semibold text-cyan-100 relative z-10">
+                            Pass Rate
+                        </div>
                     </div>
-                    <div class="text-sm font-semibold text-rose-100">Internship Assistance</div>
-                </div>
-                <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 p-8 rounded-2xl shadow-lg shadow-cyan-500/20 border border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-500/30 transition-all group cursor-pointer hover:scale-105">
-                    <div class="text-5xl font-bold text-white tracking-tight mb-2">
-                            <span class="counter" data-target="98" data-suffix="%">0%</span>
+                    <div class="glass bg-gradient-to-br from-blue-500 to-blue-600 p-8 rounded-2xl shadow-lg shadow-blue-500/20 border border-blue-400/50 hover:shadow-xl hover:shadow-blue-500/30 transition-all group cursor-pointer card-3d relative overflow-hidden">
+                        <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
+                        <div class="flex items-center justify-between mb-4">
+                            <i data-lucide="briefcase" class="w-8 h-8 text-blue-200 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+                                <span class="counter" data-target="120" data-suffix="+">0+</span>
+                        </div>
+                        <div class="text-sm font-semibold text-blue-100">Job Opportunities</div>
                     </div>
-                    <div class="text-sm font-semibold text-cyan-100">Student Satisfaction</div>
-                </div>
-                <div class="bg-gradient-to-br from-amber-500 to-amber-600 p-8 rounded-2xl shadow-lg shadow-amber-500/20 border border-amber-400/50 hover:shadow-xl hover:shadow-amber-500/30 transition-all group cursor-pointer hover:scale-105">
-                    <div class="text-5xl font-bold text-white tracking-tight mb-2">
-                            <span class="counter" data-target="4.9" data-suffix="★">0★</span>
+                    <div class="bg-gradient-to-br from-cyan-600 to-cyan-700 p-8 rounded-2xl shadow-lg shadow-cyan-600/20 border border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-600/30 transition-all group cursor-pointer hover:scale-105">
+                        <div class="flex items-center justify-between mb-4">
+                            <i data-lucide="rocket" class="w-8 h-8 text-cyan-200 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+                                <span class="counter" data-target="500" data-suffix="+">0+</span>
+                        </div>
+                        <div class="text-sm font-semibold text-cyan-100">Internship Assistance</div>
                     </div>
-                    <div class="text-sm font-semibold text-amber-100">Average Rating</div>
+                    <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl shadow-lg shadow-blue-600/20 border border-blue-500/50 hover:shadow-xl hover:shadow-blue-600/30 transition-all group cursor-pointer hover:scale-105">
+                        <div class="flex items-center justify-between mb-4">
+                            <i data-lucide="smile" class="w-8 h-8 text-blue-200 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+                                <span class="counter" data-target="98" data-suffix="%">0%</span>
+                        </div>
+                        <div class="text-sm font-semibold text-blue-100">Student Satisfaction</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 p-8 rounded-2xl shadow-lg shadow-cyan-500/20 border border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-500/30 transition-all group cursor-pointer hover:scale-105">
+                        <div class="flex items-center justify-between mb-4">
+                            <i data-lucide="star" class="w-8 h-8 text-cyan-200 group-hover:scale-110 transition-transform fill-current"></i>
+                        </div>
+                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+                                <span class="counter" data-target="4.9" data-suffix="★">0★</span>
+                        </div>
+                        <div class="text-sm font-semibold text-cyan-100">Average Rating</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-24 bg-gradient-to-b from-white to-blue-50/50 reveal">
+    <section id="gallery" class="py-28 bg-gradient-to-b from-white to-blue-50/50 reveal">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-20">
                 <span class="text-sm font-bold text-blue-600 block mb-4">OUR MOMENTS</span>
                 <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-zinc-900 to-blue-600 bg-clip-text text-transparent mb-4">Gallery</h2>
                 <p class="text-lg text-zinc-600 max-w-2xl mx-auto">Glimpses of our training excellence and student achievements</p>
             </div>
 
-            <!-- Slideshow Container -->
-            <div class="relative w-full max-w-4xl mx-auto">
-                <div class="slideshow-container relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl overflow-hidden shadow-2xl shadow-blue-600/30">
-                    <!-- Slides -->
-                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-700">
-                        <div class="absolute inset-0 opacity-20"></div>
-                        <div class="relative z-10 text-center text-white px-6">
-                            <i data-lucide="users" class="w-20 h-20 mx-auto mb-4 opacity-80"></i>
+            <!-- Slideshow Container with Decorative Frame -->
+            <div class="relative w-full max-w-4xl mx-auto group">
+                <!-- Decorative Corner Frames -->
+                <div class="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-blue-400 z-20"></div>
+                <div class="absolute -top-4 -right-4 w-12 h-12 border-t-2 border-r-2 border-blue-400 z-20"></div>
+                <div class="absolute -bottom-4 -left-4 w-12 h-12 border-b-2 border-l-2 border-blue-400 z-20"></div>
+                <div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-blue-400 z-20"></div>
+
+                <!-- Decorative floating particles around gallery -->
+                <div class="absolute -top-20 -right-20 opacity-30 pointer-events-none animate-floatIcon" style="animation-duration: 7s;">
+                    <svg class="w-32 h-32 text-blue-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div class="absolute -bottom-20 -left-20 opacity-30 pointer-events-none animate-floatIcon" style="animation-duration: 8s; animation-delay: 2s;">
+                    <svg class="w-40 h-40 text-purple-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+
+                <div class="slideshow-container relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl overflow-hidden shadow-2xl shadow-blue-600/30 border border-blue-400/30 group-hover:shadow-3xl group-hover:shadow-blue-600/50 transition-all duration-500">
+                    <!-- Slides with improved animations -->
+                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-700 revealUp">
+                        <div class="absolute inset-0 opacity-20 animate-pulse"></div>
+                        <div class="relative z-10 text-center text-white px-6 transform group-hover:scale-105 transition-transform duration-300">
+                            <i data-lucide="users" class="w-20 h-20 mx-auto mb-4 opacity-80 animate-floatIcon" style="animation-duration: 4s;"></i>
                             <h3 class="text-3xl font-bold mb-2">Student Training Sessions</h3>
                             <p class="text-blue-100">Interactive and engaging classroom experiences</p>
                         </div>
                     </div>
 
-                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-emerald-600 to-emerald-700 hidden">
-                        <div class="absolute inset-0 opacity-20"></div>
-                        <div class="relative z-10 text-center text-white px-6">
-                            <i data-lucide="award" class="w-20 h-20 mx-auto mb-4 opacity-80"></i>
+                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-cyan-600 to-cyan-700 revealUp hidden">
+                        <div class="absolute inset-0 opacity-20 animate-pulse"></div>
+                        <div class="relative z-10 text-center text-white px-6 transform group-hover:scale-105 transition-transform duration-300">
+                            <i data-lucide="award" class="w-20 h-20 mx-auto mb-4 opacity-80 animate-floatIcon" style="animation-duration: 4s;"></i>
                             <h3 class="text-3xl font-bold mb-2">Certification Achievements</h3>
-                            <p class="text-emerald-100">Students successfully completing industry certifications</p>
+                            <p class="text-cyan-100">Students successfully completing industry certifications</p>
                         </div>
                     </div>
 
-                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-purple-600 to-purple-700 hidden">
-                        <div class="absolute inset-0 opacity-20"></div>
-                        <div class="relative z-10 text-center text-white px-6">
-                            <i data-lucide="briefcase" class="w-20 h-20 mx-auto mb-4 opacity-80"></i>
+                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-700 revealUp hidden">
+                        <div class="absolute inset-0 opacity-20 animate-pulse"></div>
+                        <div class="relative z-10 text-center text-white px-6 transform group-hover:scale-105 transition-transform duration-300">
+                            <i data-lucide="briefcase" class="w-20 h-20 mx-auto mb-4 opacity-80 animate-floatIcon" style="animation-duration: 4s;"></i>
                             <h3 class="text-3xl font-bold mb-2">Career Placements</h3>
-                            <p class="text-purple-100">Success stories of our graduates in leading companies</p>
+                            <p class="text-blue-100">Success stories of our graduates in leading companies</p>
                         </div>
                     </div>
 
-                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-amber-600 to-amber-700 hidden">
-                        <div class="absolute inset-0 opacity-20"></div>
-                        <div class="relative z-10 text-center text-white px-6">
-                            <i data-lucide="star" class="w-20 h-20 mx-auto mb-4 opacity-80"></i>
+                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-cyan-600 to-cyan-700 revealUp hidden">
+                        <div class="absolute inset-0 opacity-20 animate-pulse"></div>
+                        <div class="relative z-10 text-center text-white px-6 transform group-hover:scale-105 transition-transform duration-300">
+                            <i data-lucide="star" class="w-20 h-20 mx-auto mb-4 opacity-80 animate-floatIcon fill-current" style="animation-duration: 4s;"></i>
                             <h3 class="text-3xl font-bold mb-2">Success Stories</h3>
-                            <p class="text-amber-100">Testimonials from our satisfied learners</p>
+                            <p class="text-cyan-100">Testimonials from our satisfied learners</p>
                         </div>
                     </div>
 
-                    <!-- Navigation Arrows -->
-                    <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-all group backdrop-blur-sm">
-                        <i data-lucide="chevron-left" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                    <!-- Navigation Arrows with enhanced styling -->
+                    <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-all group/btn backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110">
+                        <i data-lucide="chevron-left" class="w-6 h-6 group-hover/btn:scale-110 transition-transform"></i>
                     </button>
-                    <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-all group backdrop-blur-sm">
-                        <i data-lucide="chevron-right" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                    <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-all group/btn backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110">
+                        <i data-lucide="chevron-right" class="w-6 h-6 group-hover/btn:scale-110 transition-transform"></i>
                     </button>
                 </div>
 
-                <!-- Dots Navigation -->
-                <div class="flex justify-center gap-2 mt-6">
-                    <button onclick="currentSlide(1)" class="dot active w-3 h-3 rounded-full bg-blue-600 cursor-pointer transition-all hover:scale-125"></button>
-                    <button onclick="currentSlide(2)" class="dot w-3 h-3 rounded-full bg-emerald-600 cursor-pointer transition-all hover:scale-125"></button>
-                    <button onclick="currentSlide(3)" class="dot w-3 h-3 rounded-full bg-purple-600 cursor-pointer transition-all hover:scale-125"></button>
-                    <button onclick="currentSlide(4)" class="dot w-3 h-3 rounded-full bg-amber-600 cursor-pointer transition-all hover:scale-125"></button>
+                <!-- Enhanced Dots Navigation -->
+                <div class="flex justify-center gap-3 mt-8">
+                    <button onclick="currentSlide(1)" class="dot active w-2.5 h-2.5 rounded-full bg-blue-600 cursor-pointer transition-all hover:scale-125 shadow-md"></button>
+                    <button onclick="currentSlide(2)" class="dot w-2.5 h-2.5 rounded-full bg-cyan-600 cursor-pointer transition-all hover:scale-125 shadow-md"></button>
+                    <button onclick="currentSlide(3)" class="dot w-2.5 h-2.5 rounded-full bg-blue-600 cursor-pointer transition-all hover:scale-125 shadow-md"></button>
+                    <button onclick="currentSlide(4)" class="dot w-2.5 h-2.5 rounded-full bg-cyan-600 cursor-pointer transition-all hover:scale-125 shadow-md"></button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Technical Skills Section (premium & stylish) -->
-    <section id="technical" class="py-24 bg-gradient-to-br from-zinc-900 via-blue-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
+    <section id="technical" class="py-28 bg-gradient-to-br from-zinc-900 via-blue-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
+        <!-- Premium AI Brain Illustration -->
+        <div class="absolute top-20 right-10 opacity-10 pointer-events-none hidden lg:block" style="animation: float3D 15s ease-in-out infinite;">
+            <svg width="400" height="400" viewBox="0 0 400 400" fill="none">
+                <defs>
+                    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#3b82f6" />
+                        <stop offset="50%" style="stop-color:#8b5cf6" />
+                        <stop offset="100%" style="stop-color:#ec4899" />
+                    </linearGradient>
+                </defs>
+                <!-- AI Brain Circuit -->
+                <circle cx="200" cy="200" r="120" fill="none" stroke="url(#brainGrad)" stroke-width="3" opacity="0.6" style="animation: neuralPulse 4s infinite;"/>
+                <circle cx="200" cy="200" r="90" fill="none" stroke="url(#brainGrad)" stroke-width="2" opacity="0.5" style="animation: neuralPulse 3.5s infinite;"/>
+                <circle cx="200" cy="200" r="60" fill="none" stroke="url(#brainGrad)" stroke-width="2" opacity="0.4" style="animation: neuralPulse 3s infinite;"/>
+                <!-- Neural nodes -->
+                <circle cx="200" cy="200" r="8" fill="url(#brainGrad)" style="animation: glowPulse 2s infinite;"/>
+                <circle cx="160" cy="160" r="6" fill="url(#brainGrad)" style="animation: glowPulse 2.5s infinite;"/>
+                <circle cx="240" cy="160" r="6" fill="url(#brainGrad)" style="animation: glowPulse 2.2s infinite;"/>
+                <circle cx="160" cy="240" r="6" fill="url(#brainGrad)" style="animation: glowPulse 2.8s infinite;"/>
+                <circle cx="240" cy="240" r="6" fill="url(#brainGrad)" style="animation: glowPulse 2.3s infinite;"/>
+                <!-- Connection lines -->
+                <line x1="200" y1="200" x2="160" y2="160" stroke="url(#brainGrad)" stroke-width="2" opacity="0.4"/>
+                <line x1="200" y1="200" x2="240" y2="160" stroke="url(#brainGrad)" stroke-width="2" opacity="0.4"/>
+                <line x1="200" y1="200" x2="160" y2="240" stroke="url(#brainGrad)" stroke-width="2" opacity="0.4"/>
+                <line x1="200" y1="200" x2="240" y2="240" stroke="url(#brainGrad)" stroke-width="2" opacity="0.4"/>
+                <!-- Chip icon -->
+                <rect x="180" y="100" width="40" height="40" rx="4" fill="url(#brainGrad)" opacity="0.6"/>
+                <rect x="185" y="105" width="30" height="30" rx="2" fill="none" stroke="white" stroke-width="1" opacity="0.8"/>
+            </svg>
+        </div>
+        
         <!-- Premium background decorations -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" style="animation: float 12s ease-in-out infinite;"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" style="animation: float 15s ease-in-out infinite;"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
                 <div>
                     <span class="text-sm font-bold text-blue-400 mb-2 block uppercase tracking-widest">Technical Mastery</span>
                     <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent tracking-tight mb-4">
@@ -500,33 +1159,47 @@
                 <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
 
-                <div class="courses-slider-track flex gap-8 px-6">
-                    <!-- Course Slide 1 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
+                <div class="courses-slider-track flex gap-10 px-6">
+                    <!-- Course Slide 1 - Premium AI/ML Course -->
+                    <div class="flex flex-col w-[280px] shrink-0 glass bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-3d relative overflow-hidden">
+                        <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
+                        <div class="absolute top-2 right-2 px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full text-[10px] font-bold text-white">🔥 TRENDING</div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform relative z-10" style="animation: glowPulse 3s infinite;">
                             <i data-lucide="code-2" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Full Stack Web Dev</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors relative z-10">Full Stack Web Dev</h3>
+                            <span class="px-2 py-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full text-[9px] font-bold text-white">AI-POWERED</span>
+                        </div>
                         <p class="text-xs text-zinc-300 mb-4">MERN Stack • 12 Weeks</p>
                         <p class="text-xs text-zinc-100 leading-relaxed flex-grow">Build scalable web applications with modern technologies and best practices.</p>
                     </div>
 
                     <!-- Course Slide 2 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-purple-900/40 to-zinc-800/40 border border-purple-500/30 p-6 rounded-2xl hover:border-purple-400/60 transition-all hover:shadow-2xl hover:shadow-purple-600/20 group cursor-pointer">
-                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-purple-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-t from-cyan-600/10 to-transparent transition-opacity pointer-events-none"></div>
+                        <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-yellow-500/20 text-yellow-300 text-xs px-2 py-1 rounded-full border border-yellow-500/30">AI Recommended</div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Data Analytics & BI</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Data Analytics & BI</h3>
                         <p class="text-xs text-zinc-300 mb-4">Python, SQL, Tableau • 8 Weeks</p>
                         <p class="text-xs text-zinc-100 leading-relaxed flex-grow">Transform raw data into actionable business insights and visualizations.</p>
+                        <div class="mt-3 pt-3 border-t border-cyan-500/20 flex items-center justify-between">
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <span class="text-xs text-zinc-300">4.8</span>
+                            </div>
+                            <span class="text-xs text-cyan-400">→ Explore</span>
+                        </div>
                     </div>
 
                     <!-- Course Slide 3 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-orange-900/40 to-zinc-800/40 border border-orange-500/30 p-6 rounded-2xl hover:border-orange-400/60 transition-all hover:shadow-2xl hover:shadow-orange-600/20 group cursor-pointer">
-                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-orange-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-orange-300 transition-colors">Cybersecurity Ops</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Cybersecurity</h3>
                         <p class="text-xs text-zinc-300 mb-4">Network Security • 16 Weeks</p>
                         <p class="text-xs text-zinc-100 leading-relaxed flex-grow">Master enterprise-grade security practices and ethical hacking techniques.</p>
                     </div>
@@ -542,21 +1215,21 @@
                     </div>
 
                     <!-- Course Slide 5 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-pink-900/40 to-zinc-800/40 border border-pink-500/30 p-6 rounded-2xl hover:border-pink-400/60 transition-all hover:shadow-2xl hover:shadow-pink-600/20 group cursor-pointer">
-                        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-pink-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="brain" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-pink-300 transition-colors">Machine Learning & AI</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Machine Learning & AI</h3>
                         <p class="text-xs text-zinc-300 mb-4">TensorFlow, PyTorch • 14 Weeks</p>
                         <p class="text-xs text-zinc-100 leading-relaxed flex-grow">Build intelligent AI systems with deep learning and neural networks.</p>
                     </div>
 
                     <!-- Course Slide 6 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-green-900/40 to-zinc-800/40 border border-green-500/30 p-6 rounded-2xl hover:border-green-400/60 transition-all hover:shadow-2xl hover:shadow-green-600/20 group cursor-pointer">
-                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-green-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="cloud" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-green-300 transition-colors">DevOps & Cloud</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">DevOps & Cloud</h3>
                         <p class="text-xs text-zinc-300 mb-4">AWS, Docker, K8s • 11 Weeks</p>
                         <p class="text-xs text-zinc-100 leading-relaxed flex-grow">Master modern DevOps practices and cloud infrastructure automation.</p>
                     </div>
@@ -566,7 +1239,7 @@
     </section>
 
     <!-- Soft Skills Section (premium & stylish) -->
-    <section id="soft-skills" class="py-24 bg-gradient-to-br from-zinc-900 via-purple-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
+    <section id="soft-skills" class="py-28 bg-gradient-to-br from-zinc-900 via-purple-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
         <!-- Premium background decorations -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
@@ -574,9 +1247,9 @@
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6">
-            <div class="mb-16">
-                <span class="text-sm font-bold text-purple-400 mb-2 block uppercase tracking-widest">Professional Growth</span>
-                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent tracking-tight mb-4">
+            <div class="mb-20">
+                <span class="text-sm font-bold text-cyan-400 mb-2 block uppercase tracking-widest">Professional Growth</span>
+                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent tracking-tight mb-4">
                     Soft Skills &amp; Leadership
                 </h2>
                 <p class="text-lg text-zinc-100 max-w-xl leading-relaxed">
@@ -590,7 +1263,7 @@
                 <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
 
-                <div class="soft-skills-slider-track flex gap-8 px-6">
+                <div class="soft-skills-slider-track flex gap-10 px-6">
                     <!-- Soft Skill 1 -->
                     <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
                         <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
@@ -602,31 +1275,31 @@
                     </div>
 
                     <!-- Soft Skill 2 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-emerald-900/40 to-zinc-800/40 border border-emerald-500/30 p-8 rounded-2xl hover:border-emerald-400/60 transition-all hover:shadow-2xl hover:shadow-emerald-600/20 group cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-emerald-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="users-2" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">Team Leadership</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Team Leadership</h3>
                         <p class="text-xs text-zinc-300 mb-3">Management • Motivation</p>
                         <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Strategies to motivate teams and manage conflict with emotional intelligence and empathy.</p>
                     </div>
 
                     <!-- Soft Skill 3 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-pink-900/40 to-zinc-800/40 border border-pink-500/30 p-8 rounded-2xl hover:border-pink-400/60 transition-all hover:shadow-2xl hover:shadow-pink-600/20 group cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-pink-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="brain-circuit" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-pink-300 transition-colors">Critical Thinking</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Critical Thinking</h3>
                         <p class="text-xs text-zinc-300 mb-3">Problem Solving • Analysis</p>
                         <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Analyze problems deeply and develop innovative solutions systematically and creatively.</p>
                     </div>
 
                     <!-- Soft Skill 4 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-amber-900/40 to-zinc-800/40 border border-amber-500/30 p-8 rounded-2xl hover:border-amber-400/60 transition-all hover:shadow-2xl hover:shadow-amber-600/20 group cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-amber-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="briefcase" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">Corporate Etiquette</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Corporate Etiquette</h3>
                         <p class="text-xs text-zinc-300 mb-3">Professionalism • Protocol</p>
                         <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Master professional behavior and protocols for thriving in the global workplace.</p>
                     </div>
@@ -642,31 +1315,31 @@
                     </div>
 
                     <!-- Soft Skill 6 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-violet-900/40 to-zinc-800/40 border border-violet-500/30 p-8 rounded-2xl hover:border-violet-400/60 transition-all hover:shadow-2xl hover:shadow-violet-600/20 group cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-violet-500 to-violet-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-violet-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="zap" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-violet-300 transition-colors">Emotional Intelligence</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Emotional Intelligence</h3>
                         <p class="text-xs text-zinc-300 mb-3">Self-Awareness • Empathy</p>
                         <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Understand emotions and build strong interpersonal relationships with resilience.</p>
                     </div>
 
                     <!-- Soft Skill 7 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-orange-900/40 to-zinc-800/40 border border-orange-500/30 p-8 rounded-2xl hover:border-orange-400/60 transition-all hover:shadow-2xl hover:shadow-orange-600/20 group cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-orange-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="target" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-orange-300 transition-colors">Goal Setting</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Goal Setting</h3>
                         <p class="text-xs text-zinc-300 mb-3">Planning • Achievement</p>
                         <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Learn to set SMART goals and develop strategies to achieve them consistently.</p>
                     </div>
 
                     <!-- Soft Skill 8 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-rose-900/40 to-zinc-800/40 border border-rose-500/30 p-8 rounded-2xl hover:border-rose-400/60 transition-all hover:shadow-2xl hover:shadow-rose-600/20 group cursor-pointer">
-                        <div class="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-rose-600/30 group-hover:scale-110 transition-transform">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="shield" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-rose-300 transition-colors">Conflict Resolution</h3>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Conflict Resolution</h3>
                         <p class="text-xs text-zinc-300 mb-3">Negotiation • Mediation</p>
                         <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Master techniques to resolve conflicts and find win-win solutions diplomatically.</p>
                     </div>
@@ -676,17 +1349,17 @@
     </section>
 
     <!-- Trainers Section (premium & stylish) -->
-    <section id="trainers" class="py-24 bg-gradient-to-br from-zinc-900 via-emerald-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
+    <section id="trainers" class="py-28 bg-gradient-to-br from-zinc-900 via-emerald-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
         <!-- Premium background decorations -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
             <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 mb-16">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 mb-20">
             <div class="text-center">
-                <span class="text-sm font-bold text-emerald-400 mb-2 block uppercase tracking-widest">Expert Faculty</span>
-                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent tracking-tight mb-4">
+                <span class="text-sm font-bold text-blue-400 mb-2 block uppercase tracking-widest">Expert Faculty</span>
+                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent tracking-tight mb-4">
                     Learn from Industry Experts
                 </h2>
                 <p class="text-lg text-zinc-100 max-w-2xl mx-auto leading-relaxed">
@@ -700,7 +1373,7 @@
             <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
             <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
 
-            <div class="slider-track flex gap-8 px-6">
+            <div class="slider-track flex gap-10 px-6">
                 <!-- Trainer 1 -->
                 <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
                     <!-- Card glow effect -->
@@ -720,15 +1393,15 @@
                 </div>
 
                 <!-- Trainer 2 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-emerald-900/40 to-zinc-800/40 border border-emerald-500/30 p-8 rounded-2xl hover:border-emerald-400/60 transition-all hover:shadow-2xl hover:shadow-emerald-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
                     <!-- Card glow effect -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10 w-full">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 mb-6 mx-auto overflow-hidden border-4 border-emerald-300 shadow-lg shadow-emerald-600/30 group-hover:scale-110 transition-transform">
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mb-6 mx-auto overflow-hidden border-4 border-cyan-300 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <img src="asset/sewana.png" alt="Trainer" class="w-full h-full object-cover" />
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-emerald-300 transition-colors">Ms. Sewana M</h3>
-                        <p class="text-sm text-emerald-300 font-semibold mb-3">Data Analytics & Visualization</p>
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">Ms. Sewana M</h3>
+                        <p class="text-sm text-cyan-300 font-semibold mb-3">Data Analytics & Visualization</p>
                         <p class="text-sm text-zinc-100 leading-relaxed">
                             Passionate data analyst specializing in beautiful visualizations and actionable insights.
                         </p>
@@ -736,17 +1409,17 @@
                 </div>
 
                 <!-- Trainer 3 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-purple-900/40 to-zinc-800/40 border border-purple-500/30 p-8 rounded-2xl hover:border-purple-400/60 transition-all hover:shadow-2xl hover:shadow-purple-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
                     <!-- Card glow effect -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10 w-full">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 mb-6 mx-auto overflow-hidden border-4 border-purple-300 shadow-lg shadow-purple-600/30 group-hover:scale-110 transition-transform">
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mb-6 mx-auto overflow-hidden border-4 border-blue-300 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <img src="asset/prajwal.png" alt="Trainer" class="w-full h-full object-cover" />
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">
                             Mr. Prajwal Reddy
                         </h3>
-                        <p class="text-sm text-purple-300 font-semibold mb-3">Cloud Architecture & DevOps</p>
+                        <p class="text-sm text-blue-300 font-semibold mb-3">Cloud Architecture & DevOps</p>
                         <p class="text-sm text-zinc-100 leading-relaxed">
                             Certified in AWS and Azure. Expert in CI/CD pipelines and infrastructure automation.
                         </p>
@@ -754,17 +1427,17 @@
                 </div>
 
                 <!-- Trainer 4 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-amber-900/40 to-zinc-800/40 border border-amber-500/30 p-8 rounded-2xl hover:border-amber-400/60 transition-all hover:shadow-2xl hover:shadow-amber-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
                     <!-- Card glow effect -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10 w-full">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 mb-6 mx-auto overflow-hidden border-4 border-amber-300 shadow-lg shadow-amber-600/30 group-hover:scale-110 transition-transform">
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mb-6 mx-auto overflow-hidden border-4 border-cyan-300 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <img src="asset/aaryan.png" alt="Trainer" class="w-full h-full object-cover" />
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-amber-300 transition-colors">
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">
                             Mr. Aaryan Chaudhary
                         </h3>
-                        <p class="text-sm text-amber-300 font-semibold mb-3">Python & Web Development</p>
+                        <p class="text-sm text-cyan-300 font-semibold mb-3">Python & Web Development</p>
                         <p class="text-sm text-zinc-100 leading-relaxed">
                             Building strong programming foundations through hands-on, industry-focused training.
                         </p>
@@ -792,12 +1465,163 @@
         </div>
     </section>
 
-    <footer class="pt-8 border-t border-zinc-800">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-xs text-zinc-500">© 2025 Worldwide Excellence Bridge. All rights reserved.</p>
-            <div class="flex gap-6 text-xs text-zinc-500">
-                <a href="#" class="hover:text-zinc-300">Terms</a>
-                <a href="#" class="hover:text-zinc-300">Privacy</a>
+    <!-- Premium Footer with Waves and Animations -->
+    <footer class="relative pt-32 pb-12 bg-gradient-to-b from-zinc-950 via-slate-900 to-black border-t border-blue-500/30 overflow-hidden">
+        <!-- Enhanced Wave Animations Background -->
+        <div class="absolute inset-0 opacity-30">
+            <svg class="absolute bottom-0 left-0 w-full h-40 text-blue-600" viewBox="0 0 1200 120" preserveAspectRatio="none" style="animation: wave 15s linear infinite;">
+                <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor" opacity="0.3"></path>
+            </svg>
+            <svg class="absolute bottom-10 left-0 w-full h-32 text-purple-600" viewBox="0 0 1200 100" preserveAspectRatio="none" style="animation: wave 20s linear infinite reverse;">
+                <path d="M0,40 Q300,10 600,40 T1200,40 L1200,100 L0,100 Z" fill="currentColor" opacity="0.2"></path>
+            </svg>
+            <svg class="absolute bottom-20 left-0 w-full h-28 text-cyan-600" viewBox="0 0 1200 80" preserveAspectRatio="none" style="animation: wave 25s linear infinite;">
+                <path d="M0,30 Q300,5 600,30 T1200,30 L1200,80 L0,80 Z" fill="currentColor" opacity="0.15"></path>
+            </svg>
+        </div>
+
+        <!-- Premium Floating Particles -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute w-1 h-1 bg-blue-400 rounded-full opacity-60 animate-particle-float" style="top: 10%; left: 10%; animation-duration: 20s; animation-delay: 0s;"></div>
+            <div class="absolute w-2 h-2 bg-blue-500 rounded-full opacity-50 animate-particle-float" style="top: 20%; left: 80%; animation-duration: 22s; animation-delay: 1s;"></div>
+            <div class="absolute w-1.5 h-1.5 bg-purple-400 rounded-full opacity-55 animate-particle-float" style="top: 15%; left: 50%; animation-duration: 25s; animation-delay: 2s;"></div>
+            <div class="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-45 animate-particle-float" style="top: 25%; left: 20%; animation-duration: 18s; animation-delay: 1.5s;"></div>
+            <div class="absolute w-2 h-2 bg-pink-400 rounded-full opacity-40 animate-particle-float" style="top: 30%; left: 70%; animation-duration: 23s; animation-delay: 3s;"></div>
+            <div class="absolute w-1.5 h-1.5 bg-indigo-400 rounded-full opacity-50 animate-particle-float" style="top: 35%; left: 40%; animation-duration: 21s; animation-delay: 2.5s;"></div>
+        </div>
+
+        <div class="relative z-10">
+            <!-- Main Footer Content Grid -->
+            <div class="max-w-7xl mx-auto px-6 mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20 pb-20 border-b border-zinc-700/40">
+                    <!-- Brand Section with Premium Logo -->
+                    <div class="md:col-span-2 space-y-6">
+                        <div class="flex items-center gap-4 group cursor-pointer">
+                            <!-- Premium Logo with Gradient and Glow -->
+                            <div class="relative">
+                                <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-2xl opacity-30 blur-xl group-hover:opacity-50 transition-all duration-500 animate-pulse"></div>
+                                <div class="relative p-3 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-xl shadow-2xl shadow-blue-600/50 group-hover:shadow-blue-600/80 transition-all duration-500 group-hover:scale-110 transform">
+                                    <img src="asset/logo.png" alt="Worldwide Excellence Bridge logo" class="w-8 h-8 object-contain" />
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:via-purple-400 group-hover:to-cyan-400 transition-all duration-500">Worldwide Excellence Bridge</h3>
+                                <p class="text-xs text-blue-400/70 font-semibold tracking-wider uppercase mt-1">Premium Training Platform</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-zinc-400 leading-relaxed max-w-md">
+                            Empowering the next generation of tech professionals with industry-leading training, expert mentorship, and cutting-edge curriculum designed for real-world success.
+                        </p>
+                        <!-- Premium Stats -->
+                        <div class="flex gap-8 pt-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">15k+</div>
+                                <div class="text-xs text-zinc-500 font-medium">Students</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">500+</div>
+                                <div class="text-xs text-zinc-500 font-medium">Companies</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">98%</div>
+                                <div class="text-xs text-zinc-500 font-medium">Success Rate</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links with Enhanced Design -->
+                    <div class="space-y-6">
+                        <h4 class="text-sm font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent mb-6 uppercase tracking-widest flex items-center gap-2">
+                            <span class="w-8 h-0.5 bg-gradient-to-r from-blue-600 to-transparent"></span>
+                            Quick Links
+                        </h4>
+                        <ul class="space-y-4 text-sm">
+                            <li><a href="#about" class="text-zinc-400 hover:text-blue-400 transition-all duration-300 flex items-center gap-3 group hover:translate-x-2">
+                                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-2 group-hover:h-2 transition-all"></span>
+                                <span class="font-medium">About Us</span>
+                                <i data-lucide="arrow-right" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all"></i>
+                            </a></li>
+                            <li><a href="#technical" class="text-zinc-400 hover:text-cyan-400 transition-all duration-300 flex items-center gap-3 group hover:translate-x-2">
+                                <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full group-hover:w-2 group-hover:h-2 transition-all"></span>
+                                <span class="font-medium">Technical Courses</span>
+                                <i data-lucide="arrow-right" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all"></i>
+                            </a></li>
+                            <li><a href="#soft-skills" class="text-zinc-400 hover:text-blue-400 transition-all duration-300 flex items-center gap-3 group hover:translate-x-2">
+                                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-2 group-hover:h-2 transition-all"></span>
+                                <span class="font-medium">Soft Skills</span>
+                                <i data-lucide="arrow-right" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all"></i>
+                            </a></li>
+                            <li><a href="#gallery" class="text-zinc-400 hover:text-cyan-400 transition-all duration-300 flex items-center gap-3 group hover:translate-x-2">
+                                <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full group-hover:w-2 group-hover:h-2 transition-all"></span>
+                                <span class="font-medium">Gallery</span>
+                                <i data-lucide="arrow-right" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all"></i>
+                            </a></li>
+                            <li><a href="/ContactUs.html" class="text-zinc-400 hover:text-blue-400 transition-all duration-300 flex items-center gap-3 group hover:translate-x-2">
+                                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full group-hover:w-2 group-hover:h-2 transition-all"></span>
+                                <span class="font-medium">Contact Us</span>
+                                <i data-lucide="arrow-right" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all"></i>
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social Links with Premium Design -->
+                    <div class="space-y-6">
+                        <h4 class="text-sm font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent mb-6 uppercase tracking-widest flex items-center gap-2">
+                            <span class="w-8 h-0.5 bg-gradient-to-r from-blue-600 to-transparent"></span>
+                            Connect With Us
+                        </h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <a href="https://www.linkedin.com/company/ex-brid/" class="glass p-4 rounded-xl bg-gradient-to-br from-blue-600/10 to-blue-600/5 border border-blue-500/20 hover:border-blue-400/60 hover:bg-blue-600/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-400/0 via-blue-400/10 to-blue-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                <svg class="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.814 0-9.752h3.554v1.381c.43-.666 1.199-1.616 2.922-1.616 2.135 0 3.735 1.39 3.735 4.38v5.607zM5.337 8.855c-1.144 0-1.915-.759-1.915-1.71 0-.951.77-1.71 1.965-1.71 1.194 0 1.914.759 1.914 1.71 0 .951-.72 1.71-1.964 1.71zm1.6 11.597H3.738V9.557h3.199v10.895zM22.224 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.224 0z"/></svg>
+                                <div class="text-[10px] text-blue-300 font-semibold mt-2 relative z-10">LinkedIn</div>
+                            </a>
+                            <a href="https://www.facebook.com/people/Worldwide-Excellence-Bridge/61565420783027/" class="glass p-4 rounded-xl bg-gradient-to-br from-indigo-600/10 to-indigo-600/5 border border-indigo-500/20 hover:border-indigo-400/60 hover:bg-indigo-600/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-400/0 via-indigo-400/10 to-indigo-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                <svg class="w-5 h-5 text-indigo-400 group-hover:text-indigo-300 transition-colors relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                <div class="text-[10px] text-indigo-300 font-semibold mt-2 relative z-10">Facebook</div>
+                            </a>
+                            <a href="https://www.instagram.com/excellence_bridge/" class="glass p-4 rounded-xl bg-gradient-to-br from-pink-600/10 to-pink-600/5 border border-pink-500/20 hover:border-pink-400/60 hover:bg-pink-600/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-pink-400/0 via-pink-400/10 to-pink-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                <svg class="w-5 h-5 text-pink-400 group-hover:text-pink-300 transition-colors relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/></svg>
+                                <div class="text-[10px] text-pink-300 font-semibold mt-2 relative z-10">Instagram</div>
+                            </a>
+                            <a href="#" class="glass p-4 rounded-xl bg-gradient-to-br from-cyan-600/10 to-cyan-600/5 border border-cyan-500/20 hover:border-cyan-400/60 hover:bg-cyan-600/20 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/0 via-cyan-400/10 to-cyan-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                <svg class="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a10.6 10.6 0 01-3 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                                <div class="text-[10px] text-cyan-300 font-semibold mt-2 relative z-10">Twitter</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Footer with Premium Design -->
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-sm pt-8">
+                    <div class="flex items-center gap-3">
+                        <p class="text-zinc-500 font-medium">© 2025 Worldwide Excellence Bridge.</p>
+                        <span class="hidden md:inline text-zinc-700">•</span>
+                        <p class="hidden md:inline text-zinc-600 text-xs">Crafted with excellence</p>
+                    </div>
+                    <div class="flex gap-8 text-zinc-500 font-medium">
+                        <a href="#" class="hover:text-blue-400 transition-all duration-300 hover:translate-y-[-2px] flex items-center gap-1 group">
+                            <span>Terms</span>
+                            <i data-lucide="external-link" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all"></i>
+                        </a>
+                        <a href="#" class="hover:text-blue-400 transition-all duration-300 hover:translate-y-[-2px] flex items-center gap-1 group">
+                            <span>Privacy</span>
+                            <i data-lucide="external-link" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all"></i>
+                        </a>
+                        <a href="#" class="hover:text-cyan-400 transition-all duration-300 hover:translate-y-[-2px] flex items-center gap-1 group">
+                            <span>Support</span>
+                            <i data-lucide="external-link" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all"></i>
+                        </a>
+                    </div>
+                    <!-- Premium Back to Top Button -->
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="magnetic flex items-center gap-2 px-5 py-2.5 glass bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600 hover:to-purple-600 border border-blue-500/30 hover:border-blue-400 text-blue-400 hover:text-white rounded-full transition-all duration-300 transform hover:scale-110 group shadow-lg hover:shadow-blue-600/50">
+                        <span class="text-xs font-bold tracking-wide">Back to Top</span>
+                        <svg class="w-4 h-4 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"></path></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </footer>
@@ -1069,7 +1893,643 @@
                 // fallback: make everything visible
                 revealElems.forEach(el => el.classList.add('is-visible'));
             }
+
+            // Scroll progress bar
+            const scrollProgress = document.getElementById('scrollProgress');
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                if (scrollProgress) {
+                    scrollProgress.style.width = scrollPercent + '%';
+                }
+            });
+
+            // Navigation scroll effect
+            const mainNav = document.getElementById('mainNav');
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 50) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+            });
+
+            // Magnetic hover effect for buttons
+            const magneticElements = document.querySelectorAll('.magnetic');
+            magneticElements.forEach(el => {
+                el.addEventListener('mousemove', function(e) {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const maxMove = 10;
+                    const moveX = (x / rect.width) * maxMove;
+                    const moveY = (y / rect.height) * maxMove;
+                    el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                });
+                el.addEventListener('mouseleave', function() {
+                    el.style.transform = 'translate(0, 0)';
+                });
+            });
+
+            // Cursor particle trail
+            let particleTimeout;
+            document.addEventListener('mousemove', (e) => {
+                clearTimeout(particleTimeout);
+                particleTimeout = setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'cursor-particle';
+                    particle.style.left = e.clientX + 'px';
+                    particle.style.top = e.clientY + 'px';
+                    document.body.appendChild(particle);
+                    setTimeout(() => particle.remove(), 600);
+                }, 50);
+            });
+
+            // Typing animation for hero text
+            const typingText = document.getElementById('typingText');
+            if (typingText) {
+                const text = typingText.textContent;
+                typingText.textContent = '';
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        typingText.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    } else {
+                        typingText.style.borderRight = 'none';
+                    }
+                };
+                setTimeout(typeWriter, 1000);
+            }
         });
+    </script>
+
+    <!-- AI Premium Interactive Features - Compact & Competitive with Toggle -->
+    <div id="aiChatWidget" class="fixed bottom-6 right-6 z-40 hidden md:flex flex-col gap-2">
+        <!-- WhatsApp Quick Button -->
+        <a href="https://wa.me/919031303022?text=Hi%20Ex-Bridge!%20I'm%20interested%20in%20learning%20more%20about%20your%20courses." target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-600/50 flex items-center justify-center text-white hover:scale-105 transition-transform duration-300 cursor-pointer group border-2 border-emerald-300/30 hover:shadow-emerald-600/70 animate-bounce" title="Chat on WhatsApp">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </a>
+
+        <!-- Chat Bubble Toggle - Compact with Minimize Arrow -->
+        <button id="aiChatBtn" class="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-600/50 flex items-center justify-center text-white hover:scale-105 transition-all duration-300 cursor-pointer group border-2 border-cyan-300/30 hover:shadow-cyan-600/70 relative" title="AI Assistant">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-25 transition-opacity blur"></div>
+            <div class="relative">
+                <i data-lucide="sparkles" class="w-6 h-6 group-hover:animate-spin transition-transform" id="aiToggleIcon"></i>
+                <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/50"></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- AI Chat Modal - Compact & Pop with Hide/Show Toggle -->
+    <div id="aiChatModal" class="fixed bottom-20 right-6 w-80 hidden md:flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl shadow-cyan-600/40 border border-cyan-500/50 z-40 max-h-[420px] overflow-hidden backdrop-blur-xl transition-all duration-300 ease-out transform origin-bottom-right" style="transform-origin: bottom right; opacity: 1;">
+        <!-- Header - Compact with Minimize/Maximize -->
+        <div class="bg-gradient-to-r from-cyan-600 via-blue-600 to-blue-700 px-4 py-3 flex items-center justify-between rounded-t-2xl relative overflow-hidden group cursor-move" id="aiChatHeader">
+            <div class="absolute inset-0 opacity-10 bg-gradient-to-r from-white to-transparent"></div>
+            <div class="flex items-center gap-2 relative z-10 flex-1">
+                <div class="w-2.5 h-2.5 bg-emerald-300 rounded-full animate-pulse shadow-lg shadow-emerald-300/50"></div>
+                <div>
+                    <h3 class="text-white font-bold text-xs leading-none">Ex-Bridge AI</h3>
+                    <p class="text-cyan-200 text-[10px]">Online</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1 relative z-10">
+                <!-- Minimize/Maximize Button -->
+                <button id="aiMinimizeBtn" class="text-white hover:scale-125 transition-all p-2 rounded-lg hover:bg-cyan-500/30 bg-white/10 flex items-center justify-center border border-white/20" title="Minimize" style="width: 36px; height: 36px; min-width: 36px; min-height: 36px;">
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300 text-white" id="aiMinimizeIcon"></i>
+                    <span id="aiMinimizeFallback" class="text-white text-lg font-bold hidden">−</span>
+                </button>
+                <button id="whatsappQuick" class="text-white hover:scale-110 transition-transform p-1 rounded-md hover:bg-white/10" title="WhatsApp">
+                    <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+                </button>
+                <button id="closeAiChat" class="text-white hover:scale-110 transition-transform p-1 rounded-md hover:bg-white/10 hover:bg-red-500/30" title="Close Chat">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Messages - Compact (Collapsible) -->
+        <div id="aiChatMessages" class="flex-1 overflow-y-auto p-3 space-y-2 bg-gradient-to-b from-slate-800/50 to-slate-900/50">
+            <div class="bg-gradient-to-r from-cyan-600/25 to-blue-600/25 p-3 rounded-lg text-xs text-zinc-100 border border-cyan-500/40 shadow-lg shadow-cyan-600/10 backdrop-blur-sm">
+                <p class="font-semibold text-cyan-300 text-xs mb-1">👋 Hey there!</p>
+                <p class="leading-tight">Ask about courses, pricing, or training!</p>
+            </div>
+        </div>
+
+        <!-- Quick Action Buttons - Compact -->
+        <div class="px-3 py-2 border-t border-slate-700 bg-slate-800/40">
+            <div class="grid grid-cols-2 gap-1.5">
+                <button class="quick-action bg-cyan-600/25 hover:bg-cyan-600/50 text-cyan-300 text-[10px] font-semibold py-1.5 rounded-md border border-cyan-500/40 transition-all" data-query="courses">📚 Courses</button>
+                <button class="quick-action bg-blue-600/25 hover:bg-blue-600/50 text-blue-300 text-[10px] font-semibold py-1.5 rounded-md border border-blue-500/40 transition-all" data-query="trainers">👨‍🏫 Trainers</button>
+                <button class="quick-action bg-purple-600/25 hover:bg-purple-600/50 text-purple-300 text-[10px] font-semibold py-1.5 rounded-md border border-purple-500/40 transition-all" data-query="pricing">💰 Price</button>
+                <button class="quick-action bg-pink-600/25 hover:bg-pink-600/50 text-pink-300 text-[10px] font-semibold py-1.5 rounded-md border border-pink-500/40 transition-all" data-query="enroll">✨ Enroll</button>
+            </div>
+        </div>
+
+        <!-- Input Section - Compact -->
+        <div class="p-3 border-t border-slate-700 bg-gradient-to-t from-slate-900 to-slate-800/50 rounded-b-2xl">
+            <div class="flex gap-1.5 mb-1">
+                <input id="aiInput" type="text" placeholder="Ask..." class="flex-1 bg-slate-700/70 text-white placeholder-zinc-500 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1.5 focus:ring-cyan-500/60 border border-slate-600/60 hover:border-cyan-400/40 transition-all backdrop-blur-sm" />
+                <button id="aiSendBtn" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-lg px-3 py-2 hover:scale-105 transition-all text-xs font-bold shadow-lg shadow-cyan-600/40 hover:shadow-cyan-600/60 border border-cyan-400/30">
+                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+            <p class="text-[9px] text-zinc-600 text-center">Enter • AI Powered</p>
+        </div>
+    </div>
+
+    <!-- Course Recommender Widget -->
+    <div id="courseRecommender" class="fixed top-32 right-0 translate-x-full transition-transform duration-500 z-30 bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-xl rounded-3xl shadow-2xl shadow-blue-600/20 border border-blue-500/30 p-6 w-96 max-h-96 overflow-y-auto">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-white font-bold text-lg flex items-center gap-2">
+                <i data-lucide="brain" class="w-5 h-5 text-cyan-400"></i>
+                AI Course Recommender
+            </h3>
+            <button class="toggle-recommender text-zinc-400 hover:text-white">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <div class="space-y-3">
+            <p class="text-sm text-zinc-300 mb-4">Based on trending skills and your interests:</p>
+            <div class="bg-slate-700/50 p-3 rounded-lg border border-cyan-500/30 hover:border-cyan-400 transition-colors cursor-pointer group">
+                <h4 class="text-white font-medium text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                    AI & Machine Learning
+                </h4>
+                <p class="text-xs text-zinc-400 mt-1">⭐ Trending now • 8 modules</p>
+            </div>
+            <div class="bg-slate-700/50 p-3 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-colors cursor-pointer group">
+                <h4 class="text-white font-medium text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+                    Advanced Full Stack Development
+                </h4>
+                <p class="text-xs text-zinc-400 mt-1">🔥 High demand • 10 modules</p>
+            </div>
+            <div class="bg-slate-700/50 p-3 rounded-lg border border-cyan-500/30 hover:border-cyan-400 transition-colors cursor-pointer group">
+                <h4 class="text-white font-medium text-sm flex items-center gap-2">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                    Cloud Architecture & DevOps
+                </h4>
+                <p class="text-xs text-zinc-400 mt-1">💡 Future-proof • 6 modules</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Search Bar -->
+    <div id="smartSearch" class="fixed top-0 left-0 right-0 bg-gradient-to-b from-slate-900/80 to-transparent backdrop-blur-xl p-4 z-35 border-b border-cyan-500/20 hidden">
+        <div class="max-w-3xl mx-auto relative">
+            <input id="searchInput" type="text" placeholder="🔍 Search courses, skills, trainers... (Press Cmd+K or Ctrl+K)" class="w-full bg-slate-800/80 text-white placeholder-zinc-500 rounded-lg px-4 py-3 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/50 border border-slate-700/50 backdrop-blur-xl" />
+            <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-zinc-500"></i>
+            <div id="searchResults" class="absolute top-full mt-2 left-0 right-0 bg-slate-800 rounded-lg border border-slate-700 max-h-64 overflow-y-auto hidden shadow-2xl shadow-cyan-600/10"></div>
+        </div>
+    </div>
+
+    <!-- Engagement Metrics Floating Widget - Compact -->
+    <div id="engagementWidget" class="fixed bottom-6 left-6 hidden md:flex flex-col gap-2 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl rounded-xl p-3 border border-blue-500/40 shadow-lg shadow-blue-600/30 w-56 z-30">
+        <div class="flex items-center justify-between mb-1">
+            <h4 class="text-white font-bold text-xs flex items-center gap-1.5">
+                <i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-400"></i>
+                Progress
+            </h4>
+            <span class="text-[9px] bg-cyan-600/40 text-cyan-300 px-1.5 py-0.5 rounded font-bold">PRO</span>
+        </div>
+        <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-[11px]">
+                <span class="text-zinc-400">Engagement</span>
+                <span class="font-bold text-cyan-400">87%</span>
+            </div>
+            <div class="w-full bg-slate-700/50 rounded-full h-1.5 overflow-hidden border border-slate-600/50">
+                <div class="bg-gradient-to-r from-cyan-500 to-blue-600 h-full transition-all duration-500" style="width: 87%"></div>
+            </div>
+        </div>
+        <div class="pt-1.5 border-t border-slate-700 grid grid-cols-2 gap-1.5 text-[10px]">
+            <div class="bg-slate-700/40 rounded p-1.5 border border-slate-600/50">
+                <p class="text-zinc-500">Viewed</p>
+                <p class="text-cyan-400 font-bold text-xs">24</p>
+            </div>
+            <div class="bg-slate-700/40 rounded p-1.5 border border-slate-600/50">
+                <p class="text-zinc-500">Time</p>
+                <p class="text-blue-400 font-bold text-xs">3h 24m</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AI Chat Widget Functionality
+        const aiChatBtn = document.getElementById('aiChatBtn');
+        const aiChatModal = document.getElementById('aiChatModal');
+        const closeAiChat = document.getElementById('closeAiChat');
+        const aiInput = document.getElementById('aiInput');
+        const aiSendBtn = document.getElementById('aiSendBtn');
+        const aiChatMessages = document.getElementById('aiChatMessages');
+        const whatsappQuick = document.getElementById('whatsappQuick');
+        const aiMinimizeBtn = document.getElementById('aiMinimizeBtn');
+        const aiMinimizeIcon = document.getElementById('aiMinimizeIcon');
+        const aiChatHeader = document.getElementById('aiChatHeader');
+        const aiChatMessagesContainer = document.getElementById('aiChatMessages').parentElement;
+        let isMinimized = false;
+
+        // Debug: Log elements
+        console.log('closeAiChat button:', closeAiChat);
+        console.log('aiChatModal:', aiChatModal);
+
+        aiChatBtn.addEventListener('click', () => {
+            aiChatModal.classList.toggle('hidden');
+            aiChatModal.style.display = aiChatModal.classList.contains('hidden') ? 'none' : 'flex';
+            if (!aiChatModal.classList.contains('hidden')) {
+                aiInput.focus();
+            }
+        });
+
+        closeAiChat.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log('Close button clicked - hiding chat');
+            aiChatModal.classList.add('hidden');
+            aiChatModal.style.display = 'none';
+            // Reset minimize state when closing
+            if (isMinimized) {
+                console.log('Resetting minimized state');
+                isMinimized = false;
+                aiChatModal.style.maxHeight = '420px';
+                const children = aiChatModal.querySelectorAll('> div:not(:first-child)');
+                children.forEach(child => child.style.display = 'flex');
+                if (aiMinimizeIcon) {
+                    aiMinimizeIcon.style.transform = 'rotate(0deg)';
+                }
+            }
+        });
+
+        // Minimize/Maximize Functionality
+        function getCollapsibleContent() {
+            return document.querySelector('#aiChatModal > div:not(:first-child)');
+        }
+
+        aiMinimizeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isMinimized = !isMinimized;
+
+            if (isMinimized) {
+                // Minimize
+                aiChatModal.style.maxHeight = '52px';
+                aiChatModal.style.overflow = 'hidden';
+                aiMinimizeIcon.style.transform = 'rotate(180deg)';
+                aiMinimizeBtn.title = 'Expand Chat';
+                
+                // Hide all content except header
+                const children = aiChatModal.querySelectorAll('> div:not(:first-child)');
+                children.forEach(child => child.style.display = 'none');
+            } else {
+                // Maximize
+                aiChatModal.style.maxHeight = '420px';
+                aiChatModal.style.overflow = 'hidden';
+                aiMinimizeIcon.style.transform = 'rotate(0deg)';
+                aiMinimizeBtn.title = 'Minimize Chat';
+                
+                // Show all content
+                const children = aiChatModal.querySelectorAll('> div:not(:first-child)');
+                children.forEach(child => child.style.display = 'flex');
+            }
+        });
+
+        // WhatsApp Quick Contact
+        whatsappQuick.addEventListener('click', () => {
+            window.open('https://wa.me/919031303022?text=Hi%20Ex-Bridge!%20I%27m%20interested%20in%20learning%20more%20about%20your%20courses.', '_blank');
+        });
+
+        // Comprehensive AI Response Database
+        const aiResponses = {
+            'courses': '📚 We offer 50+ premium courses:\n• Full Stack Development (12 weeks)\n• Python for Data Science (8 weeks)\n• AI & Machine Learning (10 weeks)\n• Leadership Excellence (6 weeks)\n\nWhich interests you?',
+            'trainer': '👨‍🏫 Our expert trainers feature:\n• 10+ years industry experience\n• Real-world project mentoring\n• 1-on-1 guidance sessions\n• Career counseling included\n\nWant to connect with a trainer?',
+            'price': '💰 Our pricing:\n• Basic Course: $199-$299\n• Professional: $399-$599\n• Enterprise: Custom packages\n\nContact us for special discounts!',
+            'certificate': '✅ Yes! All graduates receive:\n• Industry-recognized certificates\n• LinkedIn endorsements\n• Portfolio projects included\n• Lifetime access to materials',
+            'duration': '⏱️ Course Duration:\n• Express: 2-4 weeks\n• Standard: 6-8 weeks\n• Comprehensive: 10-12 weeks\n• Flexible self-paced available',
+            'enroll': '🚀 Ready to enroll?\n✓ Choose your course\n✓ Select your pace\n✓ Start learning immediately!\n\nJoin 10,000+ successful learners!',
+            'technical': '💻 Technical Skills we offer:\n• Full Stack Development\n• Python & Data Science\n• Cloud & DevOps\n• Cybersecurity & Networking\n• Database Management',
+            'soft': '🎯 Soft Skills Programs:\n• Leadership & Management\n• Communication Mastery\n• Team Building\n• Emotional Intelligence\n• Public Speaking',
+            'schedule': '📅 We have:\n• Morning batches: 9 AM - 1 PM\n• Evening batches: 5 PM - 9 PM\n• Weekend programs\n• Self-paced options\n\nChoose what works best!',
+            'placement': '💼 Placement Support:\n• 95% placement rate\n• Job assistance included\n• Interview prep sessions\n• Resume building support',
+            'default': '🤖 Great question! I can help you with:\n📚 Courses • 👨‍🏫 Trainers • 💰 Pricing • 📅 Schedule • 🚀 Enrollment\n\nTap the quick buttons below or ask me anything!'
+        };
+
+        function getAIResponse(input) {
+            const lowerInput = input.toLowerCase();
+            for (const [key, response] of Object.entries(aiResponses)) {
+                if (lowerInput.includes(key)) return response;
+            }
+            return aiResponses.default;
+        }
+
+        function addAIMessage(text) {
+            const aiMsg = document.createElement('div');
+            aiMsg.className = 'bg-gradient-to-r from-cyan-600/20 to-blue-600/20 p-4 rounded-xl text-sm text-zinc-100 border border-cyan-500/30 shadow-lg shadow-cyan-600/10 backdrop-blur-sm';
+            aiMsg.innerHTML = text.replace(/\n/g, '<br>');
+            aiChatMessages.appendChild(aiMsg);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+
+        function addUserMessage(text) {
+            const userMsg = document.createElement('div');
+            userMsg.className = 'bg-gradient-to-r from-blue-600/30 to-cyan-600/30 p-4 rounded-xl text-sm text-white border border-blue-500/30 shadow-lg shadow-blue-600/10 ml-8 text-right';
+            userMsg.textContent = text;
+            aiChatMessages.appendChild(userMsg);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+
+        function addTypingIndicator() {
+            const typing = document.createElement('div');
+            typing.className = 'flex gap-2 p-3';
+            typing.innerHTML = '<span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></span><span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0.2s;"></span><span class="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0.4s;"></span>';
+            aiChatMessages.appendChild(typing);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+            return typing;
+        }
+
+        aiSendBtn.addEventListener('click', () => {
+            if (aiInput.value.trim()) {
+                addUserMessage(aiInput.value);
+                const userQuery = aiInput.value;
+                aiInput.value = '';
+
+                const typing = addTypingIndicator();
+                setTimeout(() => {
+                    typing.remove();
+                    addAIMessage(getAIResponse(userQuery));
+                }, 600);
+            }
+        });
+
+        aiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') aiSendBtn.click();
+        });
+
+        // Quick Action Buttons
+        document.querySelectorAll('.quick-action').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const query = btn.getAttribute('data-query');
+                aiInput.value = query;
+                aiSendBtn.click();
+            });
+        });
+
+        // Smart Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const smartSearch = document.getElementById('smartSearch');
+
+        const searchDatabase = [
+            { title: 'Full Stack Development', category: 'Technical', icon: '💻' },
+            { title: 'Python for Data Science', category: 'Technical', icon: '🐍' },
+            { title: 'Leadership Excellence', category: 'Soft Skills', icon: '👑' },
+            { title: 'Communication Mastery', category: 'Soft Skills', icon: '🎤' },
+            { title: 'Cloud Architecture', category: 'Technical', icon: '☁️' },
+            { title: 'Team Building', category: 'Soft Skills', icon: '🤝' },
+            { title: 'AI & Machine Learning', category: 'Technical', icon: '🤖' },
+            { title: 'Emotional Intelligence', category: 'Soft Skills', icon: '❤️' }
+        ];
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length === 0) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+
+            const results = searchDatabase.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.category.toLowerCase().includes(query)
+            );
+
+            searchResults.innerHTML = results.map(item => 
+                `<div class="p-3 hover:bg-slate-700/50 cursor-pointer border-b border-slate-700 last:border-0 transition-colors flex items-center gap-3">
+                    <span class="text-xl">${item.icon}</span>
+                    <div>
+                        <p class="text-white text-sm font-medium">${item.title}</p>
+                        <p class="text-xs text-zinc-400">${item.category}</p>
+                    </div>
+                </div>`
+            ).join('');
+
+            searchResults.classList.remove('hidden');
+        });
+
+        // Keyboard shortcut for search (Cmd+K or Ctrl+K)
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                smartSearch.classList.toggle('hidden');
+                if (!smartSearch.classList.contains('hidden')) {
+                    searchInput.focus();
+                }
+            }
+        });
+
+        // Course Recommender Toggle
+        document.querySelectorAll('.toggle-recommender').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const recommender = document.getElementById('courseRecommender');
+                recommender.classList.toggle('translate-x-full');
+            });
+        });
+
+        // Update engagement metrics (simulated)
+        setInterval(() => {
+            const engagementScore = Math.floor(Math.random() * (92 - 82) + 82);
+            document.querySelector('#engagementWidget .text-cyan-400').textContent = engagementScore + '%';
+            document.querySelector('#engagementWidget [style*="width"]').style.width = engagementScore + '%';
+        }, 5000);
+
+        // Advanced: Parallax Effect on Scroll
+        document.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const elements = document.querySelectorAll('[class*="parallax"]');
+            elements.forEach(el => {
+                el.style.transform = `translateY(${scrolled * 0.5}px)`;
+            });
+        });
+
+        // Premium: Course Card Ripple Effect
+        document.querySelectorAll('.flex.flex-col.w-\\[280px\\]').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'radial-gradient(circle, rgba(255,255,255,0.5), transparent)';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.zIndex = '10';
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // AI-Powered Course Interaction Tracking
+        class CourseInteractionTracker {
+            constructor() {
+                this.interactions = new Map();
+            }
+
+            trackView(courseName) {
+                const count = (this.interactions.get(courseName) || 0) + 1;
+                this.interactions.set(courseName, count);
+                this.updateAIRecommendations();
+            }
+
+            updateAIRecommendations() {
+                // AI learns from user behavior and adapts recommendations
+                const topCourses = Array.from(this.interactions.entries())
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 3);
+                console.log('AI Learning: Top viewed courses:', topCourses);
+            }
+        }
+
+        const tracker = new CourseInteractionTracker();
+
+        // Track course hovers as implicit interest signals
+        document.querySelectorAll('[class*="group.cursor-pointer"]').forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                const courseName = card.querySelector('h3')?.textContent || `Course ${index}`;
+                tracker.trackView(courseName);
+            });
+        });
+
+        // Typing effect for AI responses (enhanced)
+        function typeMessage(element, text, speed = 30) {
+            return new Promise(resolve => {
+                let index = 0;
+                const typeInterval = setInterval(() => {
+                    if (index < text.length) {
+                        element.textContent += text.charAt(index);
+                        index++;
+                    } else {
+                        clearInterval(typeInterval);
+                        resolve();
+                    }
+                }, speed);
+            });
+        }
+
+        // Enhanced AI Send with typing effect
+        const originalSendBtn = document.getElementById('aiSendBtn');
+        originalSendBtn.addEventListener('click', async () => {
+            if (aiInput.value.trim()) {
+                const userMsg = document.createElement('div');
+                userMsg.className = 'bg-blue-600/30 p-3 rounded-lg text-sm text-white border border-blue-500/30 ml-8 text-right';
+                userMsg.textContent = aiInput.value;
+                aiChatMessages.appendChild(userMsg);
+
+                const response = getAIResponse(aiInput.value);
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'bg-slate-700/50 p-3 rounded-lg text-sm text-zinc-200 border border-slate-600/50 mr-8 min-h-8';
+                aiChatMessages.appendChild(aiMsg);
+
+                await typeMessage(aiMsg, response, 20);
+                aiInput.value = '';
+                aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+            }
+        });
+
+        // Mouse tracking for interactive gradient backgrounds
+        document.addEventListener('mousemove', (e) => {
+            const gradientBg = document.querySelector('[class*="bg-gradient"]');
+            if (gradientBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const x = (e.clientX / window.innerWidth) * 100;
+                const y = (e.clientY / window.innerHeight) * 100;
+                document.documentElement.style.setProperty('--mouse-x', x + '%');
+                document.documentElement.style.setProperty('--mouse-y', y + '%');
+            }
+        });
+
+        // Intersection Observer for lazy loading and animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    entry.target.style.animation = 'revealUp 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[class*="revealUp"]').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Real-time course filtering simulation
+        function filterCoursesByDifficulty(difficulty) {
+            const cards = document.querySelectorAll('.flex.flex-col.w-\\[280px\\]');
+            cards.forEach(card => {
+                const title = card.querySelector('h3')?.textContent || '';
+                if (difficulty === 'all' || title.toLowerCase().includes(difficulty)) {
+                    card.style.opacity = '1';
+                    card.style.display = 'flex';
+                } else {
+                    card.style.opacity = '0.3';
+                }
+            });
+        }
+
+        // Add ripple animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Notification system for premium features
+        function showNotification(message, type = 'info') {
+            const notif = document.createElement('div');
+            notif.className = `fixed top-6 right-6 px-6 py-3 rounded-lg text-white text-sm font-medium z-50 animate-in`;
+            notif.style.animation = 'slideIn 0.3s ease-out';
+            
+            const bgColor = {
+                'info': 'bg-blue-600/80',
+                'success': 'bg-emerald-600/80',
+                'warning': 'bg-yellow-600/80',
+                'error': 'bg-red-600/80'
+            }[type] || 'bg-blue-600/80';
+
+            notif.className += ' ' + bgColor + ' backdrop-blur-md border border-white/10';
+            notif.textContent = message;
+            document.body.appendChild(notif);
+
+            setTimeout(() => notif.remove(), 3000);
+        }
+
+        // Initialize premium features feedback
+        setTimeout(() => {
+            showNotification('✨ Premium AI Features Activated', 'success');
+        }, 2000);
+
+        // Initialize Lucide Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     </script>
 </body>
   
