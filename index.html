@@ -224,6 +224,10 @@
             animation: slideIn 0.3s ease-out;
         }
 
+        #aiChatModal.hidden {
+            display: none !important;
+        }
+
         #courseRecommender {
             animation: fadeInScale 0.3s ease-out;
         }
@@ -1874,7 +1878,7 @@
     </div>
 
     <!-- AI Chat Modal - Compact & Pop with Hide/Show Toggle -->
-    <div id="aiChatModal" class="fixed bottom-20 right-6 w-80 hidden md:flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl shadow-cyan-600/40 border border-cyan-500/50 z-40 max-h-[420px] overflow-hidden backdrop-blur-xl transition-all duration-300 ease-out transform origin-bottom-right" style="transform-origin: bottom right; opacity: 1;">
+    <div id="aiChatModal" class="fixed bottom-20 right-6 w-80 flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl shadow-cyan-600/40 border border-cyan-500/50 z-40 max-h-[420px] overflow-hidden backdrop-blur-xl transition-all duration-300 ease-out transform origin-bottom-right hidden" style="transform-origin: bottom right;">
         <!-- Header - Compact with Minimize/Maximize -->
         <div class="bg-gradient-to-r from-cyan-600 via-blue-600 to-blue-700 px-4 py-3 flex items-center justify-between rounded-t-2xl relative overflow-hidden group cursor-move" id="aiChatHeader">
             <div class="absolute inset-0 opacity-10 bg-gradient-to-r from-white to-transparent"></div>
@@ -1990,8 +1994,14 @@
         console.log('aiChatModal:', aiChatModal);
 
         aiChatBtn.addEventListener('click', () => {
-            aiChatModal.classList.toggle('hidden');
-            aiChatModal.style.display = aiChatModal.classList.contains('hidden') ? 'none' : 'flex';
+            const isHidden = aiChatModal.classList.contains('hidden');
+            if (isHidden) {
+                aiChatModal.classList.remove('hidden');
+                aiChatModal.style.display = 'flex';
+            } else {
+                aiChatModal.classList.add('hidden');
+                aiChatModal.style.display = 'none';
+            }
             if (!aiChatModal.classList.contains('hidden')) {
                 aiInput.focus();
             }
