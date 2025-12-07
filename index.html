@@ -133,6 +133,22 @@
             animation-play-state: paused;
         }
 
+        /* Mobile responsiveness for slider tracks */
+        @media (max-width: 768px) {
+            .slider-track,
+            .courses-slider-track,
+            .soft-skills-slider-track {
+                animation: none;
+                width: auto;
+            }
+
+            .slider-track > div,
+            .courses-slider-track > div,
+            .soft-skills-slider-track > div {
+                scroll-snap-align: start;
+            }
+        }
+
         /* Gallery Slideshow Animations */
         .slide {
             animation: fadeIn 1s ease-in-out;
@@ -1882,7 +1898,7 @@
                 <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
 
-                <div class="courses-slider-track flex gap-10 px-6">
+                <div class="courses-slider-track flex gap-10 px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory">
                     <!-- Course Slide 1 - Premium AI/ML Course -->
                     <div class="flex flex-col w-[280px] shrink-0 glass bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-3d card-rotate-hover relative overflow-hidden" style="animation: rotateCard 8s ease-in-out infinite;">
                         <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
@@ -1987,7 +2003,7 @@
                 <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
 
-                <div class="soft-skills-slider-track flex gap-10 px-6">
+                <div class="soft-skills-slider-track flex gap-10 px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory">
                     <!-- Soft Skill 1 -->
                     <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 8s ease-in-out infinite;">
                         <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
@@ -2098,7 +2114,7 @@
             <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
             <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
 
-            <div class="slider-track flex gap-10 px-6">
+            <div class="slider-track flex gap-10 px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory">
                 <!-- Trainer 1 -->
                 <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 10s ease-in-out infinite;">
                     <!-- Card glow effect -->
