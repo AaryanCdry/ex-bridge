@@ -2640,6 +2640,42 @@
                 lastScroll = currentScroll;
             });
 
+            // Mobile navigation toggle
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            const closeIcon = document.getElementById('closeIcon');
+
+            const setMenuState = (open) => {
+                if (!mobileMenu || !menuToggle) return;
+                mobileMenu.classList.toggle('hidden', !open);
+                document.body.classList.toggle('overflow-hidden', open);
+                if (menuIcon && closeIcon) {
+                    menuIcon.classList.toggle('hidden', open);
+                    closeIcon.classList.toggle('hidden', !open);
+                }
+                menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            };
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    const isOpen = !mobileMenu.classList.contains('hidden');
+                    setMenuState(!isOpen);
+                });
+            }
+
+            // Close menu when a mobile link is tapped
+            document.querySelectorAll('#mobileMenu a').forEach(link => {
+                link.addEventListener('click', () => setMenuState(false));
+            });
+
+            // Reset on resize back to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    setMenuState(false);
+                }
+            });
+
             // Magnetic hover effect for buttons
             const magneticElements = document.querySelectorAll('.magnetic');
             magneticElements.forEach(el => {
