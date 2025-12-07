@@ -45,12 +45,14 @@
 
         /* Custom Range Slider Styling */
         input[type="range"] {
+            appearance: none;
             -webkit-appearance: none;
             width: 100%;
             background: transparent;
         }
 
         input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
             -webkit-appearance: none;
             height: 16px;
             width: 16px;
@@ -136,8 +138,17 @@
             animation: fadeIn 1s ease-in-out;
         }
 
+        .fade {
+            animation: fadeInSlide 0.8s ease-in-out forwards;
+        }
+
         .fade.hidden {
             display: none;
+        }
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
@@ -470,6 +481,25 @@
             50% { filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.9)); }
         }
 
+        /* 3D Card Rotation Animation */
+        @keyframes rotateCard {
+            0% { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+            25% { transform: perspective(1000px) rotateY(5deg) rotateX(2deg); }
+            50% { transform: perspective(1000px) rotateY(0deg) rotateX(-2deg); }
+            75% { transform: perspective(1000px) rotateY(-5deg) rotateX(2deg); }
+            100% { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+        }
+
+        /* Gentle hover rotation */
+        .card-rotate-hover {
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-rotate-hover:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateY(-8px) !important;
+        }
+
         /* Magnetic hover effect */
         .magnetic {
             transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
@@ -570,6 +600,446 @@
         .nav-link:hover .tooltip {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
+        }
+
+        /* Premium icon glow effect */
+        @keyframes iconGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4)); }
+            50% { filter: drop-shadow(0 0 16px rgba(59, 130, 246, 0.8)); }
+        }
+
+        .animate-floatIcon {
+            animation: floatIcon 4s ease-in-out infinite, iconGlow 3s ease-in-out infinite;
+        }
+
+        /* Luxury stat card shimmer line animation */
+        @keyframes shimmerLine {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
+        .group:hover .shimmer-line {
+            animation: shimmerLine 1.5s ease-in-out infinite;
+        }
+
+        /* Premium badge pulse */
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        /* Advanced Interactive Ripple Effect */
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        .ripple-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple-effect::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: ripple 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Card tilt/3D effect on hover */
+        @keyframes cardTilt {
+            0%, 100% { transform: perspective(1000px) rotateX(0) rotateY(0); }
+            50% { transform: perspective(1000px) rotateX(1deg) rotateY(2deg); }
+        }
+
+        .interactive-card:hover {
+            animation: cardTilt 0.6s ease-in-out;
+        }
+
+        /* Enhanced button glow on hover */
+        @keyframes buttonGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), inset 0 0 20px rgba(59, 130, 246, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8), inset 0 0 30px rgba(59, 130, 246, 0.4); }
+        }
+
+        .button-glow:hover {
+            animation: buttonGlow 1.5s ease-in-out infinite;
+        }
+
+        /* Smooth reveal with stagger */
+        @keyframes staggerReveal {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .stagger-item {
+            animation: staggerReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        /* Floating animation with depth */
+        @keyframes deepFloat {
+            0%, 100% { transform: translateY(0) rotateZ(0deg); }
+            25% { transform: translateY(-15px) rotateZ(2deg); }
+            50% { transform: translateY(-10px) rotateZ(0deg); }
+            75% { transform: translateY(-18px) rotateZ(-2deg); }
+        }
+
+        .float-deep {
+            animation: deepFloat 6s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+        }
+
+        /* Text shimmer effect */
+        @keyframes textShimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #fff, #bbb, #fff);
+            background-size: 200% 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShimmer 3s infinite;
+        }
+
+        /* Interactive link underline animation */
+        @keyframes linkUnderline {
+            0%, 100% { width: 0; }
+            50% { width: 100%; }
+        }
+
+        .link-hover::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            animation: linkUnderline 1.2s ease-in-out infinite;
+        }
+
+        /* Scroll-triggered pulse */
+        @keyframes scrollPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .scroll-pulse {
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        /* Enhanced particle float */
+        @keyframes particleFloat {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(30px); opacity: 0; }
+        }
+
+        .particle-float {
+            animation: particleFloat 4s ease-in infinite;
+        }
+
+        /* Glitch effect for text */
+        @keyframes glitch {
+            0% { clip-path: inset(40% 0 61% 0); transform: translate(-2px, 0); }
+            20% { clip-path: inset(92% 0 1% 0); transform: translate(2px, 2px); }
+            40% { clip-path: inset(43% 0 1% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(25% 0 58% 0); transform: translate(2px, -2px); }
+            80% { clip-path: inset(54% 0 7% 0); transform: translate(-2px, -2px); }
+            100% { clip-path: inset(58% 0 43% 0); transform: translate(0); }
+        }
+
+        .glitch-text {
+            animation: glitch 0.3s ease-in-out infinite;
+        }
+
+        /* Magnetic button effect */
+        @keyframes magneticPull {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(2px, -2px); }
+            50% { transform: translate(0, 0); }
+            75% { transform: translate(-2px, 2px); }
+        }
+
+        .magnetic-hover:hover {
+            animation: magneticPull 0.4s ease-in-out;
+        }
+
+        /* Wave animation for elements */
+        @keyframes wave {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(2deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-3px) rotate(-2deg); }
+        }
+
+        .wave-animate {
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        /* Icon bounce on hover */
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.1); }
+        }
+
+        .icon-bounce:hover i {
+            animation: iconBounce 0.6s ease-in-out;
+        }
+
+        /* Advanced text fade-in */
+        @keyframes textFadeIn {
+            0% { opacity: 0; letter-spacing: 3px; }
+            100% { opacity: 1; letter-spacing: 0px; }
+        }
+
+        .text-fade-in {
+            animation: textFadeIn 1s ease-out forwards;
+        }
+
+        /* Smooth scroll behavior enhancement */
+        @keyframes smoothEntry {
+            0% { opacity: 0; filter: blur(10px); transform: translateY(20px); }
+            100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+        }
+
+        .smooth-entry {
+            animation: smoothEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Advanced hover scale with shadow */
+        .advanced-hover {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .advanced-hover:hover {
+            transform: scale(1.08) translateY(-6px);
+            filter: drop-shadow(0 20px 40px rgba(59, 130, 246, 0.4));
+        }
+
+        /* Gradient border animation */
+        @keyframes gradientBorderShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .gradient-border-animated {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #3b82f6);
+            background-size: 300% 300%;
+            animation: gradientBorderShift 6s ease infinite;
+        }
+
+        .badge-premium {
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        /* Premium Gradient Animations */
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Advanced Blur & Glass Effects */
+        @keyframes glassGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3)) drop-shadow(0 0 40px rgba(168, 85, 247, 0.1)); }
+            50% { filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 60px rgba(168, 85, 247, 0.2)); }
+        }
+
+        .glass-premium {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(32px) saturate(200%) brightness(1.1);
+            -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            animation: glassGlow 3s ease-in-out infinite;
+        }
+
+        /* Luxury Text Styling */
+        .text-luxury {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 4s ease infinite;
+        }
+
+        /* Sophisticated Border Animation */
+        @keyframes borderPulse {
+            0%, 100% { border-color: rgba(59, 130, 246, 0.3); box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+            50% { border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 0 40px rgba(168, 85, 247, 0.3); }
+        }
+
+        /* Premium Card Hover */
+        @keyframes cardLift {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-4px) scale(1.02); }
+        }
+
+        /* Shimmer Overlay */
+        @keyframes premiumShimmer {
+            0% { 
+                background-position: -1000px 0;
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.1;
+            }
+            100% { 
+                background-position: 1000px 0;
+                opacity: 0;
+            }
+        }
+
+        .shimmer-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background-size: 1000px 100%;
+            pointer-events: none;
+            animation: premiumShimmer 3s infinite;
+        }
+
+        /* Light Refraction Effect */
+        @keyframes refract {
+            0%, 100% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 0.15; }
+        }
+
+        .light-refract {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1),
+                transparent);
+            animation: refract 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        /* Text Glow Effects */
+        .text-glow-blue {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .text-glow-purple {
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+        }
+
+        /* Advanced Shadow Stack */
+        .shadow-luxury {
+            box-shadow: 
+                0 10px 30px rgba(59, 130, 246, 0.15),
+                0 20px 60px rgba(168, 85, 247, 0.1),
+                0 30px 80px rgba(34, 211, 238, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* Particle Bloom Effect */
+        @keyframes bloom {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% { 
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .bloom-effect {
+            animation: bloom 2s ease-in-out infinite;
+        }
+
+        /* Neon Glow */
+        .neon-glow {
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6),
+                        0 0 20px rgba(168, 85, 247, 0.4),
+                        0 0 30px rgba(34, 211, 238, 0.2),
+                        inset 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Smooth Gradient Border */
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
+            border: 2px solid;
+            border-image: linear-gradient(135deg, 
+                #3b82f6, 
+                #8b5cf6, 
+                #ec4899, 
+                #06b6d4) 1;
+        }
+
+        /* Premium Input Styling */
+        input, textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3) !important;
+        }
+
+        /* Enhanced Button Styling */
+        button {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        }
+
+        button:hover {
+            transform: translateY(-2px) !important;
+        }
+
+        /* Smooth Scrolling Enhanced */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        /* Section Dividers with Gradient */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent,
+                rgba(59, 130, 246, 0.3),
+                rgba(168, 85, 247, 0.3),
+                transparent);
+        }
+
+        /* Hover Lift Effect */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            filter: drop-shadow(0 20px 40px rgba(59, 130, 246, 0.2));
+        }
+
+        /* Advanced Overlay */
+        .premium-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                rgba(59, 130, 246, 0.05),
+                rgba(168, 85, 247, 0.05),
+                rgba(34, 211, 238, 0.05));
+            pointer-events: none;
+            mix-blend-mode: overlay;
         }
     </style>
 </head>
@@ -754,9 +1224,9 @@
         </div>
 
         <!-- Premium Badge with Animation -->
-        <div class="absolute top-32 right-6 lg:right-12 z-20 hidden lg:flex items-center gap-2 px-4 py-3 bg-white/90 backdrop-blur rounded-full border border-blue-200/60 shadow-lg shadow-blue-200/50 animate-bounce-slow">
-            <div class="w-3 h-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-pulse"></div>
-            <span class="text-sm font-semibold text-zinc-900">Premium Training</span>
+        <div class="absolute top-32 right-6 lg:right-12 z-20 hidden lg:flex items-center gap-2 px-5 py-3 glass-premium rounded-full shadow-luxury neon-glow hover-lift">
+            <div class="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse bloom-effect"></div>
+            <span class="text-sm font-semibold text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">✨ Premium Training</span>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center reveal">
@@ -772,8 +1242,8 @@
             </div>
 
             <h1 class="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-8">
-                <span class="bg-gradient-to-r from-zinc-900 via-blue-600 to-blue-700 bg-clip-text text-transparent">Bridge the gap between</span> <br class="hidden lg:block" />
-                <span class="typewriter bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent" id="typingText">potential and excellence</span><span class="animate-blink text-blue-600">.</span>
+                <span class="text-luxury">Bridge the gap between</span> <br class="hidden lg:block" />
+                <span class="text-glow-blue text-luxury" id="typingText">potential and excellence</span><span class="animate-blink text-blue-600">.</span>
             </h1>
 
             <p class="text-lg lg:text-xl text-zinc-600 max-w-2xl mx-auto mb-14 leading-relaxed font-medium">
@@ -782,59 +1252,62 @@
                 communication skills.
             </p>
 
-            <!-- Feature Highlights with enhanced interactivity -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14 max-w-3xl mx-auto">
-                <div class="p-3 bg-blue-50/60 border border-blue-200/50 rounded-lg hover:scale-105 transition-transform duration-300 card-3d relative overflow-hidden group cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-blue-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                    <div class="inline-block mb-2 relative z-10">
-                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a.75.75 0 00-1.788 0l-7 40a.75.75 0 001.497.084l1.41-4.649a.75.75 0 011.410 0l1.41 4.649a.75.75 0 001.497-.084l-7-40zM12.122 5.303a.75.75 0 011.06-1.06L15 7.879l2.879-2.879a.75.75 0 111.06 1.06L16.06 8.94l2.879 2.879a.75.75 0 11-1.06 1.06L15 10.06l-2.879 2.879a.75.75 0 11-1.06-1.06L13.94 10.06l-2.879-2.879z"/></path></svg>
+            <!-- Feature Highlights with premium glassmorphism -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14 max-w-3xl mx-auto">
+                <div class="p-4 glass-premium rounded-xl neon-glow hover-lift relative overflow-hidden group cursor-pointer">
+                    <div class="shimmer-overlay rounded-xl"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
+                    <div class="inline-block mb-3 relative z-10 p-2 bg-gradient-to-br from-blue-400/30 to-cyan-400/20 rounded-lg">
+                        <i data-lucide="zap" class="w-5 h-5 text-blue-300 drop-shadow-lg"></i>
                     </div>
-                    <p class="text-xs font-semibold text-zinc-900 relative z-10">Industry Experts</p>
+                    <p class="text-sm font-bold text-transparent bg-gradient-to-r from-blue-300 to-cyan-200 bg-clip-text">Expert-Led</p>
                 </div>
-                <div class="p-3 bg-cyan-50/60 border border-cyan-200/50 rounded-lg hover:scale-105 transition-transform duration-300 card-3d relative overflow-hidden group cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-cyan-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                    <div class="inline-block mb-2 relative z-10">
-                        <svg class="w-5 h-5 text-cyan-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-11-4v4m7-4v4m-7 2h10"/></path></svg>
+                <div class="p-4 glass-premium rounded-xl neon-glow hover-lift relative overflow-hidden group cursor-pointer">
+                    <div class="shimmer-overlay rounded-xl"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
+                    <div class="inline-block mb-3 relative z-10 p-2 bg-gradient-to-br from-cyan-400/30 to-emerald-400/20 rounded-lg">
+                        <i data-lucide="calendar" class="w-5 h-5 text-cyan-300 drop-shadow-lg"></i>
                     </div>
-                    <p class="text-xs font-semibold text-zinc-900 relative z-10">Live Sessions</p>
+                    <p class="text-sm font-bold text-transparent bg-gradient-to-r from-cyan-300 to-emerald-200 bg-clip-text">Live Sessions</p>
                 </div>
-                <div class="p-3 bg-blue-50/60 border border-blue-200/50 rounded-lg hover:scale-105 transition-transform duration-300 card-3d relative overflow-hidden group cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-400/10 to-blue-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                    <div class="inline-block mb-2 relative z-10">
-                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M12 2a1 1 0 011 1v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V3a1 1 0 011-1h2z"/></path></svg>
+                <div class="p-4 glass-premium rounded-xl neon-glow hover-lift relative overflow-hidden group cursor-pointer">
+                    <div class="shimmer-overlay rounded-xl"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
+                    <div class="inline-block mb-3 relative z-10 p-2 bg-gradient-to-br from-purple-400/30 to-pink-400/20 rounded-lg">
+                        <i data-lucide="award" class="w-5 h-5 text-purple-300 drop-shadow-lg"></i>
                     </div>
-                    <p class="text-xs font-semibold text-zinc-900 relative z-10">Certificates</p>
+                    <p class="text-sm font-bold text-transparent bg-gradient-to-r from-purple-300 to-pink-200 bg-clip-text">Certificates</p>
                 </div>
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
                 <a href="/index.html#technical"
-                    class="magnetic w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold rounded-full transition-all shadow-lg shadow-blue-600/30 hover:shadow-xl hover:shadow-blue-600/40 flex items-center justify-center gap-2 group hover:scale-105 active:scale-95 relative overflow-hidden">
-                    <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-                    <span class="absolute inset-0 shimmer"></span>
-                    <span class="relative">Explore Courses</span>
-                    <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2] group-hover:translate-x-1 transition-transform relative"></i>
+                    class="button-glow magnetic w-full sm:w-auto px-8 py-4 glass-premium neon-glow text-white font-bold rounded-full transition-all shadow-luxury flex items-center justify-center gap-2 group hover-lift active:scale-95 relative overflow-hidden border border-white/20 advanced-hover">
+                    <span class="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-300/40 to-blue-400/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 rounded-full"></span>
+                    <span class="absolute inset-0 shimmer-overlay rounded-full"></span>
+                    <span class="relative text-transparent bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text group-hover:scale-105 transition-transform inline-block">Explore Courses</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2.5] text-cyan-300 group-hover:translate-x-2 group-hover:-rotate-45 transition-all relative"></i>
                 </a>
                 <a href="/ContactUs.html"
-                    class="magnetic w-full sm:w-auto px-8 py-3.5 bg-white border-2 border-blue-200 hover:border-cyan-300 text-blue-600 font-bold rounded-full transition-all hover:bg-cyan-50 hover:shadow-lg flex items-center justify-center gap-2 group hover:scale-105 active:scale-95 relative overflow-hidden">
-                    <span class="absolute inset-0 bg-gradient-to-r from-cyan-50/0 via-cyan-50/100 to-cyan-50/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
-                    <span class="relative">Contact Us</span>
-                    <i data-lucide="phone" class="w-4 h-4 relative"></i>
+                    class="button-glow magnetic w-full sm:w-auto px-8 py-3.5 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-bold rounded-full transition-all hover:shadow-lg border-2 border-white/20 hover:border-white/40 flex items-center justify-center gap-2 group hover-lift active:scale-95 relative overflow-hidden advanced-hover icon-bounce">
+                    <span class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-300/30 to-cyan-400/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500 rounded-full"></span>
+                    <span class="relative group-hover:scale-105 transition-transform inline-block">Contact Us</span>
+                    <i data-lucide="phone" class="w-4 h-4 stroke-[2.5]"></i>
                 </a>
             </div>
 
             <!-- Student Trust Section -->
-            <div class="mt-20 pt-16 border-t border-blue-200/50">
-                <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-6">
+            <div class="mt-20 pt-16 section-divider">
+                <p class="text-xs font-bold text-transparent bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text uppercase tracking-widest mb-6">
                     ✓ Trusted by industry leaders & Universities
                 </p>
-                <div class="flex items-center justify-center gap-6">
+                <div class="flex items-center justify-center gap-8">
                     <div class="flex -space-x-3">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">A</div>
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">B</div>
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">C</div>
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">D</div>
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs border-2 border-white shadow-md hover:scale-110 transition-transform">+10k</div>
+                        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xs border-3 border-white/40 shadow-lg shadow-blue-600/50 hover:scale-125 transition-transform hover-lift">A</div>
+                        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white font-bold text-xs border-3 border-white/40 shadow-lg shadow-cyan-600/50 hover:scale-125 transition-transform hover-lift">B</div>
+                        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold text-xs border-3 border-white/40 shadow-lg shadow-purple-600/50 hover:scale-125 transition-transform hover-lift">C</div>
+                        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-xs border-3 border-white/40 shadow-lg shadow-emerald-600/50 hover:scale-125 transition-transform hover-lift">D</div>
+                        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-xs border-3 border-white/40 shadow-lg shadow-pink-600/50 hover:scale-125 transition-transform hover-lift">+10k</div>
                     </div>
                     <div>
                         <div class="flex gap-1 justify-center">
@@ -895,157 +1368,455 @@
             </div>
 
             <div class="relative">
-                <!-- Decorative floating icons -->
-                <div class="absolute -top-12 -right-8 opacity-20 animate-floatIcon" style="animation-duration: 5s;">
-                    <svg class="w-24 h-24 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                <!-- Decorative floating icons - Premium Luxury Edition -->
+                <div class="absolute -top-12 -right-8 opacity-50 animate-floatIcon group" style="animation-duration: 5s;">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="relative p-6 bg-gradient-to-br from-blue-500/40 to-cyan-500/20 rounded-3xl border border-blue-400/50 backdrop-blur-md shadow-2xl shadow-blue-600/40">
+                        <svg class="w-28 h-28 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                    </div>
                 </div>
-                <div class="absolute -left-6 top-1/2 opacity-20 animate-floatIcon" style="animation-duration: 6s; animation-delay: 1s;">
-                    <svg class="w-32 h-32 text-purple-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-2-13h4v6h-4z"/></svg>
+                <div class="absolute -left-6 top-1/2 opacity-50 animate-floatIcon group" style="animation-duration: 6s; animation-delay: 1s;">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-400 rounded-full blur-3xl opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="relative p-8 bg-gradient-to-br from-purple-500/40 to-pink-500/20 rounded-3xl border border-purple-400/50 backdrop-blur-md shadow-2xl shadow-purple-600/40">
+                        <svg class="w-36 h-36 bg-gradient-to-r from-purple-300 via-pink-300 to-purple-400 bg-clip-text text-transparent drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-2-13h4v6h-4z"/></svg>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-5 relative z-10">
-                    <div class="glass bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl shadow-lg shadow-blue-600/20 border border-blue-500/50 hover:shadow-xl hover:shadow-blue-600/30 transition-all group cursor-pointer card-3d relative overflow-hidden">
-                        <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
-                        <div class="flex items-center justify-between mb-4">
-                            <i data-lucide="users" class="w-8 h-8 text-blue-200 group-hover:scale-110 transition-transform"></i>
-                        </div>
-                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+                <div class="grid grid-cols-2 gap-3 relative z-10">
+                    <!-- Card 1: Students Trained -->
+                    <div class="glass bg-gradient-to-br from-blue-600 to-blue-700 p-4 rounded-lg shadow-2xl shadow-blue-600/30 border border-blue-500/60 hover:shadow-3xl hover:shadow-blue-600/50 transition-all group cursor-pointer card-3d relative overflow-hidden hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-transparent to-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute top-0 right-0 w-12 h-12 bg-blue-400/10 rounded-full blur-2xl group-hover:blur-3xl transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="p-1.5 bg-blue-500/30 rounded-md backdrop-blur">
+                                    <i data-lucide="users" class="w-4 h-4 text-blue-200 group-hover:scale-125 transition-transform"></i>
+                                </div>
+                                <span class="text-xs font-bold text-blue-200 bg-blue-500/30 px-1.5 py-0.5 rounded-full text-[9px]">Top</span>
+                            </div>
+                            <div class="text-3xl font-bold text-white tracking-tight mb-1 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                                 <span class="counter" data-target="15000" data-suffix="k+">0k+</span>
+                            </div>
+                            <div class="text-xs font-semibold text-blue-100">Students Trained</div>
+                            <div class="mt-1 h-0.5 w-full bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
-                        <div class="text-sm font-semibold text-blue-100">Students Trained</div>
                     </div>
-                    <div class="glass bg-gradient-to-br from-cyan-500 to-cyan-600 p-8 rounded-2xl shadow-lg shadow-cyan-500/20 border border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-500/30 transition-all group cursor-pointer card-3d relative overflow-hidden">
-                        <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
-                        <div class="flex items-center justify-between mb-4">
-                            <i data-lucide="target" class="w-8 h-8 text-cyan-200 group-hover:scale-110 transition-transform relative z-10"></i>
-                        </div>
-                        <div class="text-5xl font-bold text-white tracking-tight mb-2 relative z-10">
+
+                    <!-- Card 2: Pass Rate -->
+                    <div class="glass bg-gradient-to-br from-cyan-500 to-cyan-600 p-4 rounded-lg shadow-2xl shadow-cyan-500/30 border border-cyan-400/60 hover:shadow-3xl hover:shadow-cyan-500/50 transition-all group cursor-pointer card-3d relative overflow-hidden hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-300/20 via-transparent to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute top-0 right-0 w-12 h-12 bg-cyan-400/10 rounded-full blur-2xl group-hover:blur-3xl transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="p-1.5 bg-cyan-400/30 rounded-md backdrop-blur">
+                                    <i data-lucide="target" class="w-4 h-4 text-cyan-200 group-hover:scale-125 transition-transform"></i>
+                                </div>
+                                <span class="text-xs font-bold text-cyan-200 bg-cyan-500/30 px-1.5 py-0.5 rounded-full text-[9px]">Success</span>
+                            </div>
+                            <div class="text-3xl font-bold text-white tracking-tight mb-1 bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent">
                                 <span class="counter" data-target="94" data-suffix="%">0%</span>
-                        </div>
-                        <div class="text-sm font-semibold text-cyan-100 relative z-10">
-                            Pass Rate
+                            </div>
+                            <div class="text-xs font-semibold text-cyan-100">Pass Rate</div>
+                            <div class="mt-1 h-0.5 w-full bg-gradient-to-r from-cyan-300 to-blue-300 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
                     </div>
-                    <div class="glass bg-gradient-to-br from-blue-500 to-blue-600 p-8 rounded-2xl shadow-lg shadow-blue-500/20 border border-blue-400/50 hover:shadow-xl hover:shadow-blue-500/30 transition-all group cursor-pointer card-3d relative overflow-hidden">
-                        <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
-                        <div class="flex items-center justify-between mb-4">
-                            <i data-lucide="briefcase" class="w-8 h-8 text-blue-200 group-hover:scale-110 transition-transform"></i>
-                        </div>
-                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+
+                    <!-- Card 3: Job Opportunities -->
+                    <div class="glass bg-gradient-to-br from-blue-500 to-blue-600 p-4 rounded-lg shadow-2xl shadow-blue-500/30 border border-blue-400/60 hover:shadow-3xl hover:shadow-blue-500/50 transition-all group cursor-pointer card-3d relative overflow-hidden hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-300/20 via-transparent to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute top-0 right-0 w-12 h-12 bg-blue-400/10 rounded-full blur-2xl group-hover:blur-3xl transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="p-1.5 bg-blue-400/30 rounded-md backdrop-blur">
+                                    <i data-lucide="briefcase" class="w-4 h-4 text-blue-200 group-hover:scale-125 transition-transform"></i>
+                                </div>
+                                <span class="text-xs font-bold text-blue-200 bg-blue-500/30 px-1.5 py-0.5 rounded-full text-[9px]">Career</span>
+                            </div>
+                            <div class="text-3xl font-bold text-white tracking-tight mb-1 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                                 <span class="counter" data-target="120" data-suffix="+">0+</span>
+                            </div>
+                            <div class="text-xs font-semibold text-blue-100">Job Opportunities</div>
+                            <div class="mt-1 h-0.5 w-full bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
-                        <div class="text-sm font-semibold text-blue-100">Job Opportunities</div>
                     </div>
-                    <div class="bg-gradient-to-br from-cyan-600 to-cyan-700 p-8 rounded-2xl shadow-lg shadow-cyan-600/20 border border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-600/30 transition-all group cursor-pointer hover:scale-105">
-                        <div class="flex items-center justify-between mb-4">
-                            <i data-lucide="rocket" class="w-8 h-8 text-cyan-200 group-hover:scale-110 transition-transform"></i>
-                        </div>
-                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+
+                    <!-- Card 4: Internship Assistance -->
+                    <div class="bg-gradient-to-br from-cyan-600 to-cyan-700 p-4 rounded-lg shadow-2xl shadow-cyan-600/30 border border-cyan-500/60 hover:shadow-3xl hover:shadow-cyan-600/50 transition-all group cursor-pointer hover:scale-105 relative overflow-hidden card-3d">
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-transparent to-emerald-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute top-0 right-0 w-12 h-12 bg-cyan-400/10 rounded-full blur-2xl group-hover:blur-3xl transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="p-1.5 bg-cyan-500/30 rounded-md backdrop-blur">
+                                    <i data-lucide="rocket" class="w-4 h-4 text-cyan-200 group-hover:scale-125 transition-transform"></i>
+                                </div>
+                                <span class="text-xs font-bold text-cyan-200 bg-cyan-500/30 px-1.5 py-0.5 rounded-full text-[9px]">Launch</span>
+                            </div>
+                            <div class="text-3xl font-bold text-white tracking-tight mb-1 bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent">
                                 <span class="counter" data-target="500" data-suffix="+">0+</span>
+                            </div>
+                            <div class="text-xs font-semibold text-cyan-100">Internship Assistance</div>
+                            <div class="mt-1 h-0.5 w-full bg-gradient-to-r from-cyan-300 to-emerald-300 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
-                        <div class="text-sm font-semibold text-cyan-100">Internship Assistance</div>
                     </div>
-                    <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl shadow-lg shadow-blue-600/20 border border-blue-500/50 hover:shadow-xl hover:shadow-blue-600/30 transition-all group cursor-pointer hover:scale-105">
-                        <div class="flex items-center justify-between mb-4">
-                            <i data-lucide="smile" class="w-8 h-8 text-blue-200 group-hover:scale-110 transition-transform"></i>
-                        </div>
-                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+
+                    <!-- Card 5: Student Satisfaction -->
+                    <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-4 rounded-lg shadow-2xl shadow-blue-600/30 border border-blue-500/60 hover:shadow-3xl hover:shadow-blue-600/50 transition-all group cursor-pointer hover:scale-105 relative overflow-hidden card-3d">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-transparent to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute top-0 right-0 w-12 h-12 bg-blue-400/10 rounded-full blur-2xl group-hover:blur-3xl transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="p-1.5 bg-blue-500/30 rounded-md backdrop-blur">
+                                    <i data-lucide="smile" class="w-4 h-4 text-blue-200 group-hover:scale-125 transition-transform"></i>
+                                </div>
+                                <span class="text-xs font-bold text-blue-200 bg-blue-500/30 px-1.5 py-0.5 rounded-full text-[9px]">Happy</span>
+                            </div>
+                            <div class="text-3xl font-bold text-white tracking-tight mb-1 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                                 <span class="counter" data-target="98" data-suffix="%">0%</span>
+                            </div>
+                            <div class="text-xs font-semibold text-blue-100">Student Satisfaction</div>
+                            <div class="mt-1 h-0.5 w-full bg-gradient-to-r from-blue-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
-                        <div class="text-sm font-semibold text-blue-100">Student Satisfaction</div>
                     </div>
-                    <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 p-8 rounded-2xl shadow-lg shadow-cyan-500/20 border border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-500/30 transition-all group cursor-pointer hover:scale-105">
-                        <div class="flex items-center justify-between mb-4">
-                            <i data-lucide="star" class="w-8 h-8 text-cyan-200 group-hover:scale-110 transition-transform fill-current"></i>
-                        </div>
-                        <div class="text-5xl font-bold text-white tracking-tight mb-2">
+
+                    <!-- Card 6: Average Rating -->
+                    <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 p-4 rounded-lg shadow-2xl shadow-cyan-500/30 border border-cyan-400/60 hover:shadow-3xl hover:shadow-cyan-500/50 transition-all group cursor-pointer hover:scale-105 relative overflow-hidden card-3d">
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-300/20 via-transparent to-yellow-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute top-0 right-0 w-12 h-12 bg-cyan-400/10 rounded-full blur-2xl group-hover:blur-3xl transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="p-1.5 bg-cyan-400/30 rounded-md backdrop-blur">
+                                    <i data-lucide="star" class="w-4 h-4 text-cyan-200 group-hover:scale-125 transition-transform fill-current"></i>
+                                </div>
+                                <span class="text-xs font-bold text-cyan-200 bg-cyan-500/30 px-1.5 py-0.5 rounded-full text-[9px]">Rated</span>
+                            </div>
+                            <div class="text-3xl font-bold text-white tracking-tight mb-1 bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent">
                                 <span class="counter" data-target="4.9" data-suffix="★">0★</span>
+                            </div>
+                            <div class="text-xs font-semibold text-cyan-100">Average Rating</div>
+                            <div class="mt-1 h-0.5 w-full bg-gradient-to-r from-cyan-300 to-yellow-300 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
-                        <div class="text-sm font-semibold text-cyan-100">Average Rating</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-28 bg-gradient-to-b from-white to-blue-50/50 reveal">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <span class="text-sm font-bold text-blue-600 block mb-4">OUR MOMENTS</span>
-                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-zinc-900 to-blue-600 bg-clip-text text-transparent mb-4">Gallery</h2>
-                <p class="text-lg text-zinc-600 max-w-2xl mx-auto">Glimpses of our training excellence and student achievements</p>
+    <!-- Gallery Section - Card Grid Layout -->
+    <section id="gallery" class="py-24 relative overflow-hidden reveal" style="background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 25%, #f0f9ff 50%, #f5f3ff 75%, #faf5ff 100%);">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-400/15 rounded-full blur-3xl" style="animation: deepFloat 12s ease-in-out infinite;"></div>
+            <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl" style="animation: deepFloat 14s ease-in-out infinite; animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <div class="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/50 rounded-full backdrop-blur-md">
+                    <span class="text-sm font-bold text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text uppercase tracking-widest">✨ Gallery</span>
+                </div>
+                <h2 class="text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Our Highlights</h2>
+                <p class="text-lg text-zinc-600 max-w-2xl mx-auto font-medium">Premium moments and achievements from our community</p>
             </div>
 
-            <!-- Slideshow Container with Decorative Frame -->
-            <div class="relative w-full max-w-4xl mx-auto group">
-                <!-- Decorative Corner Frames -->
-                <div class="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-blue-400 z-20"></div>
-                <div class="absolute -top-4 -right-4 w-12 h-12 border-t-2 border-r-2 border-blue-400 z-20"></div>
-                <div class="absolute -bottom-4 -left-4 w-12 h-12 border-b-2 border-l-2 border-blue-400 z-20"></div>
-                <div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-blue-400 z-20"></div>
-
-                <!-- Decorative floating particles around gallery -->
-                <div class="absolute -top-20 -right-20 opacity-30 pointer-events-none animate-floatIcon" style="animation-duration: 7s;">
-                    <svg class="w-32 h-32 text-blue-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 - Blue -->
+                <div class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer hover:scale-105 transition-all duration-500" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(6, 182, 212, 0.8) 100%); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-400/40 via-transparent to-cyan-600/40" style="mix-blend-mode: overlay;"></div>
+                    <div class="absolute inset-0 backdrop-blur-sm"></div>
+                    <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 py-8">
+                        <div class="mb-3 p-4 rounded-full bg-white/20 border border-white/40 backdrop-blur-md group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Training</h3>
+                        <p class="text-sm text-blue-100 font-medium">5000+ Students Trained</p>
+                    </div>
                 </div>
-                <div class="absolute -bottom-20 -left-20 opacity-30 pointer-events-none animate-floatIcon" style="animation-duration: 8s; animation-delay: 2s;">
-                    <svg class="w-40 h-40 text-purple-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+
+                <!-- Card 2 - Emerald -->
+                <div class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer hover:scale-105 transition-all duration-500" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.9) 0%, rgba(6, 182, 212, 0.8) 100%); box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/40 via-transparent to-cyan-600/40" style="mix-blend-mode: overlay;"></div>
+                    <div class="absolute inset-0 backdrop-blur-sm"></div>
+                    <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 py-8">
+                        <div class="mb-3 p-4 rounded-full bg-white/20 border border-white/40 backdrop-blur-md group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="award" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Certified</h3>
+                        <p class="text-sm text-emerald-100 font-medium">2500+ Certifications</p>
+                    </div>
                 </div>
 
-                <div class="slideshow-container relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl overflow-hidden shadow-2xl shadow-blue-600/30 border border-blue-400/30 group-hover:shadow-3xl group-hover:shadow-blue-600/50 transition-all duration-500">
-                    <!-- Slides with improved animations -->
-                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-700 revealUp">
-                        <div class="absolute inset-0 opacity-20 animate-pulse"></div>
-                        <div class="relative z-10 text-center text-white px-6 transform group-hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="users" class="w-20 h-20 mx-auto mb-4 opacity-80 animate-floatIcon" style="animation-duration: 4s;"></i>
-                            <h3 class="text-3xl font-bold mb-2">Student Training Sessions</h3>
-                            <p class="text-blue-100">Interactive and engaging classroom experiences</p>
+                <!-- Card 3 - Pink -->
+                <div class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer hover:scale-105 transition-all duration-500" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.9) 0%, rgba(168, 85, 247, 0.8) 100%); box-shadow: 0 8px 32px rgba(236, 72, 153, 0.3);">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-400/40 via-transparent to-purple-600/40" style="mix-blend-mode: overlay;"></div>
+                    <div class="absolute inset-0 backdrop-blur-sm"></div>
+                    <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 py-8">
+                        <div class="mb-3 p-4 rounded-full bg-white/20 border border-white/40 backdrop-blur-md group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Placed</h3>
+                        <p class="text-sm text-pink-100 font-medium">1500+ Job Placements</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 - Yellow -->
+                <div class="group relative h-64 rounded-2xl overflow-hidden cursor-pointer hover:scale-105 transition-all duration-500" style="background: linear-gradient(135deg, rgba(250, 204, 21, 0.9) 0%, rgba(52, 211, 153, 0.8) 100%); box-shadow: 0 8px 32px rgba(250, 204, 21, 0.3);">
+                    <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/40 via-transparent to-emerald-600/40" style="mix-blend-mode: overlay;"></div>
+                    <div class="absolute inset-0 backdrop-blur-sm"></div>
+                    <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 py-8">
+                        <div class="mb-3 p-4 rounded-full bg-white/20 border border-white/40 backdrop-blur-md group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="star" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Success</h3>
+                        <p class="text-sm text-yellow-100 font-medium">98% Success Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Previous Projects Slideshow Gallery -->
+    <section id="projects" class="py-24 relative overflow-hidden reveal" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #2a1a3d 100%);">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl" style="animation: deepFloat 12s ease-in-out infinite;"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" style="animation: deepFloat 14s ease-in-out infinite; animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <div class="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-400/50 rounded-full backdrop-blur-md">
+                    <span class="text-sm font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text uppercase tracking-widest">📁 Portfolio</span>
+                </div>
+                <h2 class="text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Previous Projects</h2>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto font-medium">Showcase of our finest work and completed initiatives</p>
+            </div>
+
+            <!-- Projects Slideshow Container -->
+            <div class="relative max-w-4xl mx-auto group advanced-hover">
+                <!-- Premium Background Glow -->
+                <div class="absolute -inset-8 bg-gradient-to-br from-purple-500/25 via-pink-500/15 to-blue-500/25 rounded-3xl blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>
+                
+                <!-- Slideshow Container -->
+                <div class="projects-slideshow-container relative rounded-3xl shadow-3xl border-2 border-white/40 group-hover:border-white/70 transition-all duration-700 overflow-hidden" style="background: linear-gradient(135deg, rgba(20, 30, 50, 0.98) 0%, rgba(30, 50, 100, 0.95) 100%); backdrop-filter: blur(30px); box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);">
+                    
+                    <!-- Multi-Layer Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-600/30 via-transparent to-pink-600/30 pointer-events-none z-5 rounded-3xl" style="mix-blend-mode: overlay;"></div>
+
+                    <!-- Projects Slides -->
+                    <div class="relative overflow-hidden">
+                        <!-- Slide 1: E-Commerce -->
+                        <div class="project-slide fade relative w-full h-96 flex items-stretch" style="display: flex;">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800"></div>
+                            <div class="absolute inset-0 bg-gradient-to-tl from-transparent via-cyan-500/25 to-blue-600/40 mix-blend-overlay" style="animation: gradientFlow 8s ease-in-out infinite;"></div>
+                            
+                            <!-- Image Area - Left Side -->
+                            <div class="relative z-10 w-1/2 h-full flex items-center justify-center p-8">
+                                <div class="w-full h-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center overflow-hidden group hover:scale-105 transition-transform duration-300">
+                                    <img class="project-image w-full h-full object-cover" src="" alt="E-Commerce Platform" style="display: none;" />
+                                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-400/40 to-cyan-400/30">
+                                        <i data-lucide="image" class="w-20 h-20 text-white/50 mb-4"></i>
+                                        <p class="text-white/70 text-base font-medium text-center px-6">Add project screenshot</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Content Area - Right Side -->
+                            <div class="relative z-10 w-1/2 text-white px-10 py-8 flex flex-col justify-center">
+                                <div class="mb-4 inline-block p-3 bg-gradient-to-br from-blue-500/50 to-cyan-400/30 rounded-2xl border border-blue-300/60 backdrop-blur-lg w-fit">
+                                    <i data-lucide="shopping-cart" class="w-8 h-8 text-cyan-200"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-3">E-Commerce Platform</h3>
+                                <p class="text-base text-blue-100 mb-6 font-light leading-relaxed">Full-stack marketplace with integrated payment processing, inventory management, and customer analytics</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-blue-100 border border-white/40 backdrop-blur-md text-xs font-medium">React</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-blue-100 border border-white/40 backdrop-blur-md text-xs font-medium">Node.js</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-blue-100 border border-white/40 backdrop-blur-md text-xs font-medium">MongoDB</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-blue-100 border border-white/40 backdrop-blur-md text-xs font-medium">Stripe</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: AI Chatbot -->
+                        <div class="project-slide fade relative w-full h-96 flex items-stretch" style="display: none;">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800"></div>
+                            <div class="absolute inset-0 bg-gradient-to-tl from-transparent via-pink-500/25 to-purple-600/40 mix-blend-overlay" style="animation: gradientFlow 8s ease-in-out infinite;"></div>
+                            
+                            <!-- Image Area - Left Side -->
+                            <div class="relative z-10 w-1/2 h-full flex items-center justify-center p-8">
+                                <div class="w-full h-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center overflow-hidden group hover:scale-105 transition-transform duration-300">
+                                    <img class="project-image w-full h-full object-cover" src="" alt="AI Chatbot System" style="display: none;" />
+                                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-purple-400/40 to-pink-400/30">
+                                        <i data-lucide="image" class="w-20 h-20 text-white/50 mb-4"></i>
+                                        <p class="text-white/70 text-base font-medium text-center px-6">Add project screenshot</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Content Area - Right Side -->
+                            <div class="relative z-10 w-1/2 text-white px-10 py-8 flex flex-col justify-center">
+                                <div class="mb-4 inline-block p-3 bg-gradient-to-br from-purple-500/50 to-pink-400/30 rounded-2xl border border-purple-300/60 backdrop-blur-lg w-fit">
+                                    <i data-lucide="brain" class="w-8 h-8 text-pink-200"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-3">AI Chatbot System</h3>
+                                <p class="text-base text-purple-100 mb-6 font-light leading-relaxed">Intelligent conversational AI with natural language processing for customer support and engagement automation</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-purple-100 border border-white/40 backdrop-blur-md text-xs font-medium">Python</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-purple-100 border border-white/40 backdrop-blur-md text-xs font-medium">TensorFlow</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-purple-100 border border-white/40 backdrop-blur-md text-xs font-medium">FastAPI</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-purple-100 border border-white/40 backdrop-blur-md text-xs font-medium">NLTK</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Mobile App -->
+                        <div class="project-slide fade relative w-full h-96 flex items-stretch" style="display: none;">
+                            <div class="absolute inset-0 bg-gradient-to-br from-pink-600 via-rose-700 to-pink-800"></div>
+                            <div class="absolute inset-0 bg-gradient-to-tl from-transparent via-rose-500/25 to-pink-600/40 mix-blend-overlay" style="animation: gradientFlow 8s ease-in-out infinite;"></div>
+                            
+                            <!-- Image Area - Left Side -->
+                            <div class="relative z-10 w-1/2 h-full flex items-center justify-center p-8">
+                                <div class="w-full h-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center overflow-hidden group hover:scale-105 transition-transform duration-300">
+                                    <img class="project-image w-full h-full object-cover" src="" alt="Fitness Mobile App" style="display: none;" />
+                                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-pink-400/40 to-rose-400/30">
+                                        <i data-lucide="image" class="w-20 h-20 text-white/50 mb-4"></i>
+                                        <p class="text-white/70 text-base font-medium text-center px-6">Add project screenshot</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Content Area - Right Side -->
+                            <div class="relative z-10 w-1/2 text-white px-10 py-8 flex flex-col justify-center">
+                                <div class="mb-4 inline-block p-3 bg-gradient-to-br from-pink-500/50 to-rose-400/30 rounded-2xl border border-pink-300/60 backdrop-blur-lg w-fit">
+                                    <i data-lucide="smartphone" class="w-8 h-8 text-rose-200"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-3">Fitness Mobile App</h3>
+                                <p class="text-base text-pink-100 mb-6 font-light leading-relaxed">Cross-platform fitness tracking application with workout routines, progress analytics, and social challenges</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-pink-100 border border-white/40 backdrop-blur-md text-xs font-medium">Flutter</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-pink-100 border border-white/40 backdrop-blur-md text-xs font-medium">Firebase</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-pink-100 border border-white/40 backdrop-blur-md text-xs font-medium">Dart</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-pink-100 border border-white/40 backdrop-blur-md text-xs font-medium">HealthKit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Analytics Dashboard -->
+                        <div class="project-slide fade relative w-full h-96 flex items-stretch" style="display: none;">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-600 via-emerald-700 to-green-800"></div>
+                            <div class="absolute inset-0 bg-gradient-to-tl from-transparent via-emerald-500/25 to-green-600/40 mix-blend-overlay" style="animation: gradientFlow 8s ease-in-out infinite;"></div>
+                            
+                            <!-- Image Area - Left Side -->
+                            <div class="relative z-10 w-1/2 h-full flex items-center justify-center p-8">
+                                <div class="w-full h-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center overflow-hidden group hover:scale-105 transition-transform duration-300">
+                                    <img class="project-image w-full h-full object-cover" src="" alt="Analytics Dashboard" style="display: none;" />
+                                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-green-400/40 to-emerald-400/30">
+                                        <i data-lucide="image" class="w-20 h-20 text-white/50 mb-4"></i>
+                                        <p class="text-white/70 text-base font-medium text-center px-6">Add project screenshot</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Content Area - Right Side -->
+                            <div class="relative z-10 w-1/2 text-white px-10 py-8 flex flex-col justify-center">
+                                <div class="mb-4 inline-block p-3 bg-gradient-to-br from-green-500/50 to-emerald-400/30 rounded-2xl border border-green-300/60 backdrop-blur-lg w-fit">
+                                    <i data-lucide="bar-chart-2" class="w-8 h-8 text-emerald-200"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-3">Analytics Dashboard</h3>
+                                <p class="text-base text-green-100 mb-6 font-light leading-relaxed">Real-time business intelligence platform with data visualization, predictive analytics, and custom reporting</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-green-100 border border-white/40 backdrop-blur-md text-xs font-medium">React</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-green-100 border border-white/40 backdrop-blur-md text-xs font-medium">D3.js</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-green-100 border border-white/40 backdrop-blur-md text-xs font-medium">PostgreSQL</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-green-100 border border-white/40 backdrop-blur-md text-xs font-medium">Apache</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5: Cloud Infrastructure -->
+                        <div class="project-slide fade relative w-full h-96 flex items-stretch" style="display: none;">
+                            <div class="absolute inset-0 bg-gradient-to-br from-orange-600 via-amber-700 to-orange-800"></div>
+                            <div class="absolute inset-0 bg-gradient-to-tl from-transparent via-amber-500/25 to-orange-600/40 mix-blend-overlay" style="animation: gradientFlow 8s ease-in-out infinite;"></div>
+                            
+                            <!-- Image Area - Left Side -->
+                            <div class="relative z-10 w-1/2 h-full flex items-center justify-center p-8">
+                                <div class="w-full h-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center overflow-hidden group hover:scale-105 transition-transform duration-300">
+                                    <img class="project-image w-full h-full object-cover" src="" alt="Cloud Infrastructure" style="display: none;" />
+                                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-orange-400/40 to-amber-400/30">
+                                        <i data-lucide="image" class="w-20 h-20 text-white/50 mb-4"></i>
+                                        <p class="text-white/70 text-base font-medium text-center px-6">Add project screenshot</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Content Area - Right Side -->
+                            <div class="relative z-10 w-1/2 text-white px-10 py-8 flex flex-col justify-center">
+                                <div class="mb-4 inline-block p-3 bg-gradient-to-br from-orange-500/50 to-amber-400/30 rounded-2xl border border-orange-300/60 backdrop-blur-lg w-fit">
+                                    <i data-lucide="cloud" class="w-8 h-8 text-amber-200"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-3">Cloud Infrastructure</h3>
+                                <p class="text-base text-orange-100 mb-6 font-light leading-relaxed">Scalable microservices architecture with containerization, orchestration, and automated deployment pipelines</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-orange-100 border border-white/40 backdrop-blur-md text-xs font-medium">AWS</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-orange-100 border border-white/40 backdrop-blur-md text-xs font-medium">Docker</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-orange-100 border border-white/40 backdrop-blur-md text-xs font-medium">Kubernetes</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-orange-100 border border-white/40 backdrop-blur-md text-xs font-medium">Terraform</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6: Social Network -->
+                        <div class="project-slide fade relative w-full h-96 flex items-stretch" style="display: none;">
+                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-600 via-blue-700 to-cyan-800"></div>
+                            <div class="absolute inset-0 bg-gradient-to-tl from-transparent via-blue-500/25 to-cyan-600/40 mix-blend-overlay" style="animation: gradientFlow 8s ease-in-out infinite;"></div>
+                            
+                            <!-- Image Area - Left Side -->
+                            <div class="relative z-10 w-1/2 h-full flex items-center justify-center p-8">
+                                <div class="w-full h-full rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center overflow-hidden group hover:scale-105 transition-transform duration-300">
+                                    <img class="project-image w-full h-full object-cover" src="" alt="Social Network" style="display: none;" />
+                                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-cyan-400/40 to-blue-400/30">
+                                        <i data-lucide="image" class="w-20 h-20 text-white/50 mb-4"></i>
+                                        <p class="text-white/70 text-base font-medium text-center px-6">Add project screenshot</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Content Area - Right Side -->
+                            <div class="relative z-10 w-1/2 text-white px-10 py-8 flex flex-col justify-center">
+                                <div class="mb-4 inline-block p-3 bg-gradient-to-br from-cyan-500/50 to-blue-400/30 rounded-2xl border border-cyan-300/60 backdrop-blur-lg w-fit">
+                                    <i data-lucide="network" class="w-8 h-8 text-blue-200"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-3">Social Network</h3>
+                                <p class="text-base text-cyan-100 mb-6 font-light leading-relaxed">Real-time messaging and community platform with user profiles, live notifications, and content moderation</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-cyan-100 border border-white/40 backdrop-blur-md text-xs font-medium">Vue.js</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-cyan-100 border border-white/40 backdrop-blur-md text-xs font-medium">WebSocket</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-cyan-100 border border-white/40 backdrop-blur-md text-xs font-medium">Redis</span>
+                                    <span class="px-3 py-1.5 rounded-full bg-white/20 text-cyan-100 border border-white/40 backdrop-blur-md text-xs font-medium">Socket.io</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-cyan-600 to-cyan-700 revealUp hidden">
-                        <div class="absolute inset-0 opacity-20 animate-pulse"></div>
-                        <div class="relative z-10 text-center text-white px-6 transform group-hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="award" class="w-20 h-20 mx-auto mb-4 opacity-80 animate-floatIcon" style="animation-duration: 4s;"></i>
-                            <h3 class="text-3xl font-bold mb-2">Certification Achievements</h3>
-                            <p class="text-cyan-100">Students successfully completing industry certifications</p>
-                        </div>
-                    </div>
-
-                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-700 revealUp hidden">
-                        <div class="absolute inset-0 opacity-20 animate-pulse"></div>
-                        <div class="relative z-10 text-center text-white px-6 transform group-hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="briefcase" class="w-20 h-20 mx-auto mb-4 opacity-80 animate-floatIcon" style="animation-duration: 4s;"></i>
-                            <h3 class="text-3xl font-bold mb-2">Career Placements</h3>
-                            <p class="text-blue-100">Success stories of our graduates in leading companies</p>
-                        </div>
-                    </div>
-
-                    <div class="slide fade relative w-full h-96 lg:h-[500px] flex items-center justify-center bg-gradient-to-br from-cyan-600 to-cyan-700 revealUp hidden">
-                        <div class="absolute inset-0 opacity-20 animate-pulse"></div>
-                        <div class="relative z-10 text-center text-white px-6 transform group-hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="star" class="w-20 h-20 mx-auto mb-4 opacity-80 animate-floatIcon fill-current" style="animation-duration: 4s;"></i>
-                            <h3 class="text-3xl font-bold mb-2">Success Stories</h3>
-                            <p class="text-cyan-100">Testimonials from our satisfied learners</p>
-                        </div>
-                    </div>
-
-                    <!-- Navigation Arrows with enhanced styling -->
-                    <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-all group/btn backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110">
-                        <i data-lucide="chevron-left" class="w-6 h-6 group-hover/btn:scale-110 transition-transform"></i>
+                    <!-- Navigation Arrows -->
+                    <button onclick="changeProjectSlide(-1)" class="absolute -left-20 top-1/2 -translate-y-1/2 z-30 w-16 h-16 flex items-center justify-center bg-gradient-to-br from-white/30 to-white/10 hover:from-white/50 hover:to-white/30 text-white rounded-full transition-all duration-300 group/btn backdrop-blur-2xl shadow-2xl hover:shadow-3xl hover:scale-125 border-2 border-white/50 hover:border-white/80" style="box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);">
+                        <i data-lucide="chevron-left" class="w-8 h-8 group-hover/btn:scale-110 transition-transform duration-300"></i>
                     </button>
-                    <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition-all group/btn backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110">
-                        <i data-lucide="chevron-right" class="w-6 h-6 group-hover/btn:scale-110 transition-transform"></i>
+                    <button onclick="changeProjectSlide(1)" class="absolute -right-20 top-1/2 -translate-y-1/2 z-30 w-16 h-16 flex items-center justify-center bg-gradient-to-br from-white/30 to-white/10 hover:from-white/50 hover:to-white/30 text-white rounded-full transition-all duration-300 group/btn backdrop-blur-2xl shadow-2xl hover:shadow-3xl hover:scale-125 border-2 border-white/50 hover:border-white/80" style="box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);">
+                        <i data-lucide="chevron-right" class="w-8 h-8 group-hover/btn:scale-110 transition-transform duration-300"></i>
                     </button>
                 </div>
 
-                <!-- Enhanced Dots Navigation -->
-                <div class="flex justify-center gap-3 mt-8">
-                    <button onclick="currentSlide(1)" class="dot active w-2.5 h-2.5 rounded-full bg-blue-600 cursor-pointer transition-all hover:scale-125 shadow-md"></button>
-                    <button onclick="currentSlide(2)" class="dot w-2.5 h-2.5 rounded-full bg-cyan-600 cursor-pointer transition-all hover:scale-125 shadow-md"></button>
-                    <button onclick="currentSlide(3)" class="dot w-2.5 h-2.5 rounded-full bg-blue-600 cursor-pointer transition-all hover:scale-125 shadow-md"></button>
-                    <button onclick="currentSlide(4)" class="dot w-2.5 h-2.5 rounded-full bg-cyan-600 cursor-pointer transition-all hover:scale-125 shadow-md"></button>
+                <!-- Dots Navigation -->
+                <div class="flex justify-center gap-6 mt-12 pb-2">
+                    <button onclick="currentProjectSlide(1)" class="project-dot active w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 via-pink-400 to-purple-600 cursor-pointer transition-all hover:scale-180 hover:w-6 hover:h-6 shadow-lg hover:shadow-2xl border-2 border-white/50 hover:border-white/100" style="box-shadow: 0 0 20px rgba(168, 85, 247, 0.6); animation: glowPulse 3s infinite;"></button>
+                    <button onclick="currentProjectSlide(2)" class="project-dot w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 via-pink-400 to-purple-600 cursor-pointer transition-all hover:scale-180 hover:w-6 hover:h-6 shadow-lg hover:shadow-2xl border-2 border-white/30 hover:border-white/100" style="opacity: 0.5; box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);"></button>
+                    <button onclick="currentProjectSlide(3)" class="project-dot w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 via-pink-400 to-purple-600 cursor-pointer transition-all hover:scale-180 hover:w-6 hover:h-6 shadow-lg hover:shadow-2xl border-2 border-white/30 hover:border-white/100" style="opacity: 0.5; box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);"></button>
+                    <button onclick="currentProjectSlide(4)" class="project-dot w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 via-pink-400 to-purple-600 cursor-pointer transition-all hover:scale-180 hover:w-6 hover:h-6 shadow-lg hover:shadow-2xl border-2 border-white/30 hover:border-white/100" style="opacity: 0.5; box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);"></button>
+                    <button onclick="currentProjectSlide(5)" class="project-dot w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 via-pink-400 to-purple-600 cursor-pointer transition-all hover:scale-180 hover:w-6 hover:h-6 shadow-lg hover:shadow-2xl border-2 border-white/30 hover:border-white/100" style="opacity: 0.5; box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);"></button>
+                    <button onclick="currentProjectSlide(6)" class="project-dot w-4 h-4 rounded-full bg-gradient-to-br from-purple-500 via-pink-400 to-purple-600 cursor-pointer transition-all hover:scale-180 hover:w-6 hover:h-6 shadow-lg hover:shadow-2xl border-2 border-white/30 hover:border-white/100" style="opacity: 0.5; box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);"></button>
                 </div>
             </div>
         </div>
@@ -1113,7 +1884,7 @@
 
                 <div class="courses-slider-track flex gap-10 px-6">
                     <!-- Course Slide 1 - Premium AI/ML Course -->
-                    <div class="flex flex-col w-[280px] shrink-0 glass bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-3d relative overflow-hidden">
+                    <div class="flex flex-col w-[280px] shrink-0 glass bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-3d card-rotate-hover relative overflow-hidden" style="animation: rotateCard 8s ease-in-out infinite;">
                         <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
                         <div class="absolute top-2 right-2 px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full text-[10px] font-bold text-white">🔥 TRENDING</div>
                         <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform relative z-10" style="animation: glowPulse 3s infinite;">
@@ -1128,7 +1899,7 @@
                     </div>
 
                     <!-- Course Slide 2 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer relative overflow-hidden">
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover relative overflow-hidden" style="animation: rotateCard 9s ease-in-out infinite 0.5s;">
                         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-t from-cyan-600/10 to-transparent transition-opacity pointer-events-none"></div>
                         <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-yellow-500/20 text-yellow-300 text-xs px-2 py-1 rounded-full border border-yellow-500/30">AI Recommended</div>
                         <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
@@ -1147,7 +1918,7 @@
                     </div>
 
                     <!-- Course Slide 3 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 10s ease-in-out infinite 1s;">
                         <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="shield" class="w-6 h-6"></i>
                         </div>
@@ -1157,7 +1928,7 @@
                     </div>
 
                     <!-- Course Slide 4 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 11s ease-in-out infinite 1.5s;">
                         <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="database" class="w-6 h-6"></i>
                         </div>
@@ -1167,7 +1938,7 @@
                     </div>
 
                     <!-- Course Slide 5 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 12s ease-in-out infinite 2s;">
                         <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="brain" class="w-6 h-6"></i>
                         </div>
@@ -1177,7 +1948,7 @@
                     </div>
 
                     <!-- Course Slide 6 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 13s ease-in-out infinite 2.5s;">
                         <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="cloud" class="w-6 h-6"></i>
                         </div>
@@ -1185,6 +1956,7 @@
                         <p class="text-xs text-zinc-300 mb-4">AWS, Docker, K8s • 11 Weeks</p>
                         <p class="text-xs text-zinc-100 leading-relaxed flex-grow">Master modern DevOps practices and cloud infrastructure automation.</p>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -1217,7 +1989,7 @@
 
                 <div class="soft-skills-slider-track flex gap-10 px-6">
                     <!-- Soft Skill 1 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 8s ease-in-out infinite;">
                         <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="mic-2" class="w-7 h-7"></i>
                         </div>
@@ -1227,7 +1999,7 @@
                     </div>
 
                     <!-- Soft Skill 2 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 9s ease-in-out infinite 0.5s;">
                         <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="users-2" class="w-7 h-7"></i>
                         </div>
@@ -1237,7 +2009,7 @@
                     </div>
 
                     <!-- Soft Skill 3 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 10s ease-in-out infinite 1s;">
                         <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="brain-circuit" class="w-7 h-7"></i>
                         </div>
@@ -1247,7 +2019,7 @@
                     </div>
 
                     <!-- Soft Skill 4 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 11s ease-in-out infinite 1.5s;">
                         <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="briefcase" class="w-7 h-7"></i>
                         </div>
@@ -1257,7 +2029,7 @@
                     </div>
 
                     <!-- Soft Skill 5 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 12s ease-in-out infinite 2s;">
                         <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="message-square" class="w-7 h-7"></i>
                         </div>
@@ -1267,7 +2039,7 @@
                     </div>
 
                     <!-- Soft Skill 6 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 13s ease-in-out infinite 2.5s;">
                         <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="zap" class="w-7 h-7"></i>
                         </div>
@@ -1277,7 +2049,7 @@
                     </div>
 
                     <!-- Soft Skill 7 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 14s ease-in-out infinite 3s;">
                         <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="target" class="w-7 h-7"></i>
                         </div>
@@ -1287,7 +2059,7 @@
                     </div>
 
                     <!-- Soft Skill 8 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer">
+                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 15s ease-in-out infinite 3.5s;">
                         <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="shield" class="w-7 h-7"></i>
                         </div>
@@ -1295,6 +2067,7 @@
                         <p class="text-xs text-zinc-300 mb-3">Negotiation • Mediation</p>
                         <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Master techniques to resolve conflicts and find win-win solutions diplomatically.</p>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -1327,7 +2100,7 @@
 
             <div class="slider-track flex gap-10 px-6">
                 <!-- Trainer 1 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 10s ease-in-out infinite;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10 w-full">
@@ -1345,7 +2118,7 @@
                 </div>
 
                 <!-- Trainer 2 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 11s ease-in-out infinite 1s;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10 w-full">
@@ -1361,7 +2134,7 @@
                 </div>
 
                 <!-- Trainer 3 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 12s ease-in-out infinite 2s;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10 w-full">
@@ -1379,7 +2152,7 @@
                 </div>
 
                 <!-- Trainer 4 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 13s ease-in-out infinite 3s;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10 w-full">
@@ -1397,7 +2170,7 @@
                 </div>
 
                 <!-- Trainer 5 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 14s ease-in-out infinite 4s;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative z-10 w-full">
@@ -1413,6 +2186,7 @@
                         </p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1665,17 +2439,15 @@
             if (n > slides.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = slides.length }
             for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.add("hidden");
+                slides[i].style.display = "none";
             }
             for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("bg-blue-600", "bg-emerald-600", "bg-purple-600", "bg-amber-600", "scale-125");
+                dots[i].classList.remove("scale-125");
+                dots[i].style.opacity = "0.5";
             }
-            slides[slideIndex - 1].classList.remove("hidden");
+            slides[slideIndex - 1].style.display = "flex";
             dots[slideIndex - 1].classList.add("scale-125");
-            if (slideIndex === 1) dots[slideIndex - 1].classList.add("bg-blue-600");
-            else if (slideIndex === 2) dots[slideIndex - 1].classList.add("bg-emerald-600");
-            else if (slideIndex === 3) dots[slideIndex - 1].classList.add("bg-purple-600");
-            else if (slideIndex === 4) dots[slideIndex - 1].classList.add("bg-amber-600");
+            dots[slideIndex - 1].style.opacity = "1";
         }
 
         function autoSlide() {
@@ -1686,9 +2458,52 @@
             }, 5000);
         }
 
+        // Projects Slideshow Functionality
+        let projectSlideIndex = 1;
+        let projectSlideTimer;
+
+        function changeProjectSlide(n) {
+            clearTimeout(projectSlideTimer);
+            showProjectSlide(projectSlideIndex += n);
+            autoProjectSlide();
+        }
+
+        function currentProjectSlide(n) {
+            clearTimeout(projectSlideTimer);
+            showProjectSlide(projectSlideIndex = n);
+            autoProjectSlide();
+        }
+
+        function showProjectSlide(n) {
+            let slides = document.getElementsByClassName("project-slide");
+            let dots = document.getElementsByClassName("project-dot");
+            if (n > slides.length) { projectSlideIndex = 1 }
+            if (n < 1) { projectSlideIndex = slides.length }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("scale-125");
+                dots[i].style.opacity = "0.5";
+            }
+            slides[projectSlideIndex - 1].style.display = "flex";
+            dots[projectSlideIndex - 1].classList.add("scale-125");
+            dots[projectSlideIndex - 1].style.opacity = "1";
+        }
+
+        function autoProjectSlide() {
+            projectSlideTimer = setTimeout(() => {
+                projectSlideIndex++;
+                showProjectSlide(projectSlideIndex);
+                autoProjectSlide();
+            }, 6000);
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             showSlide(slideIndex);
             autoSlide();
+            showProjectSlide(projectSlideIndex);
+            autoProjectSlide();
             // Use IntersectionObserver to start/re-start counters when #about is visible
             const aboutSection = document.getElementById('about');
             if (aboutSection && 'IntersectionObserver' in window) {
@@ -2360,6 +3175,179 @@
             }
         `;
         document.head.appendChild(style);
+
+        // ===== ADVANCED INTERACTIVE ENHANCEMENTS =====
+
+        // 1. Smooth Scroll Reveal Animation (enhanced)
+        const advancedObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const advancedObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    advancedObserver.unobserve(entry.target);
+                }
+            });
+        }, advancedObserverOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => advancedObserver.observe(el));
+
+        // 2. Advanced Button Ripple Effect
+        function addRippleEffect(button) {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    border-radius: 50%;
+                    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+                    pointer-events: none;
+                    animation: ripple 0.8s ease-out forwards;
+                    z-index: 10;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 800);
+            });
+        }
+
+        // Apply ripple effect to all buttons and links with button-glow class
+        document.querySelectorAll('.button-glow, a[href*="#"], button').forEach(addRippleEffect);
+
+        // 3. Interactive Card Hover with Magnetic Effect
+        document.querySelectorAll('.card-3d, .interactive-card, [class*="group.cursor-pointer"]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+        // 4. Parallax Scroll Effect on Background (advanced)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('[class*="parallax"], [class*="float"]').forEach(el => {
+                const speed = el.dataset.speed || 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // 5. Floating particles following mouse
+        const particleContainer = document.createElement('div');
+        particleContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;';
+        if (!document.body.querySelector('[style*="pointer-events: none"]')) {
+            document.body.appendChild(particleContainer);
+        }
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Occasionally create floating particles
+            if (Math.random() < 0.08) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random() * 8 + 4}px;
+                    height: ${Math.random() * 8 + 4}px;
+                    background: radial-gradient(circle, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.4));
+                    border-radius: 50%;
+                    left: ${mouseX}px;
+                    top: ${mouseY}px;
+                    pointer-events: none;
+                    animation: particleFloat ${Math.random() * 2 + 2}s ease-out forwards;
+                    box-shadow: 0 0 ${Math.random() * 10 + 10}px rgba(59, 130, 246, 0.6);
+                `;
+                particleContainer.appendChild(particle);
+                setTimeout(() => particle.remove(), 4000);
+            }
+        });
+
+        // 6. Enhanced hover scale with shadow for cards
+        document.querySelectorAll('.advanced-hover').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                this.style.transform = 'scale(1.08) translateY(-6px)';
+                this.style.filter = 'drop-shadow(0 20px 40px rgba(59, 130, 246, 0.4))';
+            });
+
+            el.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+                this.style.filter = 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1))';
+            });
+        });
+
+        // 7. Magnetic hover effect enhancement for buttons
+        document.querySelectorAll('.magnetic-hover').forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const distance = Math.sqrt(x * x + y * y);
+                
+                if (distance < 100) {
+                    el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.05)`;
+                }
+            });
+
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translate(0, 0) scale(1)';
+            });
+        });
+
+        // 8. Smooth counter animation for stats
+        document.querySelectorAll('.counter').forEach(counter => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const suffix = counter.getAttribute('data-suffix') || '';
+            let current = 0;
+            const increment = target / 30;
+            let animating = false;
+            
+            const updateCounter = () => {
+                if (!animating && counter.getBoundingClientRect().top < window.innerHeight) {
+                    animating = true;
+                    const animate = () => {
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = (current % 1 !== 0 ? current.toFixed(1) : Math.floor(current)) + suffix;
+                            setTimeout(animate, 50);
+                        } else {
+                            counter.textContent = target + suffix;
+                        }
+                    };
+                    animate();
+                }
+            };
+
+            window.addEventListener('scroll', updateCounter);
+            updateCounter();
+        });
 
         // Notification system for premium features
         function showNotification(message, type = 'info') {
