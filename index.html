@@ -1099,7 +1099,7 @@
             </a>
             
             <!-- Mobile Menu Toggle -->
-            <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg hover:bg-blue-100 transition-all z-50 mr-3" aria-label="Toggle menu">
+            <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg hover:bg-blue-100 transition-all z-50 mr-3 order-last" aria-label="Toggle menu">
                 <svg class="w-6 h-6 text-zinc-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -1204,6 +1204,9 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile menu overlay -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-zinc-900/30 backdrop-blur-sm z-40 hidden md:hidden"></div>
 
     <!-- Hero Section -->
     <section class="relative pt-40 pb-24 lg:pt-56 lg:pb-40 overflow-hidden">
@@ -3063,14 +3066,24 @@
             const mobileMenu = document.getElementById('mobileMenu');
             const menuIcon = document.getElementById('menuIcon');
             const closeIcon = document.getElementById('closeIcon');
+            const mobileOverlay = document.getElementById('mobileMenuOverlay');
 
             const setMenuState = (open) => {
                 if (!mobileMenu || !menuToggle) return;
                 mobileMenu.classList.toggle('hidden', !open);
+                if (mobileOverlay) mobileOverlay.classList.toggle('hidden', !open);
                 document.body.classList.toggle('overflow-hidden', open);
                 if (menuIcon && closeIcon) {
                     menuIcon.classList.toggle('hidden', open);
                     closeIcon.classList.toggle('hidden', !open);
+                }
+                // Add a subtle backdrop for the nav when the mobile menu is open
+                if (mainNav) {
+                    mainNav.classList.toggle('bg-white/95', open);
+                    mainNav.classList.toggle('backdrop-blur-lg', open);
+                    mainNav.classList.toggle('border-b', open);
+                    mainNav.classList.toggle('border-zinc-200', open);
+                    mainNav.classList.toggle('shadow-xl', open);
                 }
                 menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
             };
@@ -3080,6 +3093,10 @@
                     const isOpen = !mobileMenu.classList.contains('hidden');
                     setMenuState(!isOpen);
                 });
+            }
+
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', () => setMenuState(false));
             }
 
             // Close menu when a mobile link is tapped
@@ -3949,11 +3966,6 @@
 
             setTimeout(() => notif.remove(), 3000);
         }
-
-        // Initialize premium features feedback
-        setTimeout(() => {
-            showNotification('✨ Premium AI Features Activated', 'success');
-        }, 2000);
 
         // Initialize Lucide Icons
         if (typeof lucide !== 'undefined') {
