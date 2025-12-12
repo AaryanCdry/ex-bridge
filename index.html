@@ -139,6 +139,32 @@
             animation-play-state: paused;
         }
 
+        /* Animated bridge between Technical and Soft Skills sections */
+        @keyframes sectionBridgeFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 50% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes sectionBridgeDrift {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-8%); }
+            100% { transform: translateX(6%); }
+        }
+
+        /* Advanced wave + particles for section bridge */
+        @keyframes waveDrift {
+            0% { transform: translateX(0) scaleX(1); }
+            50% { transform: translateX(-4%) scaleX(1.02); }
+            100% { transform: translateX(3%) scaleX(1); }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+            50% { transform: translateY(-14px) translateX(8px); opacity: 0.9; }
+            100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+        }
+
         /* Mobile responsiveness for slider tracks */
         @media (max-width: 768px) {
             .slider-track,
@@ -2382,7 +2408,7 @@
     </section>
 
     <!-- Technical Skills Section (premium & stylish) -->
-    <section id="technical" class="py-28 bg-gradient-to-br from-zinc-900 via-blue-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
+    <section id="technical" class="py-28 bg-gradient-to-br from-[#0b1224] via-[#0f1f38] to-[#070f1f] text-white relative overflow-hidden reveal">
         <!-- Premium AI Brain Illustration -->
         <div class="absolute top-20 right-10 opacity-10 pointer-events-none hidden lg:block" style="animation: float3D 15s ease-in-out infinite;">
             <svg width="400" height="400" viewBox="0 0 400 400" fill="none">
@@ -2416,20 +2442,28 @@
         
         <!-- Premium background decorations -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" style="animation: float 12s ease-in-out infinite;"></div>
-            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl" style="animation: float 15s ease-in-out infinite;"></div>
+            <div class="absolute -top-36 -right-24 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl" style="animation: float 12s ease-in-out infinite;"></div>
+            <div class="absolute -bottom-40 -left-32 w-96 h-96 bg-purple-500/12 rounded-full blur-3xl" style="animation: float 15s ease-in-out infinite;"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.08),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(129,140,248,0.06),transparent_32%),radial-gradient(circle_at_50%_80%,rgba(59,130,246,0.08),transparent_30%)]"></div>
+            <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:120px_120px]"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
                 <div>
-                    <span class="text-sm font-bold text-blue-400 mb-2 block uppercase tracking-widest">Technical Mastery</span>
-                    <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent tracking-tight mb-4">
+                    <span class="text-sm font-bold text-blue-300 mb-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm uppercase tracking-[0.2em]">Technical Mastery</span>
+                    <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-blue-200 to-cyan-300 bg-clip-text text-transparent tracking-tight mb-4">
                         Technical Skills &amp; Development
                     </h2>
-                    <p class="text-lg text-zinc-100 max-w-xl leading-relaxed">
-                        Deep dive into programming, data science, and infrastructure with industry-leading curriculum.
+                    <p class="text-lg text-zinc-100/90 max-w-2xl leading-relaxed">
+                        Deep dive into programming, data science, cloud, and security with an industry-grade, project-first curriculum.
                     </p>
+                    <div class="flex flex-wrap gap-2 mt-4 text-[12px] font-semibold text-cyan-100">
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Cloud &amp; DevOps</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">AI / ML</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Security</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Data &amp; Analytics</span>
+                    </div>
                 </div>
             </div>
 
@@ -2441,25 +2475,29 @@
                 <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
 
-                <div class="courses-slider-track flex gap-10 px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory">
+                <div class="courses-slider-track flex gap-8 md:gap-10 px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none">
                     <!-- Course Slide 1 - Premium AI/ML Course -->
-                    <div class="flex flex-col w-[280px] shrink-0 glass bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-3d card-rotate-hover relative overflow-hidden" style="animation: rotateCard 8s ease-in-out infinite;">
-                        <div class="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100"></div>
-                        <div class="absolute top-2 right-2 px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full text-[10px] font-bold text-white">🔥 TRENDING</div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform relative z-10" style="animation: glowPulse 3s infinite;">
+                    <div class="relative flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-slate-900/60 via-blue-900/55 to-slate-900/60 border border-white/10 p-6 rounded-2xl shadow-[0_18px_45px_rgba(0,0,0,0.45)] ring-1 ring-white/5 hover:ring-blue-400/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.5)] overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-tr from-white/8 via-transparent to-blue-400/10"></div>
+                        <div class="absolute top-2 right-2 px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full text-[10px] font-bold text-white">TRENDING</div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform relative z-10">
                             <i data-lucide="code-2" class="w-6 h-6"></i>
                         </div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors relative z-10">Full Stack Web Dev</h3>
+                        <div class="flex items-center gap-2 mb-2 relative z-10">
+                            <h3 class="text-lg font-bold text-white group-hover:text-blue-200 transition-colors">Full Stack Web Dev</h3>
                             <span class="px-2 py-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full text-[9px] font-bold text-white">AI-POWERED</span>
                         </div>
-                        <p class="text-xs text-zinc-300 mb-4">MERN Stack • 12 Weeks</p>
-                        <p class="text-xs text-zinc-100 leading-relaxed flex-grow">Build scalable web applications with modern technologies and best practices.</p>
+                        <p class="text-xs text-zinc-300 mb-4 relative z-10">MERN Stack • 12 Weeks</p>
+                        <p class="text-xs text-zinc-100 leading-relaxed flex-grow relative z-10">Build scalable web applications with modern technologies and best practices.</p>
+                        <div class="mt-4 pt-3 border-t border-white/10 text-[11px] text-blue-100 flex items-center gap-3 relative z-10">
+                            <span class="inline-flex items-center gap-1"><i data-lucide="cpu" class="w-4 h-4"></i> Projects</span>
+                            <span class="inline-flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 12 wks</span>
+                        </div>
                     </div>
 
                     <!-- Course Slide 2 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover relative overflow-hidden" style="animation: rotateCard 9s ease-in-out infinite 0.5s;">
-                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-t from-cyan-600/10 to-transparent transition-opacity pointer-events-none"></div>
+                    <div class="relative flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/55 via-slate-900/60 to-cyan-900/55 border border-white/10 p-6 rounded-2xl shadow-[0_18px_45px_rgba(0,0,0,0.45)] ring-1 ring-white/5 hover:ring-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.5)] overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-cyan-400/15 via-transparent to-white/8 transition-opacity pointer-events-none"></div>
                         <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-yellow-500/20 text-yellow-300 text-xs px-2 py-1 rounded-full border border-yellow-500/30">AI Recommended</div>
                         <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
@@ -2477,7 +2515,7 @@
                     </div>
 
                     <!-- Course Slide 3 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 10s ease-in-out infinite 1s;">
+                    <div class="relative flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-slate-900/60 via-blue-900/55 to-slate-900/60 border border-white/10 p-6 rounded-2xl shadow-[0_18px_45px_rgba(0,0,0,0.45)] ring-1 ring-white/5 hover:ring-blue-400/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.5)]">
                         <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="shield" class="w-6 h-6"></i>
                         </div>
@@ -2487,7 +2525,7 @@
                     </div>
 
                     <!-- Course Slide 4 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 11s ease-in-out infinite 1.5s;">
+                    <div class="relative flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/55 via-slate-900/60 to-cyan-900/55 border border-white/10 p-6 rounded-2xl shadow-[0_18px_45px_rgba(0,0,0,0.45)] ring-1 ring-white/5 hover:ring-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.5)]">
                         <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="database" class="w-6 h-6"></i>
                         </div>
@@ -2497,7 +2535,7 @@
                     </div>
 
                     <!-- Course Slide 5 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-6 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 12s ease-in-out infinite 2s;">
+                    <div class="relative flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-slate-900/60 via-blue-900/55 to-slate-900/60 border border-white/10 p-6 rounded-2xl shadow-[0_18px_45px_rgba(0,0,0,0.45)] ring-1 ring-white/5 hover:ring-blue-400/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.5)]">
                         <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="brain" class="w-6 h-6"></i>
                         </div>
@@ -2507,7 +2545,7 @@
                     </div>
 
                     <!-- Course Slide 6 -->
-                    <div class="flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-6 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 13s ease-in-out infinite 2.5s;">
+                    <div class="relative flex flex-col w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/55 via-slate-900/60 to-cyan-900/55 border border-white/10 p-6 rounded-2xl shadow-[0_18px_45px_rgba(0,0,0,0.45)] ring-1 ring-white/5 hover:ring-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(0,0,0,0.5)]">
                         <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
                             <i data-lucide="cloud" class="w-6 h-6"></i>
                         </div>
@@ -2521,110 +2559,245 @@
         </div>
     </section>
 
+    <!-- Advanced Animated Bridge between Technical and Soft Skills -->
+    <section aria-hidden="true" class="relative isolate -my-16 md:-my-12 h-40 md:h-48 overflow-hidden">
+        <!-- Gradient flow base -->
+        <div class="absolute inset-0" style="background: linear-gradient(120deg, #0b1224, rgba(99,102,241,0.25), rgba(14,165,233,0.22), #0b1224); background-size: 240% 240%; animation: sectionBridgeFlow 20s ease-in-out infinite alternate;"></div>
+
+        <!-- Parallax glow orbs -->
+        <div class="absolute inset-x-0 top-1/2 h-[160%] -translate-y-1/2 opacity-70 blur-3xl" style="background:
+            radial-gradient(circle at 18% 50%, rgba(14,165,233,0.35), transparent 46%),
+            radial-gradient(circle at 82% 50%, rgba(129,140,248,0.32), transparent 46%);
+            animation: sectionBridgeDrift 24s ease-in-out infinite;"></div>
+
+        <!-- Subtle mesh grid -->
+        <div class="absolute inset-0 opacity-[0.12]" style="background-image:
+            linear-gradient(0deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 140px 140px;"></div>
+
+        <!-- Layered SVG waves -->
+        <svg class="absolute bottom-0 left-0 w-[140%] h-24 md:h-28 opacity-50" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 16s ease-in-out infinite;">
+            <path fill="url(#waveGrad1)" d="M0,80 C240,140 360,60 540,80 C720,100 900,160 1080,120 C1260,80 1380,60 1440,120 L1440,200 L0,200 Z"></path>
+            <defs>
+                <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+                    <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.35"/>
+                </linearGradient>
+            </defs>
+        </svg>
+        <svg class="absolute bottom-2 left-0 w-[160%] h-24 md:h-28 opacity-35" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 22s ease-in-out infinite reverse;">
+            <path fill="url(#waveGrad2)" d="M0,100 C240,160 360,80 540,100 C720,120 900,180 1080,140 C1260,100 1380,80 1440,140 L1440,200 L0,200 Z"></path>
+            <defs>
+                <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.30"/>
+                    <stop offset="50%" stop-color="#60a5fa" stop-opacity="0.30"/>
+                    <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.30"/>
+                </linearGradient>
+            </defs>
+        </svg>
+
+        <!-- Floating particles -->
+        <div class="absolute inset-0 mix-blend-screen">
+            <span class="absolute left-[8%] top-[30%] w-2 h-2 rounded-full bg-cyan-300/70" style="animation: particleFloat 6s ease-in-out infinite;"></span>
+            <span class="absolute left-[22%] top-[60%] w-1.5 h-1.5 rounded-full bg-indigo-300/70" style="animation: particleFloat 7.5s ease-in-out infinite 0.6s;"></span>
+            <span class="absolute left-[38%] top-[40%] w-2 h-2 rounded-full bg-cyan-300/70" style="animation: particleFloat 6.8s ease-in-out infinite 1.2s;"></span>
+            <span class="absolute left-[54%] top-[55%] w-1.5 h-1.5 rounded-full bg-fuchsia-300/70" style="animation: particleFloat 7.2s ease-in-out infinite 0.9s;"></span>
+            <span class="absolute left-[70%] top-[35%] w-2 h-2 rounded-full bg-indigo-300/70" style="animation: particleFloat 6.4s ease-in-out infinite 1.4s;"></span>
+            <span class="absolute left-[86%] top-[58%] w-1.5 h-1.5 rounded-full bg-cyan-300/70" style="animation: particleFloat 7.8s ease-in-out infinite 0.3s;"></span>
+        </div>
+
+        <!-- Reduced motion: soften animations -->
+        <style>
+            @media (prefers-reduced-motion: reduce) {
+                .slider-track,
+                .courses-slider-track,
+                .soft-skills-slider-track { animation: none !important; }
+                .reduce-motion & { animation: none !important; }
+            }
+        </style>
+    </section>
+
     <!-- Soft Skills Section (premium & stylish) -->
-    <section id="soft-skills" class="py-28 bg-gradient-to-br from-zinc-900 via-purple-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
-        <!-- Premium background decorations -->
+    <section id="soft-skills" class="py-28 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 text-white relative overflow-hidden reveal">
+        <!-- Premium background mesh + glow -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -top-32 left-1/3 w-[520px] h-[520px] bg-[radial-gradient(circle_at_center,_rgba(120,119,255,0.16),_transparent_55%)] blur-3xl"></div>
+            <div class="absolute bottom-[-30%] right-[-10%] w-[640px] h-[640px] bg-[radial-gradient(circle_at_center,_rgba(14,165,233,0.18),_transparent_50%)] blur-3xl"></div>
+            <div class="absolute inset-0 opacity-[0.07]" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 32px 32px;"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6">
-            <div class="mb-20">
-                <span class="text-sm font-bold text-cyan-400 mb-2 block uppercase tracking-widest">Professional Growth</span>
-                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent tracking-tight mb-4">
-                    Soft Skills &amp; Leadership
-                </h2>
-                <p class="text-lg text-zinc-100 max-w-xl leading-relaxed">
-                    Skills that define leaders and drive team success in modern workplaces.
-                </p>
+            <div class="mb-16 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                    <span class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold tracking-[0.25em] uppercase text-indigo-200 bg-white/5 border border-white/10 backdrop-blur">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Human Edge
+                    </span>
+                    <h2 class="mt-4 text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-indigo-100 to-cyan-200 bg-clip-text text-transparent tracking-tight leading-tight">
+                        Soft Skills &amp; Leadership
+                    </h2>
+                    <p class="mt-4 text-lg text-zinc-100 max-w-2xl leading-relaxed">
+                        Elevate communication, presence, and emotional intelligence with immersive micro-coaching designed for modern teams.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-3 text-sm text-zinc-200">
+                    <span class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur">Live role-plays</span>
+                    <span class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur">Weekly feedback loops</span>
+                    <span class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur">Leadership labs</span>
+                </div>
             </div>
 
             <!-- Soft Skills Carousel Section -->
             <div class="relative w-full">
                 <!-- Gradient Masks for smooth fade effect -->
-                <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-zinc-900 to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-zinc-900 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none"></div>
 
-                <div class="soft-skills-slider-track flex gap-10 px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory">
+                <div class="soft-skills-slider-track flex gap-8 md:gap-10 px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory">
                     <!-- Soft Skill 1 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 8s ease-in-out infinite;">
-                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="mic-2" class="w-7 h-7"></i>
+                    <div class="flex flex-col w-[320px] lg:w-[340px] shrink-0 bg-gradient-to-br from-white/6 via-slate-900/40 to-indigo-950/60 border border-white/10 p-8 rounded-2xl hover:border-indigo-300/60 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-600/20 group overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-indigo-500/10 via-cyan-400/10 to-transparent"></div>
+                        <div class="relative z-10 flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-indigo-700/25">
+                                <i data-lucide="mic-2" class="w-7 h-7"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 border border-white/15">Stage Presence</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Public Speaking</h3>
-                        <p class="text-xs text-zinc-300 mb-3">Presentation • Confidence Building</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Overcome stage fright and articulate ideas with confidence and clarity in front of any audience.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Public Speaking</h3>
+                        <p class="text-sm text-indigo-100 mb-4">Presentation • Confidence</p>
+                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Overcome stage fright and articulate ideas with clarity through story-led keynotes and crisp delivery frameworks.</p>
+                        <div class="relative z-10 mt-6 flex items-center gap-3 text-xs text-indigo-100">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">4 live demos</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Coach feedback</span>
+                        </div>
                     </div>
 
                     <!-- Soft Skill 2 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 9s ease-in-out infinite 0.5s;">
-                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="users-2" class="w-7 h-7"></i>
+                    <div class="flex flex-col w-[320px] lg:w-[340px] shrink-0 bg-gradient-to-br from-white/6 via-slate-900/40 to-indigo-950/60 border border-white/10 p-8 rounded-2xl hover:border-cyan-300/60 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-600/20 group overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-cyan-500/10 via-emerald-400/10 to-transparent"></div>
+                        <div class="relative z-10 flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-cyan-700/25">
+                                <i data-lucide="users-2" class="w-7 h-7"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 border border-white/15">Team Momentum</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Team Leadership</h3>
-                        <p class="text-xs text-zinc-300 mb-3">Management • Motivation</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Strategies to motivate teams and manage conflict with emotional intelligence and empathy.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Team Leadership</h3>
+                        <p class="text-sm text-cyan-100 mb-4">Management • Motivation</p>
+                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Motivate teams with clarity, psychological safety, and actionable 1:1 rituals that keep outcomes on track.</p>
+                        <div class="relative z-10 mt-6 flex items-center gap-3 text-xs text-cyan-100">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Playbooks</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Conflict sims</span>
+                        </div>
                     </div>
 
                     <!-- Soft Skill 3 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 10s ease-in-out infinite 1s;">
-                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="brain-circuit" class="w-7 h-7"></i>
+                    <div class="flex flex-col w-[320px] lg:w-[340px] shrink-0 bg-gradient-to-br from-white/6 via-slate-900/40 to-indigo-950/60 border border-white/10 p-8 rounded-2xl hover:border-indigo-300/60 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-600/20 group overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-indigo-400/10 via-fuchsia-400/10 to-transparent"></div>
+                        <div class="relative z-10 flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 flex items-center justify-center text-white shadow-lg shadow-indigo-700/25">
+                                <i data-lucide="brain-circuit" class="w-7 h-7"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 border border-white/15">Decision Labs</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Critical Thinking</h3>
-                        <p class="text-xs text-zinc-300 mb-3">Problem Solving • Analysis</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Analyze problems deeply and develop innovative solutions systematically and creatively.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Critical Thinking</h3>
+                        <p class="text-sm text-indigo-100 mb-4">Problem Solving • Analysis</p>
+                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Deconstruct complex problems, map assumptions, and prototype multiple solutions before committing.</p>
+                        <div class="relative z-10 mt-6 flex items-center gap-3 text-xs text-indigo-100">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Framework kits</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Peer review</span>
+                        </div>
                     </div>
 
                     <!-- Soft Skill 4 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 11s ease-in-out infinite 1.5s;">
-                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="briefcase" class="w-7 h-7"></i>
+                    <div class="flex flex-col w-[320px] lg:w-[340px] shrink-0 bg-gradient-to-br from-white/6 via-slate-900/40 to-indigo-950/60 border border-white/10 p-8 rounded-2xl hover:border-cyan-300/60 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-600/20 group overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-cyan-500/10 via-blue-400/10 to-transparent"></div>
+                        <div class="relative z-10 flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white shadow-lg shadow-cyan-700/25">
+                                <i data-lucide="briefcase" class="w-7 h-7"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 border border-white/15">Executive Polish</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Corporate Etiquette</h3>
-                        <p class="text-xs text-zinc-300 mb-3">Professionalism • Protocol</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Master professional behavior and protocols for thriving in the global workplace.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Corporate Etiquette</h3>
+                        <p class="text-sm text-cyan-100 mb-4">Professionalism • Protocol</p>
+                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Navigate boardrooms, client meetings, and cross-cultural moments with confident decorum and clarity.</p>
+                        <div class="relative z-10 mt-6 flex items-center gap-3 text-xs text-cyan-100">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Etiquette drills</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Follow-up craft</span>
+                        </div>
                     </div>
 
                     <!-- Soft Skill 5 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 12s ease-in-out infinite 2s;">
-                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="message-square" class="w-7 h-7"></i>
+                    <div class="flex flex-col w-[320px] lg:w-[340px] shrink-0 bg-gradient-to-br from-white/6 via-slate-900/40 to-indigo-950/60 border border-white/10 p-8 rounded-2xl hover:border-cyan-300/60 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-600/20 group overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-cyan-400/10 via-indigo-400/10 to-transparent"></div>
+                        <div class="relative z-10 flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-cyan-700/25">
+                                <i data-lucide="message-square" class="w-7 h-7"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 border border-white/15">Clarity Studio</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Communication</h3>
-                        <p class="text-xs text-zinc-300 mb-3">Listening • Expression</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Develop active listening and clear communication skills for better collaboration.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Communication</h3>
+                        <p class="text-sm text-cyan-100 mb-4">Listening • Expression</p>
+                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Level up active listening, concise updates, and persuasive storytelling across async and live channels.</p>
+                        <div class="relative z-10 mt-6 flex items-center gap-3 text-xs text-cyan-100">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Async playbooks</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Persona labs</span>
+                        </div>
                     </div>
 
                     <!-- Soft Skill 6 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 13s ease-in-out infinite 2.5s;">
-                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="zap" class="w-7 h-7"></i>
+                    <div class="flex flex-col w-[320px] lg:w-[340px] shrink-0 bg-gradient-to-br from-white/6 via-slate-900/40 to-indigo-950/60 border border-white/10 p-8 rounded-2xl hover:border-indigo-300/60 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-600/20 group overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-indigo-500/10 via-amber-400/10 to-transparent"></div>
+                        <div class="relative z-10 flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-indigo-700/25">
+                                <i data-lucide="zap" class="w-7 h-7"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 border border-white/15">EQ Upgrade</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Emotional Intelligence</h3>
-                        <p class="text-xs text-zinc-300 mb-3">Self-Awareness • Empathy</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Understand emotions and build strong interpersonal relationships with resilience.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Emotional Intelligence</h3>
+                        <p class="text-sm text-indigo-100 mb-4">Self-Awareness • Empathy</p>
+                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Decode triggers, stay composed under pressure, and respond with empathy while protecting boundaries.</p>
+                        <div class="relative z-10 mt-6 flex items-center gap-3 text-xs text-indigo-100">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Reflection sprints</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Coaching loops</span>
+                        </div>
                     </div>
 
                     <!-- Soft Skill 7 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 14s ease-in-out infinite 3s;">
-                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="target" class="w-7 h-7"></i>
+                    <div class="flex flex-col w-[320px] lg:w-[340px] shrink-0 bg-gradient-to-br from-white/6 via-slate-900/40 to-indigo-950/60 border border-white/10 p-8 rounded-2xl hover:border-cyan-300/60 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-600/20 group overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-cyan-400/10 via-emerald-400/10 to-transparent"></div>
+                        <div class="relative z-10 flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-cyan-700/25">
+                                <i data-lucide="target" class="w-7 h-7"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 border border-white/15">Outcome Design</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Goal Setting</h3>
-                        <p class="text-xs text-zinc-300 mb-3">Planning • Achievement</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Learn to set SMART goals and develop strategies to achieve them consistently.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Goal Setting</h3>
+                        <p class="text-sm text-cyan-100 mb-4">Planning • Achievement</p>
+                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Craft SMART goals, map dependencies, and install weekly cadence rituals to deliver predictably.</p>
+                        <div class="relative z-10 mt-6 flex items-center gap-3 text-xs text-cyan-100">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">OKR kits</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Accountability pods</span>
+                        </div>
                     </div>
 
                     <!-- Soft Skill 8 -->
-                    <div class="flex flex-col w-[320px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer card-rotate-hover" style="animation: rotateCard 15s ease-in-out infinite 3.5s;">
-                        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
-                            <i data-lucide="shield" class="w-7 h-7"></i>
+                    <div class="flex flex-col w-[320px] lg:w-[340px] shrink-0 bg-gradient-to-br from-white/6 via-slate-900/40 to-indigo-950/60 border border-white/10 p-8 rounded-2xl hover:border-indigo-300/60 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-600/20 group overflow-hidden">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-indigo-500/10 via-cyan-400/10 to-transparent"></div>
+                        <div class="relative z-10 flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-indigo-700/25">
+                                <i data-lucide="shield" class="w-7 h-7"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 border border-white/15">Diplomacy Lab</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Conflict Resolution</h3>
-                        <p class="text-xs text-zinc-300 mb-3">Negotiation • Mediation</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Master techniques to resolve conflicts and find win-win solutions diplomatically.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Conflict Resolution</h3>
+                        <p class="text-sm text-indigo-100 mb-4">Negotiation • Mediation</p>
+                        <p class="text-sm text-zinc-100 leading-relaxed flex-grow">Use principled negotiation, framing, and restorative approaches to unlock win-win outcomes.</p>
+                        <div class="relative z-10 mt-6 flex items-center gap-3 text-xs text-indigo-100">
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Role-play labs</span>
+                            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Neutrality drills</span>
+                        </div>
                     </div>
 
                 </div>
