@@ -23,6 +23,24 @@
             font-family: "Inter", sans-serif;
         }
 
+        /* Hide native scrollbar (all browsers) */
+        /* Webkit browsers (Chrome, Safari, Edge) */
+        ::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        /* Firefox */
+        html, body {
+            scrollbar-width: none;
+        }
+
+        /* IE and Edge */
+        html {
+            -ms-overflow-style: none;
+        }
+
         /* Reveal entrance animation for sections */
         @keyframes revealUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
         .reveal { opacity: 0; transform: translateY(18px); will-change: transform, opacity; }
@@ -30,24 +48,6 @@
         /* Subtle orb float utilities (used across pages) */
         @keyframes float { 0% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-10px) translateX(6px); } 100% { transform: translateY(0) translateX(0); } }
         .orb { animation: float 10s ease-in-out infinite; transform-origin: center; }
-
-        /* Custom scrollbar for webkit */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #e4e4e7;
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #d4d4d8;
-        }
 
         /* Custom Range Slider Styling */
         input[type="range"] {
@@ -1142,6 +1142,14 @@
 </head>
 
 <body class="bg-white text-zinc-600 antialiased selection:bg-blue-100 selection:text-blue-700">
+    <style>
+        html, body { overflow-x: hidden; width: 100%; height: 100%; }
+        body { margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; }
+        section { position: relative; overflow: hidden; }
+        img, video { max-width: 100%; height: auto; display: block; }
+        .prevent-overflow { position: absolute; left: 0; right: 0; margin: 0 auto; max-width: 100vw; overflow: hidden; }
+    </style>
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress" style="width: 0%;"></div>
     
@@ -1486,11 +1494,11 @@
             <!-- Soft gradient blend to transition light gallery → dark projects -->
             <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(240, 246, 255, 0.6) 0%, rgba(20, 30, 48, 0.75) 100%);"></div>
             <!-- Parallax glow accents for continuity -->
-            <div class="absolute -top-16 left-10 w-48 h-48 bg-blue-400/10 rounded-full blur-3xl" style="animation: deepFloat 22s ease-in-out infinite;"></div>
-            <div class="absolute -bottom-12 right-12 w-56 h-56 bg-indigo-500/10 rounded-full blur-3xl" style="animation: deepFloat 26s ease-in-out infinite 1s;"></div>
+            <div class="absolute -top-16 left-10 w-52 h-52 bg-blue-400/10 rounded-full blur-[70px]" style="animation: deepFloat 26s ease-in-out infinite;"></div>
+            <div class="absolute -bottom-12 right-12 w-60 h-60 bg-indigo-500/10 rounded-full blur-[80px]" style="animation: deepFloat 30s ease-in-out infinite 1s;"></div>
 
             <!-- Continuous wave lines: same path as sections, synced speeds -->
-            <svg class="absolute bottom-0 left-0 w-[140%] h-16 md:h-20 opacity-30" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 28s ease-in-out infinite;">
+            <svg class="absolute bottom-0 left-0 w-[140%] h-16 md:h-20 opacity-22" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 36s ease-in-out infinite;">
                 <defs>
                     <linearGradient id="bridgeWaveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.22"/>
@@ -1500,7 +1508,7 @@
                 </defs>
                 <path fill="url(#bridgeWaveGrad1)" d="M0,80 C240,140 360,60 540,80 C720,100 900,160 1080,120 C1260,80 1380,60 1440,120 L1440,200 L0,200 Z"></path>
             </svg>
-            <svg class="absolute bottom-2 left-0 w-[160%] h-16 md:h-20 opacity-25" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 36s ease-in-out infinite reverse;">
+            <svg class="absolute bottom-2 left-0 w-[160%] h-16 md:h-20 opacity-18" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 44s ease-in-out infinite reverse;">
                 <defs>
                     <linearGradient id="bridgeWaveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.20"/>
@@ -1924,10 +1932,11 @@
     <section id="gallery" class="py-24 relative overflow-hidden reveal" style="background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 25%, #f0f9ff 50%, #f5f3ff 75%, #faf5ff 100%);">
         <!-- Animated Background Elements with slow waves + calm particles -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
-            <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-400/15 rounded-full blur-3xl" style="animation: deepFloat 16s ease-in-out infinite;"></div>
-            <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl" style="animation: deepFloat 20s ease-in-out infinite; animation-delay: 2s;"></div>
+            <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-400/15 rounded-full blur-[70px]" style="animation: deepFloat 20s ease-in-out infinite;"></div>
+            <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-purple-400/10 rounded-full blur-[80px]" style="animation: deepFloat 24s ease-in-out infinite; animation-delay: 2s;"></div>
             <!-- Slow wave lines similar to bridge for soft motion -->
-            <svg class="absolute bottom-0 left-0 w-[140%] h-20 md:h-24 opacity-25" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 28s ease-in-out infinite;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 120px; overflow: hidden;">
+                <svg class="prevent-overflow" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 36s ease-in-out infinite; width: 100%; height: 100%;">
                 <defs>
                     <linearGradient id="galleryWaveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.25"/>
@@ -1937,7 +1946,9 @@
                 </defs>
                 <path fill="url(#galleryWaveGrad1)" d="M0,80 C240,140 360,60 540,80 C720,100 900,160 1080,120 C1260,80 1380,60 1440,120 L1440,200 L0,200 Z"></path>
             </svg>
-            <svg class="absolute bottom-2 left-0 w-[160%] h-20 md:h-24 opacity-20" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 36s ease-in-out infinite reverse;">
+            </div>
+            <div style="position: absolute; bottom: 8px; left: 0; right: 0; width: 100%; height: 120px; overflow: hidden;">
+                <svg class="prevent-overflow" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 44s ease-in-out infinite reverse; width: 100%; height: 100%;">
                 <defs>
                     <linearGradient id="galleryWaveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.22"/>
@@ -1947,10 +1958,9 @@
                 </defs>
                 <path fill="url(#galleryWaveGrad2)" d="M0,100 C240,160 360,80 540,100 C720,120 900,180 1080,140 C1260,100 1380,80 1440,140 L1440,200 L0,200 Z"></path>
             </svg>
+            </div>
             <!-- Calmer particle accents -->
-            <span class="absolute left-[12%] top-[30%] w-1.5 h-1.5 rounded-full bg-blue-400/50" style="animation: particleFloat 14s ease-in-out infinite;"></span>
-            <span class="absolute left-[48%] top-[45%] w-1.5 h-1.5 rounded-full bg-cyan-400/50" style="animation: particleFloat 16s ease-in-out infinite 1s;"></span>
-            <span class="absolute left-[82%] top-[38%] w-1.5 h-1.5 rounded-full bg-purple-400/45" style="animation: particleFloat 18s ease-in-out infinite 0.6s;"></span>
+            <span class="absolute left-[18%] top-[32%] w-1.5 h-1.5 rounded-full bg-blue-400/35" style="animation: particleFloat 22s ease-in-out infinite;"></span>
         </div>
 
         <div class="max-w-6xl mx-auto px-6 relative z-10">
@@ -2227,17 +2237,17 @@
         <!-- Animated Background: mesh grid + parallax glows + particles -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
             <!-- Parallax glow orbs -->
-            <div class="absolute -top-36 -right-24 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl" style="animation: float 12s ease-in-out infinite;"></div>
-            <div class="absolute -bottom-40 -left-32 w-96 h-96 bg-indigo-500/12 rounded-full blur-3xl" style="animation: float 15s ease-in-out infinite 1s;"></div>
+            <div class="absolute -top-36 -right-24 w-80 h-80 bg-blue-500/15 rounded-full blur-[70px]" style="animation: float 14s ease-in-out infinite;"></div>
+            <div class="absolute -bottom-40 -left-32 w-96 h-96 bg-indigo-500/12 rounded-full blur-[80px]" style="animation: float 18s ease-in-out infinite 1s;"></div>
             <!-- Mesh grid + radial highlights -->
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.08),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(129,140,248,0.06),transparent_32%),radial-gradient(circle_at_50%_80%,rgba(59,130,246,0.08),transparent_30%)]"></div>
             <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:120px_120px]"></div>
             <!-- Subtle floating particles (calmer vibe) -->
-            <span class="absolute left-[18%] top-[32%] w-1.5 h-1.5 rounded-full bg-cyan-300/60" style="animation: particleFloat 12s ease-in-out infinite;"></span>
-            <span class="absolute left-[72%] top-[42%] w-1.5 h-1.5 rounded-full bg-indigo-300/60" style="animation: particleFloat 14s ease-in-out infinite 1s;"></span>
+            <span class="absolute left-[22%] top-[34%] w-1.5 h-1.5 rounded-full bg-cyan-300/35" style="animation: particleFloat 22s ease-in-out infinite;"></span>
 
             <!-- Slow wave lines similar to bridge -->
-            <svg class="absolute bottom-0 left-0 w-[140%] h-24 md:h-28 opacity-40" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 24s ease-in-out infinite;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 128px; overflow: hidden;">
+                <svg class="prevent-overflow" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 32s ease-in-out infinite; width: 100%; height: 100%;">
                 <path fill="url(#projectsWaveGrad1)" d="M0,80 C240,140 360,60 540,80 C720,100 900,160 1080,120 C1260,80 1380,60 1440,120 L1440,200 L0,200 Z"></path>
                 <defs>
                     <linearGradient id="projectsWaveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -2247,7 +2257,9 @@
                     </linearGradient>
                 </defs>
             </svg>
-            <svg class="absolute bottom-3 left-0 w-[160%] h-24 md:h-28 opacity-30" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 32s ease-in-out infinite reverse;">
+            </div>
+            <div style="position: absolute; bottom: 12px; left: 0; right: 0; width: 100%; height: 128px; overflow: hidden;">
+                <svg class="prevent-overflow" viewBox="0 0 1440 200" preserveAspectRatio="none" style="animation: waveDrift 40s ease-in-out infinite reverse; width: 100%; height: 100%;">
                 <path fill="url(#projectsWaveGrad2)" d="M0,100 C240,160 360,80 540,100 C720,120 900,180 1080,140 C1260,100 1380,80 1440,140 L1440,200 L0,200 Z"></path>
                 <defs>
                     <linearGradient id="projectsWaveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -2257,6 +2269,7 @@
                     </linearGradient>
                 </defs>
             </svg>
+            </div>
         </div>
 
         <div class="max-w-6xl mx-auto px-6 relative z-10">
@@ -2908,7 +2921,7 @@
         <div class="relative z-10 max-w-7xl mx-auto px-6 mb-20">
             <div class="text-center">
                 <span class="text-sm font-bold text-blue-400 mb-2 block uppercase tracking-widest">Expert Faculty</span>
-                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent tracking-tight mb-4">
+                <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_6px_24px_rgba(59,130,246,0.25)]">
                     Learn from Industry Experts
                 </h2>
                 <p class="text-lg text-zinc-100 max-w-2xl mx-auto leading-relaxed">
