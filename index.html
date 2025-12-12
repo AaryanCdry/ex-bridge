@@ -147,6 +147,41 @@
             .soft-skills-slider-track > div {
                 scroll-snap-align: start;
             }
+
+            /* AI Chat Widget Mobile Responsiveness */
+            #aiChatWidget {
+                bottom: 1rem !important;
+                right: 1rem !important;
+                gap: 1rem !important;
+            }
+
+            #aiChatBtn,
+            #aiChatWidget a {
+                width: 56px !important;
+                height: 56px !important;
+            }
+
+            /* AI Chat Modal Mobile Responsiveness */
+            #aiChatModal {
+                width: calc(100vw - 1rem) !important;
+                bottom: 6.5rem !important;
+                right: 0.5rem !important;
+                left: 0.5rem !important;
+                max-width: calc(100vw - 1rem) !important;
+                max-h-[50vh] !important;
+                border-radius: 1rem;
+            }
+
+            #aiChatMessages {
+                max-height: 180px !important;
+            }
+
+            .quick-action {
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
 
         /* Reduced motion toggle */
@@ -3591,7 +3626,7 @@
     </script>
 
     <!-- AI Premium Interactive Features - Compact & Competitive with Toggle -->
-    <div id="aiChatWidget" class="fixed bottom-6 right-6 z-40 hidden md:flex flex-col gap-2">
+    <div id="aiChatWidget" class="fixed bottom-6 right-6 z-40 flex flex-col gap-2">
         <!-- WhatsApp Quick Button -->
         <a href="https://wa.me/919031303022?text=Hi%20Ex-Bridge!%20I'm%20interested%20in%20learning%20more%20about%20your%20courses." target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-600/50 flex items-center justify-center text-white hover:scale-105 transition-transform duration-300 cursor-pointer group border-2 border-emerald-300/30 hover:shadow-emerald-600/70 animate-bounce" title="Chat on WhatsApp">
             <i data-lucide="message-circle" class="w-6 h-6"></i>
