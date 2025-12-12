@@ -150,20 +150,8 @@
 
             /* AI Chat Widget Mobile Responsiveness */
             #aiChatWidget {
-                bottom: 1rem !important;
-                right: 1rem !important;
-                gap: 1rem !important;
                 display: flex !important;
                 flex-direction: column !important;
-            }
-
-            #aiChatBtn,
-            #aiChatWidget a {
-                width: 56px !important;
-                height: 56px !important;
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
             }
 
             /* AI Chat Modal Mobile Responsiveness */
@@ -3631,14 +3619,14 @@
     </script>
 
     <!-- AI Premium Interactive Features - Compact & Competitive with Toggle -->
-    <div id="aiChatWidget" class="fixed bottom-6 right-6 z-40 flex flex-col gap-2">
+    <div id="aiChatWidget" class="fixed z-40 flex flex-col gap-2" style="bottom: 1.5rem; right: 1rem; width: auto;">
         <!-- WhatsApp Quick Button -->
-        <a href="https://wa.me/919031303022?text=Hi%20Ex-Bridge!%20I'm%20interested%20in%20learning%20more%20about%20your%20courses." target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-600/50 flex items-center justify-center text-white hover:scale-105 transition-transform duration-300 cursor-pointer group border-2 border-emerald-300/30 hover:shadow-emerald-600/70 animate-bounce" title="Chat on WhatsApp">
+        <a href="https://wa.me/919031303022?text=Hi%20Ex-Bridge!%20I'm%20interested%20in%20learning%20more%20about%20your%20courses." target="_blank" rel="noopener noreferrer" class="rounded-full bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-600/50 flex items-center justify-center text-white hover:scale-105 transition-transform duration-300 cursor-pointer group border-2 border-emerald-300/30 hover:shadow-emerald-600/70 animate-bounce" style="width: 56px; height: 56px;" title="Chat on WhatsApp">
             <i data-lucide="message-circle" class="w-6 h-6"></i>
         </a>
 
         <!-- Chat Bubble Toggle - Compact with Minimize Arrow -->
-        <button id="aiChatBtn" class="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-600/50 flex items-center justify-center text-white hover:scale-105 transition-all duration-300 cursor-pointer group border-2 border-cyan-300/30 hover:shadow-cyan-600/70 relative" title="AI Assistant">
+        <button id="aiChatBtn" class="rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-600/50 flex items-center justify-center text-white hover:scale-105 transition-all duration-300 cursor-pointer group border-2 border-cyan-300/30 hover:shadow-cyan-600/70 relative" style="width: 56px; height: 56px;" title="AI Assistant">
             <div class="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-25 transition-opacity blur"></div>
             <div class="relative">
                 <i data-lucide="sparkles" class="w-6 h-6 group-hover:animate-spin transition-transform" id="aiToggleIcon"></i>
