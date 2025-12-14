@@ -4353,12 +4353,13 @@
             window.addEventListener('scroll', highlightActiveSection, { passive: true });
             highlightActiveSection(); // Initial call
 
-            // Mobile navigation toggle
-            const menuToggle = document.getElementById('mobileMenuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuIcon = document.getElementById('menuIcon');
-            const closeIcon = document.getElementById('closeIcon');
-            const mobileOverlay = document.getElementById('mobileMenuOverlay');
+            // Mobile navigation toggle - wrapped in function to ensure DOM is ready
+            function initMobileMenu() {
+                const menuToggle = document.getElementById('mobileMenuToggle');
+                const mobileMenu = document.getElementById('mobileMenu');
+                const menuIcon = document.getElementById('menuIcon');
+                const closeIcon = document.getElementById('closeIcon');
+                const mobileOverlay = document.getElementById('mobileMenuOverlay');
 
             const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex=\"-1\"])';
             let lastFocusedElement = null;
@@ -4436,11 +4437,17 @@
                 }
             };
 
-            if (menuToggle) {
-                menuToggle.addEventListener('click', () => {
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const isOpen = !mobileMenu.classList.contains('hidden');
+                    console.log('Menu toggle clicked. Current state:', isOpen ? 'open' : 'closed');
                     setMenuState(!isOpen);
                 });
+                console.log('Mobile menu toggle initialized successfully');
+            } else {
+                console.error('Mobile menu elements not found:', { menuToggle: !!menuToggle, mobileMenu: !!mobileMenu });
             }
 
             if (mobileOverlay) {
@@ -4465,6 +4472,15 @@
                     setMenuState(false);
                 }
             });
+            }
+            
+            // Initialize mobile menu when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                // DOM is already loaded
+                initMobileMenu();
+            }
 
             // Magnetic hover effect for buttons
             const magneticElements = document.querySelectorAll('.magnetic');
