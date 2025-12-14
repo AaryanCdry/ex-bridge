@@ -3012,22 +3012,71 @@
     </section>
 
     <!-- Trainers Section (premium & stylish) -->
-    <section id="trainers" class="py-28 bg-gradient-to-br from-zinc-900 via-emerald-900/20 to-zinc-900 text-white relative overflow-hidden reveal">
+    <section id="trainers" class="py-28 bg-gradient-to-b from-zinc-950 via-slate-900 to-black text-white relative overflow-hidden reveal">
         <!-- Premium background decorations -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <!-- Existing blurred orbs -->
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl orb"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl orb"></div>
+
+            <!-- Animated gradient mesh backdrop (increased visibility) -->
+            <div class="absolute inset-0 gradient-mesh opacity-[0.18] mix-blend-screen"></div>
+
+                        <!-- Animated tech grid lines layer -->
+                        <div class="absolute inset-0 opacity-20" style="
+                                background-image:
+                                    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+                                    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+                                background-size: 40px 40px, 40px 40px;
+                                background-position: 0 0, 0 0;
+                                animation: waveDrift 30s linear infinite;
+                        "></div>
+
+            <!-- Subtle flowing wave stripe (brighter) -->
+            <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[140%] h-28 bg-gradient-to-r from-blue-600/30 via-cyan-500/25 to-purple-500/30 blur-xl wave"></div>
+
+            <!-- Matching footer-style layered waves -->
+            <div class="absolute inset-x-0 bottom-0 opacity-25">
+                <svg class="absolute bottom-0 left-0 w-full h-32 text-blue-600" viewBox="0 0 1200 120" preserveAspectRatio="none" style="animation: wave 18s linear infinite;">
+                    <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="currentColor" opacity="0.25"></path>
+                </svg>
+                <svg class="absolute bottom-6 left-0 w-full h-28 text-purple-600" viewBox="0 0 1200 100" preserveAspectRatio="none" style="animation: wave 22s linear infinite reverse;">
+                    <path d="M0,40 Q300,10 600,40 T1200,40 L1200,100 L0,100 Z" fill="currentColor" opacity="0.2"></path>
+                </svg>
+                <svg class="absolute bottom-12 left-0 w-full h-24 text-cyan-600" viewBox="0 0 1200 80" preserveAspectRatio="none" style="animation: wave 26s linear infinite;">
+                    <path d="M0,30 Q300,5 600,30 T1200,30 L1200,80 L0,80 Z" fill="currentColor" opacity="0.15"></path>
+                </svg>
+            </div>
+
+            <!-- Floating particles for premium feel -->
+            <div class="absolute w-2 h-2 bg-blue-400/70 rounded-full" style="top: 15%; left: 22%; animation: particle-float 18s infinite ease-in-out;"></div>
+            <div class="absolute w-2.5 h-2.5 bg-cyan-400/70 rounded-full" style="top: 42%; left: 78%; animation: particle-float 22s infinite ease-in-out; animation-delay: 2s;"></div>
+            <div class="absolute w-2 h-2 bg-purple-400/70 rounded-full" style="top: 68%; left: 35%; animation: particle-float 20s infinite ease-in-out; animation-delay: 1s;"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 mb-20">
-            <div class="text-center">
-                <span class="text-sm font-bold text-blue-400 mb-2 block uppercase tracking-widest">Expert Faculty</span>
-                <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_6px_24px_rgba(59,130,246,0.25)]">
+            <div class="text-center space-y-3">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-semibold tracking-widest text-blue-300 shadow-luxury shimmer">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                    Expert Faculty · Premium
+                </span>
+                <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-cyan-200 drop-shadow-[0_6px_24px_rgba(59,130,246,0.25)]">
                     Learn from Industry Experts
                 </h2>
-                <p class="text-lg text-zinc-100 max-w-2xl mx-auto leading-relaxed">
+                <div class="mx-auto w-24 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 rounded-full opacity-70 shimmer-line"></div>
+                <p class="text-lg text-zinc-100/90 max-w-2xl mx-auto leading-relaxed">
                     Our experienced trainers bring real-world expertise and a passion for mentoring the next generation of professionals.
                 </p>
+                <div class="mt-3 flex items-center justify-center gap-2 text-[11px] text-cyan-200/90">
+                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 border border-white/10">
+                        <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                        AI-guided learning
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 border border-white/10">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                        Industry-certified mentors
+                    </span>
+                </div>
             </div>
         </div>
 
@@ -3038,90 +3087,192 @@
 
             <div class="slider-track flex gap-10 px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory">
                 <!-- Trainer 1 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 10s ease-in-out infinite;">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover relative" style="animation: rotateCard 10s ease-in-out infinite;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 pointer-events-none rounded-2xl glass-premium opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10 w-full">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mb-6 mx-auto overflow-hidden border-4 border-blue-300 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
-                            <img src="asset/rabikant.png" alt="Trainer" class="w-full h-full object-cover" />
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mb-6 mx-auto overflow-hidden border-4 border-blue-300 shadow-lg shadow-blue-600/30 group-hover:scale-110 group-hover:-translate-y-1 group-hover:rotate-1 transition-transform duration-500 relative">
+                            <img src="asset/rabikant.png" alt="Trainer" class="w-full h-full object-cover" loading="lazy" decoding="async" />
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">
-                            Mr. Rabikant Chaudhary
-                        </h3>
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">Mr. Rabikant Chaudhary</h3>
+                        <div class="text-[10px] inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-600/15 border border-blue-400/25 text-blue-100/90">
+                            <i data-lucide="badge-check" class="w-3.5 h-3.5"></i>
+                            Verified Expert
+                        </div>
                         <p class="text-sm text-blue-300 font-semibold mb-3">Data Analytics & AI/ML</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed">
-                            Successfully taught over 10k students through freelancing endeavors with expert insights.
+                        <p class="text-sm text-zinc-100/90 leading-relaxed">
+                            Data & AI lead who’s guided 10k+ learners with pragmatic, outcomes-first mentoring.
                         </p>
+                        <div class="mt-2 hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-400/20 text-[11px] text-blue-100/90">
+                            <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                            10k+ learners mentored
+                        </div>
+                        <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Python</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Pandas</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">ML</span>
+                        </div>
+                        <div class="mt-4 flex items-center justify-center gap-2 text-[12px]">
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="github" class="w-4 h-4"></i></a>
+                            <a href="/ContactUs.html" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-[11px] hover:from-blue-700 hover:to-cyan-700 transition-all shadow-blue-600/30 shadow-sm">
+                                Book a session
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Trainer 2 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 11s ease-in-out infinite 1s;">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover relative" style="animation: rotateCard 11s ease-in-out infinite 1s;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 pointer-events-none rounded-2xl glass-premium opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10 w-full">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mb-6 mx-auto overflow-hidden border-4 border-cyan-300 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
-                            <img src="asset/sewana.png" alt="Trainer" class="w-full h-full object-cover" />
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mb-6 mx-auto overflow-hidden border-4 border-cyan-300 shadow-lg shadow-cyan-600/30 group-hover:scale-110 group-hover:-translate-y-1 group-hover:rotate-1 transition-transform duration-500 relative">
+                            <img src="asset/sewana.png" alt="Trainer" class="w-full h-full object-cover" loading="lazy" decoding="async" />
                         </div>
                         <h3 class="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">Ms. Sewana M</h3>
+                        <div class="text-[10px] inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-cyan-600/15 border border-cyan-400/25 text-cyan-100/90">
+                            <i data-lucide="badge-check" class="w-3.5 h-3.5"></i>
+                            Verified Expert
+                        </div>
                         <p class="text-sm text-cyan-300 font-semibold mb-3">Data Analytics & Visualization</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed">
-                            Passionate data analyst specializing in beautiful visualizations and actionable insights.
+                        <p class="text-sm text-zinc-100/90 leading-relaxed">
+                            Analytics storyteller crafting decision-grade dashboards and insight-first visuals.
                         </p>
+                        <div class="mt-2 hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-600/10 border border-cyan-400/20 text-[11px] text-cyan-100/90">
+                            <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i>
+                            500+ dashboards shipped
+                        </div>
+                        <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Power BI</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Tableau</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">SQL</span>
+                        </div>
+                        <div class="mt-4 flex items-center justify-center gap-2 text-[12px]">
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="github" class="w-4 h-4"></i></a>
+                            <a href="/ContactUs.html" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600 text-white text-[11px] hover:from-cyan-700 hover:to-emerald-700 transition-all shadow-cyan-600/30 shadow-sm">
+                                Book a session
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Trainer 3 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 12s ease-in-out infinite 2s;">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-blue-900/40 to-zinc-800/40 border border-blue-500/30 p-8 rounded-2xl hover:border-blue-400/60 transition-all hover:shadow-2xl hover:shadow-blue-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover relative" style="animation: rotateCard 12s ease-in-out infinite 2s;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 pointer-events-none rounded-2xl glass-premium opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10 w-full">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mb-6 mx-auto overflow-hidden border-4 border-blue-300 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
-                            <img src="asset/prajwal.png" alt="Trainer" class="w-full h-full object-cover" />
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mb-6 mx-auto overflow-hidden border-4 border-blue-300 shadow-lg shadow-blue-600/30 group-hover:scale-110 group-hover:-translate-y-1 group-hover:rotate-1 transition-transform duration-500 relative">
+                            <img src="asset/prajwal.png" alt="Trainer" class="w-full h-full object-cover" loading="lazy" decoding="async" />
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">
-                            Mr. Prajwal Reddy
-                        </h3>
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">Mr. Prajwal Reddy</h3>
+                        <div class="text-[10px] inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-600/15 border border-blue-400/25 text-blue-100/90">
+                            <i data-lucide="badge-check" class="w-3.5 h-3.5"></i>
+                            Verified Expert
+                        </div>
                         <p class="text-sm text-blue-300 font-semibold mb-3">Cloud Architecture & DevOps</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed">
-                            Certified in AWS and Azure. Expert in CI/CD pipelines and infrastructure automation.
+                        <p class="text-sm text-zinc-100/90 leading-relaxed">
+                            Cloud architect (AWS/Azure) focused on resilient infra, CI/CD excellence, and cost-aware design.
                         </p>
+                        <div class="mt-2 hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-400/20 text-[11px] text-blue-100/90">
+                            <i data-lucide="cloud" class="w-3.5 h-3.5"></i>
+                            AWS · Azure · CI/CD
+                        </div>
+                        <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">AWS</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Azure</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">CI/CD</span>
+                        </div>
+                        <div class="mt-4 flex items-center justify-center gap-2 text-[12px]">
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="github" class="w-4 h-4"></i></a>
+                            <a href="/ContactUs.html" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-[11px] hover:from-blue-700 hover:to-cyan-700 transition-all shadow-blue-600/30 shadow-sm">
+                                Book a session
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Trainer 4 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 13s ease-in-out infinite 3s;">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover relative" style="animation: rotateCard 13s ease-in-out infinite 3s;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 pointer-events-none rounded-2xl glass-premium opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10 w-full">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mb-6 mx-auto overflow-hidden border-4 border-cyan-300 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
-                            <img src="asset/aaryan.png" alt="Trainer" class="w-full h-full object-cover" />
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mb-6 mx-auto overflow-hidden border-4 border-cyan-300 shadow-lg shadow-cyan-600/30 group-hover:scale-110 group-hover:-translate-y-1 group-hover:rotate-1 transition-transform duration-500 relative">
+                            <img src="asset/aaryan.png" alt="Trainer" class="w-full h-full object-cover" loading="lazy" decoding="async" />
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">
-                            Mr. Aaryan Chaudhary
-                        </h3>
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">Mr. Aaryan Chaudhary</h3>
+                        <div class="text-[10px] inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-cyan-600/15 border border-cyan-400/25 text-cyan-100/90">
+                            <i data-lucide="badge-check" class="w-3.5 h-3.5"></i>
+                            Verified Expert
+                        </div>
                         <p class="text-sm text-cyan-300 font-semibold mb-3">Python & Web Development</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed">
-                            Building strong programming foundations through hands-on, industry-focused training.
+                        <p class="text-sm text-zinc-100/90 leading-relaxed">
+                            Python and web mentor blending Gen AI with clean engineering patterns for fast learner lift.
                         </p>
+                        <div class="mt-2 hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-600/10 border border-cyan-400/20 text-[11px] text-cyan-100/90">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                            Gen AI + Web
+                        </div>
+                        <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Python</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Django</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Tailwind</span>
+                        </div>
+                        <div class="mt-4 flex items-center justify-center gap-2 text-[12px]">
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="github" class="w-4 h-4"></i></a>
+                            <a href="/ContactUs.html" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600 text-white text-[11px] hover:from-cyan-700 hover:to-emerald-700 transition-all shadow-cyan-600/30 shadow-sm">
+                                Book a session
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Trainer 5 -->
-                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover" style="animation: rotateCard 14s ease-in-out infinite 4s;">
+                <div class="flex flex-col items-center text-center w-[280px] shrink-0 bg-gradient-to-br from-cyan-900/40 to-zinc-800/40 border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-400/60 transition-all hover:shadow-2xl hover:shadow-cyan-600/20 group cursor-pointer hover:-translate-y-2 overflow-hidden card-rotate-hover relative" style="animation: rotateCard 14s ease-in-out infinite 4s;">
                     <!-- Card glow effect -->
                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 pointer-events-none rounded-2xl glass-premium opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="relative z-10 w-full">
-                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mb-6 mx-auto overflow-hidden border-4 border-cyan-300 shadow-lg shadow-cyan-600/30 group-hover:scale-110 transition-transform">
-                            <img src="asset/pujitha.png" alt="Trainer" class="w-full h-full object-cover" />
+                        <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 mb-6 mx-auto overflow-hidden border-4 border-cyan-300 shadow-lg shadow-cyan-600/30 group-hover:scale-110 group-hover:-translate-y-1 group-hover:rotate-1 transition-transform duration-500 relative">
+                            <img src="asset/pujitha.png" alt="Trainer" class="w-full h-full object-cover" loading="lazy" decoding="async" />
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">
-                            Ms. Pujitha Mani Varada
-                        </h3>
+                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">Ms. Pujitha Mani Varada</h3>
+                        <div class="text-[10px] inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-cyan-600/15 border border-cyan-400/25 text-cyan-100/90">
+                            <i data-lucide="badge-check" class="w-3.5 h-3.5"></i>
+                            Verified Expert
+                        </div>
                         <p class="text-sm text-cyan-300 font-semibold mb-3">Gen AI, Python & SQL</p>
-                        <p class="text-sm text-zinc-100 leading-relaxed">
-                            Empowering learners with emerging technologies through structured mentorship and guidance.
+                        <p class="text-sm text-zinc-100/90 leading-relaxed">
+                            Gen AI, Python, and SQL mentor delivering structured, confidence-building guidance.
                         </p>
+                        <div class="mt-2 hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-600/10 border border-cyan-400/20 text-[11px] text-cyan-100/90">
+                            <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                            Mentor-led guidance
+                        </div>
+                        <div class="mt-3 flex flex-wrap items-center justify-center gap-2">
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Gen AI</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">Python</span>
+                            <span class="soft-skills-tag px-2.5 py-1 text-[10px] rounded-full bg-white/5 border border-white/10">SQL</span>
+                        </div>
+                        <div class="mt-4 flex items-center justify-center gap-2 text-[12px]">
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                            <a href="#" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white/80"><i data-lucide="github" class="w-4 h-4"></i></a>
+                            <a href="/ContactUs.html" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600 text-white text-[11px] hover:from-cyan-700 hover:to-emerald-700 transition-all shadow-cyan-600/30 shadow-sm">
+                                Book a session
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
