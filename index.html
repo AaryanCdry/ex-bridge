@@ -1515,7 +1515,7 @@
     </button>
     
     <!-- Navigation -->
-    <nav id="mainNav" class="fixed top-0 w-full z-50 transition-all duration-300">
+    <nav id="mainNav" class="fixed top-0 w-full z-[50] transition-all duration-300" style="pointer-events: auto;">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-2 group relative z-50">
                 <div class="p-2 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg shadow-md group-hover:shadow-xl group-hover:shadow-blue-600/50 group-hover:from-blue-700 group-hover:to-blue-800 transition-all duration-300 group-hover:scale-110">
@@ -1528,7 +1528,7 @@
             </a>
             
             <!-- Mobile Menu Toggle -->
-            <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg hover:bg-blue-100 transition-all z-50 mr-3 order-last" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
+            <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg hover:bg-blue-100 transition-all z-[60] mr-3 order-last pointer-events-auto touch-manipulation" style="position: relative;" aria-label="Toggle menu" aria-controls="mobileMenu" aria-expanded="false">
                 <svg class="w-6 h-6 text-zinc-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -1598,7 +1598,7 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white/98 backdrop-blur-lg border-b border-zinc-200 shadow-2xl mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+        <div id="mobileMenu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white/98 backdrop-blur-lg border-b border-zinc-200 shadow-2xl mobile-menu z-[55]" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="max-w-7xl mx-auto px-6 py-6 space-y-4">
                 <a href="#about" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
                     <span class="text-zinc-700 font-medium group-hover:text-blue-600">About</span>
@@ -4414,6 +4414,13 @@
                     mainNav.classList.toggle('shadow-xl', open);
                 }
                 menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+                // Re-initialize Lucide icons in mobile menu
+                if (open && typeof lucide !== 'undefined') {
+                    setTimeout(() => {
+                        lucide.createIcons();
+                    }, 50);
+                }
 
                 // Focus management and trap
                 if (open) {
