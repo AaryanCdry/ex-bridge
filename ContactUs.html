@@ -226,7 +226,7 @@ input[type=range]::-webkit-slider-runnable-track {
             </a>
             
             <!-- Mobile Menu Toggle -->
-            <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg hover:bg-blue-100 transition-all z-50" aria-label="Toggle menu">
+            <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg hover:bg-blue-100 transition-all z-[60] mr-3 order-last pointer-events-auto touch-manipulation" style="position: relative;" aria-label="Toggle menu">
                 <svg class="w-6 h-6 text-zinc-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -264,7 +264,7 @@ input[type=range]::-webkit-slider-runnable-track {
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white/98 backdrop-blur-lg border-b border-zinc-200 shadow-2xl mobile-menu">
+        <div id="mobileMenu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white/90 backdrop-blur-2xl border-b border-zinc-200 shadow-2xl mobile-menu z-[55]">
             <div class="max-w-7xl mx-auto px-6 py-6 space-y-4">
                 <a href="index.html" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
                     <span class="text-zinc-700 font-medium group-hover:text-blue-600">Home</span>

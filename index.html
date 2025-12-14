@@ -1598,7 +1598,7 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white/98 backdrop-blur-lg border-b border-zinc-200 shadow-2xl mobile-menu z-[55]" role="dialog" aria-modal="true" aria-hidden="true">
+        <div id="mobileMenu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white/90 backdrop-blur-2xl border-b border-zinc-200 shadow-2xl mobile-menu z-[55]" role="dialog" aria-modal="true" aria-hidden="true">
             <div class="max-w-7xl mx-auto px-6 py-6 space-y-4">
                 <a href="#about" class="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-blue-50 transition-all group">
                     <span class="text-zinc-700 font-medium group-hover:text-blue-600">About</span>
@@ -1635,7 +1635,7 @@
     </nav>
 
     <!-- Mobile menu overlay -->
-    <div id="mobileMenuOverlay" class="fixed inset-0 bg-zinc-900/30 backdrop-blur-sm z-40 hidden md:hidden"></div>
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-zinc-900/50 backdrop-blur-md z-40 hidden md:hidden"></div>
 
     <!-- Hero Section -->
     <section class="relative pt-40 pb-24 lg:pt-56 lg:pb-40 overflow-hidden">
@@ -4239,17 +4239,6 @@
                 revealElems.forEach(el => el.classList.add('is-visible'));
             }
 
-            // Scroll progress bar
-            const scrollProgress = document.getElementById('scrollProgress');
-            window.addEventListener('scroll', () => {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                const scrollPercent = (scrollTop / scrollHeight) * 100;
-                if (scrollProgress) {
-                    scrollProgress.style.width = scrollPercent + '%';
-                }
-            });
-
             // Enhanced Navigation scroll effect with progress bar
             const mainNav = document.getElementById('mainNav');
             const scrollProgress = document.getElementById('scrollProgress');
@@ -4361,117 +4350,77 @@
                 const closeIcon = document.getElementById('closeIcon');
                 const mobileOverlay = document.getElementById('mobileMenuOverlay');
 
-            const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex=\"-1\"])';
-            let lastFocusedElement = null;
-            let trapListener = null;
-
-            function trapFocus(container) {
-                const focusables = Array.from(container.querySelectorAll(FOCUSABLE_SELECTOR))
-                    .filter(el => !el.hasAttribute('disabled') && el.offsetParent !== null);
-                if (focusables.length === 0) return;
-                const first = focusables[0];
-                const last = focusables[focusables.length - 1];
-                trapListener = (e) => {
-                    if (e.key !== 'Tab') return;
-                    const active = document.activeElement;
-                    if (e.shiftKey) {
-                        if (active === first || active === container) {
-                            e.preventDefault();
-                            last.focus();
+                if (menuToggle && mobileMenu) {
+                    menuToggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Simple toggle like ContactUs.html
+                        mobileMenu.classList.toggle('hidden');
+                        if (menuIcon) menuIcon.classList.toggle('hidden');
+                        if (closeIcon) closeIcon.classList.toggle('hidden');
+                        if (mobileOverlay) mobileOverlay.classList.toggle('hidden');
+                        
+                        // Toggle body scroll
+                        document.body.classList.toggle('overflow-hidden');
+                        
+                        // Re-initialize Lucide icons when menu opens
+                        if (!mobileMenu.classList.contains('hidden') && typeof lucide !== 'undefined') {
+                            setTimeout(() => {
+                                lucide.createIcons();
+                            }, 50);
                         }
-                    } else {
-                        if (active === last) {
-                            e.preventDefault();
-                            first.focus();
-                        }
-                    }
-                };
-                document.addEventListener('keydown', trapListener, true);
-            }
-
-            function releaseFocus() {
-                if (trapListener) {
-                    document.removeEventListener('keydown', trapListener, true);
-                    trapListener = null;
-                }
-            }
-
-            const setMenuState = (open) => {
-                if (!mobileMenu || !menuToggle) return;
-                mobileMenu.classList.toggle('hidden', !open);
-                mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
-                if (mobileOverlay) mobileOverlay.classList.toggle('hidden', !open);
-                document.body.classList.toggle('overflow-hidden', open);
-                if (menuIcon && closeIcon) {
-                    menuIcon.classList.toggle('hidden', open);
-                    closeIcon.classList.toggle('hidden', !open);
-                }
-                // Add a subtle backdrop for the nav when the mobile menu is open
-                if (mainNav) {
-                    mainNav.classList.toggle('bg-white/95', open);
-                    mainNav.classList.toggle('backdrop-blur-lg', open);
-                    mainNav.classList.toggle('border-b', open);
-                    mainNav.classList.toggle('border-zinc-200', open);
-                    mainNav.classList.toggle('shadow-xl', open);
-                }
-                menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-
-                // Re-initialize Lucide icons in mobile menu
-                if (open && typeof lucide !== 'undefined') {
-                    setTimeout(() => {
-                        lucide.createIcons();
-                    }, 50);
-                }
-
-                // Focus management and trap
-                if (open) {
-                    lastFocusedElement = document.activeElement;
-                    mobileMenu.setAttribute('tabindex', '-1');
-                    mobileMenu.focus({ preventScroll: true });
-                    trapFocus(mobileMenu);
+                    });
+                    console.log('Mobile menu toggle initialized successfully');
                 } else {
-                    releaseFocus();
-                    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-                        lastFocusedElement.focus();
+                    console.error('Mobile menu elements not found:', { menuToggle: !!menuToggle, mobileMenu: !!mobileMenu });
+                }
+
+                // Close menu when clicking overlay
+                if (mobileOverlay && mobileMenu) {
+                    mobileOverlay.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileOverlay.classList.add('hidden');
+                        if (menuIcon) menuIcon.classList.remove('hidden');
+                        if (closeIcon) closeIcon.classList.add('hidden');
+                        document.body.classList.remove('overflow-hidden');
+                    });
+                }
+
+                // Close menu when a mobile link is tapped
+                if (mobileMenu) {
+                    document.querySelectorAll('#mobileMenu a').forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.add('hidden');
+                            if (mobileOverlay) mobileOverlay.classList.add('hidden');
+                            if (menuIcon) menuIcon.classList.remove('hidden');
+                            if (closeIcon) closeIcon.classList.add('hidden');
+                            document.body.classList.remove('overflow-hidden');
+                        });
+                    });
+                }
+
+                // Close menu on Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if (mobileOverlay) mobileOverlay.classList.add('hidden');
+                        if (menuIcon) menuIcon.classList.remove('hidden');
+                        if (closeIcon) closeIcon.classList.add('hidden');
+                        document.body.classList.remove('overflow-hidden');
                     }
-                }
-            };
-
-            if (menuToggle && mobileMenu) {
-                menuToggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const isOpen = !mobileMenu.classList.contains('hidden');
-                    console.log('Menu toggle clicked. Current state:', isOpen ? 'open' : 'closed');
-                    setMenuState(!isOpen);
                 });
-                console.log('Mobile menu toggle initialized successfully');
-            } else {
-                console.error('Mobile menu elements not found:', { menuToggle: !!menuToggle, mobileMenu: !!mobileMenu });
-            }
 
-            if (mobileOverlay) {
-                mobileOverlay.addEventListener('click', () => setMenuState(false));
-            }
-
-            // Close menu when a mobile link is tapped
-            document.querySelectorAll('#mobileMenu a').forEach(link => {
-                link.addEventListener('click', () => setMenuState(false));
-            });
-
-            // Close menu on Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    setMenuState(false);
-                }
-            });
-
-            // Reset on resize back to desktop
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) {
-                    setMenuState(false);
-                }
-            });
+                // Reset on resize back to desktop
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if (mobileOverlay) mobileOverlay.classList.add('hidden');
+                        if (menuIcon) menuIcon.classList.remove('hidden');
+                        if (closeIcon) closeIcon.classList.add('hidden');
+                        document.body.classList.remove('overflow-hidden');
+                    }
+                });
             }
             
             // Initialize mobile menu when DOM is ready
